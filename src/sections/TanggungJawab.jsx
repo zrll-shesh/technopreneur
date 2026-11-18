@@ -4,28 +4,28 @@ import { Section, ChapterHead, Margin } from '../components/ui'
 const PRINCIPLES = [
   {
     title: 'Jaga data orang lain',
-    body: 'Data santri, nilai, kesehatan, atau keuangan keluarga itu amanah. Kumpulkan seperlunya, simpan dengan aman, dan jangan pernah dibagikan tanpa izin.',
+    body: 'Data santri, nilai, kesehatan, dan keuangan keluarga adalah amanah. Kumpulkan seperlunya, simpan dengan aman, dan jangan dibagikan tanpa izin.',
     color: 'bg-marker',
   },
   {
-    title: 'Pastikan adil',
-    body: 'AI belajar dari data, dan data bisa berat sebelah. Di proyek analisis kejahatan LAPD, aku menambahkan audit keadilan supaya hasilnya nggak merugikan kelompok tertentu.',
+    title: 'Bersikap adil',
+    body: 'AI belajar dari data, dan data dapat berat sebelah. Audit keadilan diperlukan agar hasilnya tidak merugikan kelompok tertentu.',
     color: 'bg-[#D4DBFF]',
   },
   {
-    title: 'Jangan membahayakan',
-    body: 'Di AIO PestGuard, setiap rekomendasi dicek dulu dengan daftar pestisida terlarang. Solusi yang salah bisa lebih berbahaya daripada tidak ada solusi.',
+    title: 'Tidak membahayakan',
+    body: 'Rekomendasi yang keliru dapat lebih berbahaya daripada tidak ada rekomendasi. Contohnya, rekomendasi pestisida perlu diperiksa terhadap daftar bahan terlarang.',
     color: 'bg-[#BFE8D6]',
   },
 ]
 
 export default function TanggungJawab() {
   return (
-    <Section id="tanggung-jawab">
+    <Section id="etika">
       <ChapterHead
-        no={9}
-        title="Teknologi yang amanah."
-        lead="Dampak yang baik juga berarti tidak merugikan orang lain. Semakin besar jangkauan sebuah teknologi, semakin besar juga tanggung jawab pembuatnya."
+        no={8}
+        title="Etika teknologi"
+        lead="Dampak yang baik juga berarti tidak merugikan pihak lain. Semakin besar jangkauan sebuah teknologi, semakin besar pula tanggung jawab pembuatnya. Tiga prinsip berikut perlu diperhatikan sejak awal perancangan."
       />
       <div className="grid gap-6 md:grid-cols-3">
         {PRINCIPLES.map((p, k) => (

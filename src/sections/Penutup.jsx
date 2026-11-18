@@ -3,17 +3,17 @@ import { motion } from 'framer-motion'
 import { QRCodeSVG } from 'qrcode.react'
 import { ExternalLink } from 'lucide-react'
 import { ContactLinks } from './Kenalan'
-import { REFERENCES } from '../data'
+import { REFERENCES, SUMMARY, GLOSSARY } from '../data'
 
 const NEXT = [
-  'Foto papan keresahan hari ini, simpan di galeri.',
-  'Pilih satu keresahan yang paling bikin penasaran.',
-  'Ngobrol dengan 5 orang yang merasakannya minggu ini.',
-  'Bikin versi paling sederhana, bahkan cuma Google Form.',
-  'Bawa ke lomba inovasi atau karya tulis tingkat SMA.',
+  'Catat setidaknya tiga masalah yang ditemui selama satu minggu.',
+  'Pilih satu masalah dan gali akarnya dengan teknik 5 Whys.',
+  'Wawancarai lima orang yang mengalami masalah tersebut.',
+  'Buat versi paling sederhana dari solusinya.',
+  'Kembangkan menjadi karya untuk lomba inovasi atau karya tulis tingkat SMA.',
 ]
 
-const LINE = 'Mulai dari yang bikin kamu kesal. Siapa tahu, itu awal dari sesuatu yang besar.'
+const LINE = 'Mulailah dari masalah yang paling dekat. Bisa jadi, itulah awal dari sesuatu yang besar.'
 
 export default function Penutup() {
   const [url, setUrl] = useState('')
@@ -22,7 +22,7 @@ export default function Penutup() {
   return (
     <section id="penutup" data-section className="grid-dark relative overflow-hidden">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
-        <p className="hand text-2xl text-marker">sebelum pulang</p>
+        <p className="hand text-2xl text-marker">penutup</p>
         <h2 className="display-xl mt-4 max-w-5xl font-extrabold">
           {LINE.split(' ').map((w, k) => (
             <motion.span
@@ -44,12 +44,37 @@ export default function Penutup() {
           transition={{ delay: 1.2 }}
           className="hand mt-8 text-3xl text-marker"
         >
-          Start small. Start now. Start with a problem you actually care about.
+          Start small. Start now. Start with a problem you truly care about.
         </motion.p>
+
+        <div className="mt-20 grid gap-12 lg:grid-cols-2">
+          <div>
+            <h3 className="display-md font-bold">Ringkasan materi</h3>
+            <ul className="mt-6 space-y-3">
+              {SUMMARY.map((x) => (
+                <li key={x} className="flex gap-3 text-lg leading-relaxed text-paper/85">
+                  <span className="mt-[0.6em] h-2 w-2 shrink-0 rounded-full bg-marker" />
+                  <span>{x}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="display-md font-bold">Daftar istilah</h3>
+            <dl className="mt-6 divide-y-2 divide-white/10">
+              {GLOSSARY.map((g) => (
+                <div key={g.t} className="grid gap-1 py-3 sm:grid-cols-[9rem_1fr] sm:gap-4">
+                  <dt className="font-bold text-marker">{g.t}</dt>
+                  <dd className="text-paper/80">{g.d}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
 
         <div className="mt-20 grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <h3 className="display-md font-bold">Lima hal untuk minggu ini</h3>
+            <h3 className="display-md font-bold">Langkah tindak lanjut</h3>
             <ol className="mt-8 space-y-4">
               {NEXT.map((n, k) => (
                 <motion.li
@@ -75,15 +100,15 @@ export default function Penutup() {
               )}
             </div>
             <p className="text-lg text-paper/75">
-              Pindai untuk membuka materi ini di HP kalian. Semua alat bantu tadi bisa dipakai lagi kapan saja.
+              Pindai kode ini untuk membuka materi melalui ponsel.
             </p>
           </div>
         </div>
 
         <div className="mt-24">
-          <h3 className="display-md font-bold">Terima kasih sudah belajar bareng.</h3>
+          <h3 className="display-md font-bold">Terima kasih.</h3>
           <p className="mt-3 max-w-prose text-lg text-paper/75">
-            Kalau suatu hari kalian menemukan ide dan butuh teman diskusi, jangan sungkan menghubungi aku.
+            Untuk diskusi lebih lanjut mengenai ide, lomba, atau data science, silakan menghubungi kontak berikut.
           </p>
           <div className="mt-8 max-w-3xl">
             <ContactLinks dark />

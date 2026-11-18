@@ -1,158 +1,102 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Section, ChapterHead, Margin, Reveal } from '../components/ui'
-import { IMPACT_PRESETS } from '../data'
+import { Section, ChapterHead, Cite, Margin, Reveal, KeyPoints, SubHead, Para, Table } from '../components/ui'
 
-function reachLabel(v) {
-  const n = Math.round(Math.pow(10, v))
-  if (n >= 1000000) return `${(n / 1000000).toLocaleString('id-ID', { maximumFractionDigits: 1 })} juta orang`
-  if (n >= 1000) return `${Math.round(n / 1000).toLocaleString('id-ID')} ribu orang`
-  return `${n.toLocaleString('id-ID')} orang`
-}
-
-function quadrant(reach, depth) {
-  const wide = reach >= 3
-  const deep = depth >= 5.5
-  if (wide && deep) return { name: 'Lebar dan dalam', desc: 'Banyak orang terbantu, dan hidup mereka berubah nyata. Ini wilayah ide yang sangat kuat, biasanya juga paling sulit dibuat.' }
-  if (!wide && deep) return { name: 'Dalam', desc: 'Jumlahnya belum banyak, tapi bagi mereka solusinya sangat berarti. Banyak startup hebat justru mulai dari sini.' }
-  if (wide && !deep) return { name: 'Lebar', desc: 'Menjangkau banyak orang, tapi manfaatnya tipis. Hati-hati, ini sering jadi wilayah vitamin.' }
-  return { name: 'Belum terasa', desc: 'Sedikit orang dan manfaatnya kecil. Gali lagi masalahnya, mungkin ada versi yang lebih tajam.' }
-}
-
-function ImpactPlot() {
-  const [reach, setReach] = useState(2.6)
-  const [depth, setDepth] = useState(6)
-  const q = quadrant(reach, depth)
-  const px = (reach / 6) * 100
-  const py = 100 - ((depth - 1) / 9) * 100
-
-  return (
-    <div className="grid gap-8 rounded-[26px] border-2 border-ink/10 bg-white p-5 sm:p-8 lg:grid-cols-[1fr_1fr]">
-      <div>
-        <div className="mb-6 flex flex-wrap gap-2">
-          {IMPACT_PRESETS.map((p) => (
-            <button
-              key={p.name}
-              onClick={() => {
-                setReach(p.reach)
-                setDepth(p.depth)
-              }}
-              className="min-h-[40px] rounded-full bg-mist px-4 text-sm font-semibold hover:bg-cobalt hover:text-white"
-            >
-              {p.name}
-            </button>
-          ))}
-        </div>
-        <label htmlFor="reach" className="block font-semibold">
-          Berapa banyak orang yang terbantu?
-        </label>
-        <p className="hand text-2xl text-cobalt">{reachLabel(reach)}</p>
-        <input
-          id="reach"
-          type="range"
-          min="0"
-          max="6"
-          step="0.1"
-          value={reach}
-          onChange={(e) => setReach(Number(e.target.value))}
-          className="mt-2"
-        />
-        <label htmlFor="depth" className="mt-8 block font-semibold">
-          Seberapa besar hidup mereka berubah?
-        </label>
-        <p className="hand text-2xl text-cobalt">{Math.round(depth)} dari 10</p>
-        <input
-          id="depth"
-          type="range"
-          min="1"
-          max="10"
-          step="0.5"
-          value={depth}
-          onChange={(e) => setDepth(Number(e.target.value))}
-          className="mt-2"
-        />
-        <motion.div
-          key={q.name}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mt-8 rounded-2xl bg-ink p-5 text-paper"
-        >
-          <p className="text-2xl font-bold text-marker">{q.name}</p>
-          <p className="mt-1 text-lg text-paper/85">{q.desc}</p>
-        </motion.div>
-      </div>
-
-      <div className="relative">
-        <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-paper">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
-            <div className="border-b-2 border-r-2 border-dashed border-ink/15 p-3 text-sm font-semibold text-ink/45">Dalam</div>
-            <div className="border-b-2 border-dashed border-ink/15 p-3 text-right text-sm font-semibold text-ink/45">Lebar dan dalam</div>
-            <div className="flex items-end border-r-2 border-dashed border-ink/15 p-3 text-sm font-semibold text-ink/45">Belum terasa</div>
-            <div className="flex items-end justify-end p-3 text-sm font-semibold text-ink/45">Lebar</div>
-          </div>
-          <motion.div
-            className="absolute h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-white bg-cobalt shadow-[0_6px_20px_rgba(35,55,217,0.45)]"
-            animate={{ left: `${Math.min(94, Math.max(6, px))}%`, top: `${Math.min(94, Math.max(6, py))}%` }}
-            transition={{ type: 'spring', stiffness: 220, damping: 20 }}
-          />
-        </div>
-        <p className="mt-3 text-center text-sm text-ink/55">
-          Ke kanan: makin banyak orang. Ke atas: makin besar perubahan hidupnya.
-        </p>
-      </div>
-    </div>
-  )
-}
+const QUADS = [
+  { name: 'Dalam', desc: 'Sedikit orang, perubahan besar.', ex: 'Pengingat obat untuk lansia', cls: 'bg-white' },
+  { name: 'Lebar dan dalam', desc: 'Banyak orang, perubahan besar.', ex: 'Layanan transportasi daring', cls: 'bg-marker' },
+  { name: 'Belum terasa', desc: 'Sedikit orang, perubahan kecil.', ex: 'Tema tampilan grup kelas', cls: 'bg-white' },
+  { name: 'Lebar', desc: 'Banyak orang, perubahan kecil.', ex: 'Filter foto media sosial', cls: 'bg-white' },
+]
 
 export default function Dampak() {
-  const questions = [
-    { q: 'Siapa yang terbantu?', d: 'Sebut orangnya sespesifik mungkin. Kalau jawabannya "semua orang", biasanya belum cukup tajam.' },
-    { q: 'Seberapa sering masalahnya terjadi?', d: 'Masalah harian jauh lebih kuat daripada masalah setahun sekali.' },
-    { q: 'Apa yang terjadi kalau dibiarkan?', d: 'Rugi waktu, rugi uang, rugi kesehatan, atau rugi kesempatan? Makin jelas ruginya, makin besar dampaknya.' },
-  ]
   return (
     <Section id="dampak">
       <ChapterHead
-        no={5}
-        title="Dampak itu soal manfaat, bukan soal keren."
-        lead="Kata impact sering terdengar besar dan jauh. Padahal artinya dekat sekali dengan nilai yang sudah kalian pelajari sejak lama."
+        no={4}
+        title="Mengukur dampak"
+        lead="Dampak (impact) adalah perubahan nyata yang dirasakan pengguna setelah masalahnya terselesaikan. Konsep ini sejalan dengan nilai yang telah lama dipelajari."
       />
 
       <Reveal>
-        <figure className="mb-16 rounded-[26px] bg-pine p-8 text-white sm:p-12">
-          <p className="text-3xl font-bold leading-snug sm:text-4xl" lang="ar-Latn">
-            Khairunnas anfa'uhum linnas.
-          </p>
+        <figure className="rounded-[26px] bg-pine p-8 text-white sm:p-12">
+          <p className="text-3xl font-bold leading-snug sm:text-4xl">Khairunnas anfa'uhum linnas.</p>
           <p className="mt-4 max-w-prose text-xl text-white/90">
             Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lain.
           </p>
           <figcaption className="mt-4 text-white/70">HR. Ahmad dan Ath-Thabrani</figcaption>
-          <p className="hand mt-8 text-2xl text-marker">impact is just another word for manfaat</p>
         </figure>
       </Reveal>
 
-      <h3 className="display-md mb-3 font-bold">Dampak punya dua arah: lebar dan dalam</h3>
-      <p className="mb-8 max-w-prose text-lg text-ink/70">
-        Membantu sedikit untuk sejuta orang dan membantu banyak untuk seratus orang sama-sama dampak. Geser
-        penggeser di bawah, atau klik contohnya, lalu lihat ide itu jatuh di wilayah mana.
-      </p>
-      <ImpactPlot />
+      <SubHead>4.1 Dua dimensi dampak</SubHead>
+      <Para className="mb-8">
+        Dampak dapat dilihat dari dua dimensi. Jangkauan (lebar) menunjukkan berapa banyak orang yang terbantu.
+        Kedalaman menunjukkan seberapa besar perubahan yang dirasakan setiap orang. Keduanya sama-sama bernilai.
+      </Para>
+      <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+        <div className="relative">
+          <div className="grid grid-cols-2 gap-3">
+            {QUADS.map((q) => (
+              <div key={q.name} className={`aspect-[5/4] rounded-2xl border-2 border-ink/10 p-5 ${q.cls}`}>
+                <p className="text-xl font-bold">{q.name}</p>
+                <p className="mt-1 text-ink/70">{q.desc}</p>
+                <p className="hand mt-3 text-lg text-cobalt">{q.ex}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-center text-sm text-ink/55">Sumbu mendatar: jangkauan. Sumbu tegak: kedalaman perubahan.</p>
+        </div>
+        <Para>
+          Banyak startup besar justru memulai dari kuadran "dalam": melayani sekelompok kecil pengguna dengan sangat
+          baik, kemudian memperluas jangkauan. Ide di kuadran "lebar" perlu diwaspadai karena sering kali berupa
+          vitamin.
+        </Para>
+      </div>
 
-      <h3 className="display-md mb-8 mt-20 font-bold">Tiga pertanyaan untuk mengukur dampak</h3>
+      <SubHead>4.2 Tiga pertanyaan pengukur dampak</SubHead>
       <div className="grid gap-5 md:grid-cols-3">
-        {questions.map((x, k) => (
-          <Reveal key={x.q} delay={k * 0.1}>
-            <div className="h-full border-t-[5px] border-cobalt pt-5">
-              <p className="hand text-xl text-cobalt">pertanyaan {k + 1}</p>
-              <p className="mt-1 text-2xl font-bold">{x.q}</p>
-              <p className="mt-3 text-lg text-ink/75">{x.d}</p>
-            </div>
-          </Reveal>
+        {[
+          { q: 'Siapa yang terbantu?', d: 'Sebutkan secara spesifik. Jawaban "semua orang" menandakan rumusan yang belum tajam.' },
+          { q: 'Seberapa sering?', d: 'Masalah harian memberikan dampak yang jauh lebih terasa daripada masalah tahunan.' },
+          { q: 'Apa akibatnya jika dibiarkan?', d: 'Semakin jelas kerugian waktu, uang, kesehatan, atau kesempatan, semakin besar dampaknya.' },
+        ].map((x, k) => (
+          <div key={x.q} className="border-t-[5px] border-cobalt pt-5">
+            <p className="text-sm text-ink/55">Pertanyaan {k + 1}</p>
+            <p className="mt-1 text-2xl font-bold">{x.q}</p>
+            <p className="mt-3 text-lg text-ink/75">{x.d}</p>
+          </div>
         ))}
       </div>
-      <Margin className="mt-14">
-        Impact isn't about how big your idea sounds. It's about how much someone's life actually changes.
-      </Margin>
+
+      <SubHead>4.3 Indikator dampak</SubHead>
+      <Para className="mb-8">Dampak sebaiknya dinyatakan dengan indikator yang dapat diukur, bukan hanya klaim.</Para>
+      <Table
+        head={['Jenis indikator', 'Contoh pengukuran']}
+        rows={[
+          ['Waktu', 'Waktu antre laundry berkurang dari 60 menit menjadi 10 menit'],
+          ['Biaya', 'Kerugian gagal panen petani menurun'],
+          ['Penggunaan', 'Jumlah santri yang memakai layanan setiap minggu'],
+          ['Perilaku', 'Persentase setoran hafalan yang tepat waktu meningkat'],
+        ]}
+      />
+
+      <SubHead>4.4 Menghubungkan dengan SDGs</SubHead>
+      <Cite source="United Nations (2015), Agenda 2030 for Sustainable Development" href="https://sdgs.un.org/goals">
+        Menurut Perserikatan Bangsa-Bangsa (2015), Agenda 2030 memuat 17 Tujuan Pembangunan Berkelanjutan (SDGs) yang
+        menjadi kerangka bersama negara-negara dunia untuk mengatasi kemiskinan, ketimpangan, dan krisis lingkungan.
+      </Cite>
+      <Para>
+        Mengaitkan ide dengan SDGs membantu menunjukkan relevansinya secara lebih luas. Misalnya, AI deteksi hama
+        mendukung SDG 2 (Tanpa Kelaparan), aplikasi belajar mendukung SDG 4 (Pendidikan Berkualitas), dan pengingat
+        obat mendukung SDG 3 (Kehidupan Sehat dan Sejahtera).
+      </Para>
+      <Margin className="mt-12">Impact isn't about how big your idea sounds. It's about how much someone's life actually changes.</Margin>
+
+      <KeyPoints
+        points={[
+          'Dampak diukur dari jangkauan (berapa banyak orang) dan kedalaman (seberapa besar perubahan).',
+          'Gunakan tiga pertanyaan: siapa yang terbantu, seberapa sering, dan apa akibatnya jika dibiarkan.',
+          'Nyatakan dampak dengan indikator terukur dan kaitkan dengan SDGs bila relevan.',
+        ]}
+      />
     </Section>
   )
 }

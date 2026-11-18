@@ -1,105 +1,99 @@
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Section, ChapterHead, Cite, Margin, Reveal } from '../components/ui'
+import { Section, ChapterHead, Cite, Margin, Reveal, KeyPoints, SubHead, Para, Table } from '../components/ui'
 import { EXAMPLES } from '../data'
 
 const PARTS = [
-  { key: 'masalah', label: 'Masalah nyata', color: 'bg-marker text-ink', missing: 'Teknologi canggih yang nggak dipakai siapa-siapa. Keren di demo, sepi di dunia nyata.' },
-  { key: 'teknologi', label: 'Teknologi yang pas', color: 'bg-cobalt text-white', missing: 'Usaha biasa. Tetap bagus, tapi susah menjangkau banyak orang dengan cepat.' },
-  { key: 'bisnis', label: 'Model bisnis', color: 'bg-pine text-white', missing: 'Proyek keren yang berhenti begitu uang jajan dan tenaga pembuatnya habis.' },
+  { label: 'Masalah nyata', color: 'bg-marker text-ink', role: 'Menjadi alasan solusi dibutuhkan.', missing: 'Teknologi canggih yang tidak digunakan siapa pun.' },
+  { label: 'Teknologi yang tepat', color: 'bg-cobalt text-white', role: 'Menjadi cara menyelesaikan masalah secara efisien dan luas.', missing: 'Usaha konvensional yang sulit menjangkau banyak orang dengan cepat.' },
+  { label: 'Model bisnis', color: 'bg-pine text-white', role: 'Menjadi sumber daya agar solusi terus berjalan.', missing: 'Proyek yang berhenti ketika dana dan tenaga pembuatnya habis.' },
 ]
 
-function Formula() {
-  const [off, setOff] = useState(null)
-  return (
-    <div className="rounded-[26px] border-2 border-ink/10 bg-white p-5 sm:p-8">
-      <p className="mb-6 text-lg text-ink/70">
-        Klik salah satu bagian untuk melihat apa yang terjadi kalau bagian itu hilang.
-      </p>
-      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-        {PARTS.map((p, k) => (
-          <motion.div
-            key={p.key}
-            className="flex items-center gap-3 sm:gap-4"
-            initial={{ opacity: 0, x: -30 * (k + 1) }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ type: 'spring', stiffness: 160, damping: 16, delay: k * 0.15 }}
-          >
-            <motion.button
-              onClick={() => setOff(off === p.key ? null : p.key)}
-              animate={off === p.key ? { opacity: 0.25, scale: 0.92 } : { opacity: 1, scale: 1 }}
-              className={`rounded-2xl px-5 py-4 text-lg font-bold sm:text-xl ${p.color} ${off === p.key ? 'line-through' : ''}`}
-              aria-pressed={off === p.key}
-            >
-              {p.label}
-            </motion.button>
-            {k < PARTS.length - 1 && <span className="text-3xl font-light text-ink/40">+</span>}
-          </motion.div>
-        ))}
-        <span className="text-3xl font-light text-ink/40">=</span>
-        <motion.div
-          layout
-          className={`rounded-2xl border-[3px] px-5 py-4 text-lg font-bold sm:text-xl ${off ? 'border-dashed border-rose text-rose' : 'border-ink text-ink'}`}
-        >
-          {off ? 'Belum jadi' : 'Solusi yang berdampak dan bertahan'}
-        </motion.div>
-      </div>
-      <AnimatePresence mode="wait">
-        <motion.p
-          key={off || 'utuh'}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          className="mt-6 min-h-[3.5rem] max-w-prose text-lg"
-        >
-          {off
-            ? `Tanpa ${PARTS.find((p) => p.key === off).label.toLowerCase()}: ${PARTS.find((p) => p.key === off).missing}`
-            : 'Ketiganya lengkap. Ada orang yang terbantu, ada cara untuk menjangkau mereka, dan ada alasan solusinya terus hidup.'}
-        </motion.p>
-      </AnimatePresence>
-    </div>
-  )
-}
+const TRAITS = [
+  { t: 'Peka terhadap masalah', d: 'Terbiasa memperhatikan hal yang menyulitkan orang di sekitarnya.' },
+  { t: 'Berpikir berbasis data', d: 'Mengambil keputusan dari bukti, bukan sekadar perasaan.' },
+  { t: 'Berani bereksperimen', d: 'Menguji ide dalam skala kecil dan belajar dari hasilnya.' },
+  { t: 'Terus belajar', d: 'Mengikuti perkembangan teknologi yang relevan dengan masalahnya.' },
+  { t: 'Berorientasi manfaat', d: 'Mengukur keberhasilan dari perubahan yang dirasakan pengguna.' },
+]
 
 export default function Technopreneur() {
   return (
-    <Section id="technopreneur">
+    <Section id="konsep">
       <ChapterHead
         no={1}
-        title="Technopreneur itu sebenarnya apa?"
-        lead="Gampangnya, technopreneur adalah orang yang memakai teknologi untuk menyelesaikan masalah orang lain, lalu membuat solusinya bisa bertahan karena ada yang mau membiayainya."
+        title="Konsep dasar technopreneurship"
+        lead="Istilah technopreneur merupakan gabungan dari kata technology dan entrepreneur. Secara sederhana, technopreneur adalah wirausahawan yang menjadikan teknologi sebagai alat utama untuk menyelesaikan masalah dan menciptakan nilai."
       />
 
-      <Cite
-        source="Bailetti (2012), Technology Innovation Management Review"
-        href="https://timreview.ca/node/520"
-      >
+      <SubHead>1.1 Pengertian</SubHead>
+      <Cite source="Bailetti (2012), Technology Innovation Management Review" href="https://timreview.ca/node/520">
         Menurut Bailetti (2012), technology entrepreneurship adalah upaya mengumpulkan orang dan sumber daya yang
         berkaitan erat dengan kemajuan ilmu pengetahuan dan teknologi, dengan tujuan menciptakan sekaligus menangkap
         nilai.
       </Cite>
-
-      <div className="mb-14 grid max-w-4xl gap-6 sm:grid-cols-2">
+      <Para>
+        Definisi tersebut memuat dua kata kunci yang menjadi dasar seluruh materi ini. Keduanya harus hadir bersamaan:
+        solusi yang bermanfaat tetapi tidak berkelanjutan akan berhenti di tengah jalan, sedangkan usaha yang
+        menghasilkan tetapi tidak bermanfaat tidak akan bertahan lama.
+      </Para>
+      <div className="mt-8 grid max-w-4xl gap-6 sm:grid-cols-2">
         <Reveal className="rounded-[22px] bg-marker p-6">
           <p className="hand text-xl">menciptakan nilai</p>
-          <p className="mt-2 text-2xl font-bold">Itu dampak.</p>
-          <p className="mt-2 text-lg">Ada orang yang hidupnya jadi lebih mudah, lebih aman, atau lebih baik.</p>
+          <p className="mt-2 text-2xl font-bold">Dampak</p>
+          <p className="mt-2 text-lg">Kehidupan pengguna menjadi lebih mudah, lebih aman, atau lebih baik.</p>
         </Reveal>
         <Reveal delay={0.1} className="rounded-[22px] bg-pine p-6 text-white">
           <p className="hand text-xl text-white/80">menangkap nilai</p>
-          <p className="mt-2 text-2xl font-bold">Itu bisnis.</p>
-          <p className="mt-2 text-lg text-white/85">Ada cara agar solusinya menghasilkan dan bisa terus berjalan.</p>
+          <p className="mt-2 text-2xl font-bold">Nilai bisnis</p>
+          <p className="mt-2 text-lg text-white/85">Solusi menghasilkan pendapatan sehingga dapat terus berjalan dan berkembang.</p>
         </Reveal>
       </div>
 
-      <h3 className="display-md mb-6 font-bold">Rumusnya kira-kira begini</h3>
-      <Formula />
+      <SubHead>1.2 Entrepreneur dan technopreneur</SubHead>
+      <Para className="mb-8">
+        Keduanya sama-sama penting bagi perekonomian. Perbedaannya terletak pada cara nilai diciptakan dan
+        disebarluaskan.
+      </Para>
+      <Table
+        head={['Aspek', 'Entrepreneur', 'Technopreneur']}
+        rows={[
+          ['Fokus utama', 'Menyediakan produk atau jasa bagi pelanggan', 'Menyelesaikan masalah dengan memanfaatkan teknologi'],
+          ['Sumber keunggulan', 'Lokasi, harga, layanan, dan jaringan', 'Inovasi, data, dan kemampuan teknis'],
+          ['Cara bertumbuh', 'Seiring bertambahnya tenaga kerja dan cabang', 'Dapat menjangkau banyak orang tanpa kenaikan biaya yang sebanding'],
+          ['Contoh', 'Toko kelontong, katering, jasa laundry', 'Aplikasi antrean laundry, platform belajar daring'],
+        ]}
+      />
 
-      <h3 className="display-md mb-3 mt-20 font-bold">Mereka juga nggak mulai dari yang canggih</h3>
-      <p className="mb-8 max-w-prose text-lg text-ink/70">
-        Tiga nama yang pasti kalian kenal. Perhatikan bagaimana semuanya dimulai.
-      </p>
+      <SubHead>1.3 Tiga unsur utama</SubHead>
+      <Para className="mb-8">Sebuah solusi technopreneurship yang utuh memerlukan tiga unsur berikut.</Para>
+      <div className="grid gap-5 md:grid-cols-3">
+        {PARTS.map((p, k) => (
+          <Reveal key={p.label} delay={k * 0.1}>
+            <div className="flex h-full flex-col overflow-hidden rounded-[22px] border-2 border-ink/10 bg-white">
+              <p className={`px-6 py-5 text-xl font-bold ${p.color}`}>{p.label}</p>
+              <div className="flex flex-1 flex-col gap-4 p-6">
+                <p className="text-lg">{p.role}</p>
+                <p className="mt-auto border-t-2 border-dashed border-ink/10 pt-4 text-ink/70">
+                  <span className="font-semibold text-rose">Tanpa unsur ini: </span>
+                  {p.missing}
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      <SubHead>1.4 Karakteristik technopreneur</SubHead>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        {TRAITS.map((t) => (
+          <div key={t.t} className="border-t-[5px] border-cobalt pt-4">
+            <p className="text-xl font-bold">{t.t}</p>
+            <p className="mt-2 text-ink/75">{t.d}</p>
+          </div>
+        ))}
+      </div>
+
+      <SubHead>1.5 Contoh dari Indonesia</SubHead>
+      <Para className="mb-8">Tiga perusahaan berikut tidak dimulai dari teknologi yang canggih, melainkan dari masalah yang jelas.</Para>
       <div className="grid gap-5 md:grid-cols-3">
         {EXAMPLES.map((e, k) => (
           <Reveal key={e.name} delay={k * 0.1}>
@@ -113,9 +107,15 @@ export default function Technopreneur() {
           </Reveal>
         ))}
       </div>
-      <Margin className="mt-12">
-        None of them started with "let's build a fancy app". They started with a problem.
-      </Margin>
+      <Margin className="mt-12">None of them started with a fancy app. They started with a problem.</Margin>
+
+      <KeyPoints
+        points={[
+          'Technopreneurship bertujuan menciptakan nilai (dampak) dan menangkap nilai (bisnis) secara bersamaan.',
+          'Unsur utamanya adalah masalah nyata, teknologi yang tepat, dan model bisnis.',
+          'Keunggulan technopreneur terletak pada kemampuan menjangkau banyak orang secara efisien.',
+        ]}
+      />
     </Section>
   )
 }

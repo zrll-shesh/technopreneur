@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { HERO_PAIRS, MARQUEE } from '../data'
 
-const TITLE = 'Ide besar sering lahir dari hal yang bikin kita kesal.'
+const TITLE = 'Ide besar sering lahir dari hal yang membuat kita resah.'
 
 function KeresahanBoard() {
   const reduce = useReducedMotion()
@@ -140,7 +140,7 @@ export default function Hero() {
             transition={{ delay: 0.1 }}
             className="mb-8 max-w-md text-base text-ink/65"
           >
-            Kelas technopreneur untuk SMA Al Falah Boarding School Darmo, bersama Nazril Ravi Pratama
+            Materi technopreneurship untuk SMA Al Falah Boarding School Darmo, disampaikan oleh Nazril Ravi Pratama
           </motion.p>
           <h1 className="display-xl font-extrabold">
             {words.map((w, k) => (
@@ -161,8 +161,8 @@ export default function Hero() {
             transition={{ delay: 1.1 }}
             className="mt-8 max-w-xl text-xl leading-relaxed text-ink/75"
           >
-            Hari ini kita belajar cara menemukan ide teknologi yang punya dampak nyata dan nilai bisnis. Bukan dari
-            khayalan, tapi dari keresahan yang kalian temui setiap hari.
+            Materi ini membahas cara menemukan ide teknologi yang memiliki dampak nyata dan nilai bisnis, berangkat
+            dari permasalahan yang ditemui dalam kehidupan sehari-hari.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -174,13 +174,13 @@ export default function Hero() {
               href="#kenalan"
               className="inline-flex min-h-[48px] items-center rounded-full bg-cobalt px-6 text-lg font-semibold text-white transition-colors hover:bg-ink"
             >
-              Mulai kelas
+              Mulai materi
             </a>
             <a
-              href="#skor-ide"
+              href="#tujuan"
               className="inline-flex min-h-[48px] items-center rounded-full border-2 border-ink/15 px-6 text-lg font-semibold transition-colors hover:border-cobalt hover:text-cobalt"
             >
-              Langsung ke alat bantu
+              Tujuan pembelajaran
             </a>
           </motion.div>
           <motion.p

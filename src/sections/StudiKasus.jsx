@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
-import { Section, ChapterHead, Margin } from '../components/ui'
+import { Section, ChapterHead } from '../components/ui'
 import { CASES } from '../data'
 
 const ROWS = [
   { key: 'pain', label: 'Keresahan' },
   { key: 'tech', label: 'Teknologi' },
-  { key: 'impact', label: 'Dampak' },
   { key: 'business', label: 'Nilai bisnis' },
 ]
 
@@ -18,9 +17,9 @@ export default function StudiKasus() {
     <Section id="studi-kasus" dark>
       <ChapterHead
         dark
-        no={8}
-        title="Bedah karyaku sendiri."
-        lead="Teori sudah. Sekarang aku tunjukkan bagaimana pola tadi muncul di proyek-proyek yang pernah aku kerjakan, lengkap dengan pelajaran yang aku dapat di tiap proyek."
+        kicker="Studi kasus"
+        title="Penerapan pada karya pemateri"
+        lead="Berikut tiga proyek yang menunjukkan bagaimana konsep dalam materi ini diterapkan, dari keresahan hingga nilai bisnis."
       />
 
       <div className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0" role="tablist">
@@ -70,7 +69,7 @@ export default function StudiKasus() {
             )}
           </div>
 
-          <div className="mt-10 grid gap-px overflow-hidden rounded-[22px] border-2 border-white/10 bg-white/10 md:grid-cols-2">
+          <div className="mt-10 grid gap-px overflow-hidden rounded-[22px] border-2 border-white/10 bg-white/10 md:grid-cols-3">
             {ROWS.map((r, j) => (
               <motion.div
                 key={r.key}
@@ -91,15 +90,12 @@ export default function StudiKasus() {
             transition={{ delay: 0.45, type: 'spring', stiffness: 180, damping: 16 }}
             className="mt-8 max-w-3xl bg-marker p-6 text-ink sm:p-8"
           >
-            <p className="hand text-xl text-ink/60">pelajaran yang aku dapat</p>
+            <p className="hand text-xl text-ink/60">pelajaran</p>
             <p className="mt-2 text-2xl font-bold leading-snug">{c.lesson}</p>
           </motion.div>
         </motion.article>
       </AnimatePresence>
 
-      <Margin dark className="mt-14">
-        Notice the pattern? Every project started with a real person and a real problem, not with the technology.
-      </Margin>
     </Section>
   )
 }

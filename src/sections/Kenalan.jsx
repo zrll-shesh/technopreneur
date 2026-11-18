@@ -100,33 +100,32 @@ export default function Kenalan() {
     <Section id="kenalan">
       <div className="grid gap-14 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div>
-          <p className="hand mb-4 text-2xl text-cobalt">sebelum mulai, kenalan dulu</p>
-          <h2 className="display-lg font-extrabold">Halo, aku Nazril.</h2>
+          <p className="hand mb-4 text-2xl text-cobalt">profil pemateri</p>
+          <h2 className="display-lg font-extrabold">Nazril Ravi Pratama</h2>
           <Scribble className="mt-3 h-4 w-48" />
           <div className="mt-8 max-w-prose space-y-5 text-lg leading-relaxed text-ink/80">
             <p>
-              Nama lengkapku Nazril Ravi Pratama. Aku mahasiswa Sains Data semester 5 di Universitas Negeri Surabaya,
-              International Undergraduate Program. Sehari-hari aku berkutat dengan data dan AI: magang sebagai AI
-              Engineer di PT Aigra EON Indonesia yang membangun AI untuk pertanian, sekaligus jadi peneliti di Big Data
-              Lab Analysis.
+              Mahasiswa Sains Data semester 5 di Universitas Negeri Surabaya, International Undergraduate Program,
+              dengan IPK 3,84. Saat ini menjalani magang sebagai AI Engineer di PT Aigra EON Indonesia yang
+              mengembangkan kecerdasan buatan untuk sektor pertanian, sekaligus menjadi Data Science and AI Researcher
+              di Big Data Lab Analysis.
             </p>
             <p>
-              Di luar itu, aku lumayan sering ikut lomba. Sejauh ini ada 35 lebih prestasi nasional dan internasional,
-              dari data mining, analitik, sampai esai. Tapi jujur, yang paling ingin aku bagikan hari ini bukan
-              daftar pialanya. Yang ingin aku bagikan adalah pola di baliknya: hampir semua karya yang pernah aku bikin
-              berawal dari satu hal sederhana, yaitu keresahan.
+              Telah meraih lebih dari 35 prestasi nasional dan internasional di bidang data mining, analitik data,
+              karya tulis, dan esai, di antaranya Top 3 Pertamuda by Pertamina, Juara 1 National Smart Data Analytics
+              Competition Universitas Syiah Kuala, dan Finalis GEMASTIK XVIII. Pengalaman lainnya meliputi asisten
+              dosen, fasilitator komunitas data science, dan pembicara di beberapa perguruan tinggi.
             </p>
             <p>
-              Aku juga pernah jadi asisten dosen, fasilitator komunitas data science, dan pembicara di beberapa kampus.
-              Jadi anggap saja hari ini aku kakak kelas yang kebetulan jalan beberapa langkah lebih dulu.
+              Hampir seluruh karya tersebut berangkat dari satu pola yang sama: dimulai dari keresahan terhadap sebuah
+              masalah nyata. Pola itulah yang akan dibahas dalam materi ini.
             </p>
           </div>
           <Margin className="mt-8">
-            I'm not here as someone who has it all figured out. I'm here as someone who's still learning, just a
-            few steps ahead.
+            I'm not here as someone who has it all figured out. I'm here to share what I've learned along the way.
           </Margin>
           <div className="mt-10">
-            <p className="mb-4 font-semibold">Mau tanya-tanya setelah kelas? Hubungi aku di sini.</p>
+            <p className="mb-4 font-semibold">Kontak untuk diskusi lebih lanjut</p>
             <ContactLinks />
           </div>
         </div>
@@ -155,9 +154,9 @@ export default function Kenalan() {
       {/* Jejak */}
       <div className="mt-24 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
-          <h3 className="display-md font-bold">Jejak singkat</h3>
+          <h3 className="display-md font-bold">Riwayat singkat</h3>
           <p className="mt-4 max-w-sm text-lg text-ink/70">
-            Bukan untuk pamer, tapi supaya kalian lihat bahwa semuanya dimulai dari langkah kecil yang diulang terus.
+            Rangkaian langkah kecil yang dilakukan secara konsisten.
           </p>
         </div>
         <ol className="relative border-l-[3px] border-cobalt/25 pl-8">

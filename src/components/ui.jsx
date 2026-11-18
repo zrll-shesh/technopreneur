@@ -59,11 +59,11 @@ export function HandCircle({ color = '#2337D9' }) {
   )
 }
 
-export function ChapterHead({ no, title, lead, dark = false }) {
+export function ChapterHead({ no, title, lead, dark = false, kicker }) {
   return (
     <header className="mb-14 max-w-3xl">
       <div className={`hand relative mb-5 inline-block px-2 text-2xl ${dark ? 'text-marker' : 'text-cobalt'}`}>
-        Bab {no}
+        {kicker || `Bab ${no}`}
         <HandCircle color={dark ? '#FFE14D' : '#2337D9'} />
       </div>
       <motion.h2
@@ -164,6 +164,65 @@ export function Panel({ children, className = '', dark = false }) {
       className={`rounded-[22px] border-2 p-6 sm:p-8 ${dark ? 'border-white/10 bg-white/[0.04]' : 'border-ink/10 bg-white'} ${className}`}
     >
       {children}
+    </div>
+  )
+}
+
+export function KeyPoints({ points, dark = false }) {
+  return (
+    <aside
+      className={`mt-16 rounded-[22px] border-l-[8px] p-6 sm:p-8 ${dark ? 'border-marker bg-white/[0.06]' : 'border-cobalt bg-white'}`}
+    >
+      <p className={`hand text-2xl ${dark ? 'text-marker' : 'text-cobalt'}`}>poin penting</p>
+      <ul className="mt-3 space-y-2">
+        {points.map((p) => (
+          <li key={p} className="flex gap-3 text-lg leading-relaxed">
+            <span className={`mt-[0.6em] h-2 w-2 shrink-0 rounded-full ${dark ? 'bg-marker' : 'bg-cobalt'}`} />
+            <span>{p}</span>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )
+}
+
+export function SubHead({ children, dark = false }) {
+  return (
+    <h3 className={`display-md mb-4 mt-20 font-bold ${dark ? '' : ''}`}>{children}</h3>
+  )
+}
+
+export function Para({ children, dark = false, className = '' }) {
+  return (
+    <p className={`max-w-prose text-lg leading-relaxed ${dark ? 'text-paper/80' : 'text-ink/80'} ${className}`}>{children}</p>
+  )
+}
+
+export function Table({ head, rows, dark = false }) {
+  return (
+    <div className={`overflow-x-auto rounded-[20px] border-2 ${dark ? 'border-white/10' : 'border-ink/10 bg-white'}`}>
+      <table className="w-full min-w-[620px] border-collapse text-left">
+        <thead>
+          <tr className={dark ? 'bg-white/10' : 'bg-ink text-paper'}>
+            {head.map((h) => (
+              <th key={h} scope="col" className="px-5 py-4 text-base font-bold">
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, k) => (
+            <tr key={k} className={`border-t-2 ${dark ? 'border-white/10' : 'border-ink/5'} ${k % 2 && !dark ? 'bg-paper/60' : ''}`}>
+              {r.map((c, j) => (
+                <td key={j} className={`px-5 py-4 align-top text-[1.02rem] leading-relaxed ${j === 0 ? 'font-semibold' : ''}`}>
+                  {c}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
