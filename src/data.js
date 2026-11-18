@@ -8,9 +8,9 @@ export const SECTIONS = [
   { id: 'produk', label: 'Dari masalah ke produk' },
   { id: 'bisnis', label: 'Model bisnis' },
   { id: 'validasi', label: 'Validasi pasar' },
-  { id: 'studi-kasus', label: 'Studi kasus' },
   { id: 'etika', label: 'Dampak dan etika' },
   { id: 'pitching', label: 'Menyampaikan ide' },
+  { id: 'studi-kasus', label: 'Studi kasus' },
   { id: 'cek-pemahaman', label: 'Cek pemahaman' },
   { id: 'penutup', label: 'Ringkasan dan penutup' },
 ]
@@ -25,10 +25,10 @@ export const OBJECTIVES = [
 ]
 
 export const LAYERS = [
-  { t: 'Data', d: 'Bahan mentah: foto, teks, angka, atau sinyal sensor.', ex: 'Foto daun dan hama dari kamera ponsel' },
-  { t: 'Model atau logika', d: 'Otak yang mengolah data menjadi jawaban.', ex: 'Model deteksi objek YOLO11l' },
-  { t: 'Aplikasi', d: 'Wajah yang dilihat dan disentuh pengguna.', ex: 'Web app Next.js yang berjalan di browser' },
-  { t: 'Keputusan pengguna', d: 'Tindakan nyata yang diambil berkat jawaban tersebut.', ex: 'Petani memilih pengendalian hama yang aman' },
+  { t: 'Data', d: 'Bahan mentah: foto, teks, angka, lokasi, atau sinyal sensor.', ex: 'Lokasi GPS penumpang dan pengemudi' },
+  { t: 'Model atau logika', d: 'Otak yang mengolah data menjadi jawaban.', ex: 'Algoritma pencocokan pengemudi dan perkiraan tarif' },
+  { t: 'Aplikasi', d: 'Wajah yang dilihat dan disentuh pengguna.', ex: 'Tampilan pemesanan di ponsel' },
+  { t: 'Keputusan pengguna', d: 'Tindakan nyata yang diambil berkat jawaban tersebut.', ex: 'Penumpang memesan, pengemudi datang menjemput' },
 ]
 
 export const TECHS = [
@@ -37,7 +37,7 @@ export const TECHS = [
     what: 'Teknologi yang membuat komputer mampu "melihat": mengenali, menghitung, dan menandai objek dalam gambar atau video.',
     analogy: 'Seperti mengajari mata baru dengan ribuan contoh foto berlabel, hingga ia bisa mengenali objek yang belum pernah dilihatnya.',
     fit: 'Pekerjaan yang biasanya dinilai dengan mata manusia dan dilakukan berulang kali.',
-    mine: 'AIO PestGuard membandingkan tiga model YOLO pada 24 kelas hama dan memilih YOLO11l (mAP50 0,794). Proyek UAV memakai SegFormer untuk memetakan 8 kelas objek dari foto udara.',
+    mine: 'Fitur buka kunci wajah di ponsel, pemeriksaan cacat produk di pabrik, dan aplikasi pengenal tanaman atau hama dari foto.',
     school: 'Mendeteksi sampah yang dibuang di tempat yang salah, atau memeriksa kerapian rak buku perpustakaan.',
     start: 'Teachable Machine dari Google (tanpa kode), lalu Ultralytics YOLO di Google Colab.',
   },
@@ -46,7 +46,7 @@ export const TECHS = [
     what: 'Natural Language Processing membuat komputer memahami bahasa manusia. Large Language Model (LLM) adalah model bahasa berukuran besar yang dapat menulis dan menjawab pertanyaan.',
     analogy: 'Seperti pembaca super cepat yang mampu membaca ribuan keluhan dalam semenit lalu merangkum polanya.',
     fit: 'Masalah yang melibatkan banyak teks: ulasan, keluhan, dokumen, atau percakapan.',
-    mine: 'Fine-tuning model IndoRoBERTa (akurasi 88,2%) untuk membaca sentimen 1.883 unggahan di X. StockSense AI memakai Gemma 2B lewat Ollama sebagai chatbot berbahasa Indonesia.',
+    mine: 'Penerjemah otomatis, filter spam pada email, analisis ulasan pelanggan, dan asisten AI untuk menulis.',
     school: 'Merangkum masukan santri dari kotak saran digital setiap bulan.',
     start: 'Hugging Face untuk model siap pakai, Ollama untuk menjalankan LLM di laptop.',
   },
@@ -55,7 +55,7 @@ export const TECHS = [
     what: 'Teknik menghubungkan LLM dengan kumpulan dokumen milik kita, sehingga jawabannya berdasarkan sumber yang jelas, bukan karangan.',
     analogy: 'Seperti ujian open book: sebelum menjawab, model mencari halaman yang relevan terlebih dahulu.',
     fit: 'Tanya jawab atas dokumen khusus yang tidak diketahui LLM umum, dan ketika jawaban harus dapat dipertanggungjawabkan.',
-    mine: 'AgriPest-RAG menggabungkan deteksi hama dengan basis pengetahuan pengendalian. Proyek UAV menghubungkan hasil segmentasi dengan ChromaDB dan Gemini 2.5 Flash.',
+    mine: 'Asisten layanan pelanggan yang menjawab berdasarkan kebijakan resmi perusahaan, atau asisten yang menjawab pertanyaan dari buku panduan.',
     school: 'Asisten tanya jawab tentang tata tertib pondok dan jadwal kegiatan yang selalu merujuk dokumen resmi.',
     start: 'ChromaDB sebagai basis data vektor, ditambah API LLM seperti Gemini.',
   },
@@ -64,7 +64,7 @@ export const TECHS = [
     what: 'Model yang belajar dari data berbentuk tabel untuk memprediksi angka atau kategori, termasuk memperkirakan masa depan.',
     analogy: 'Seperti pedagang berpengalaman yang menebak penjualan minggu depan, tetapi dengan ingatan atas ribuan transaksi.',
     fit: 'Keputusan yang bergantung pada perkiraan: stok, permintaan, risiko, atau anggaran.',
-    mine: 'StockSense AI memprediksi penjualan 7 hari dengan XGBoost. CIVIC-FOOD AI memproyeksikan indeks ketahanan pangan 38 provinsi hingga 2028 (MAPE 4,02%, R2 0,91).',
+    mine: 'Prediksi stok di toko ritel, perkiraan cuaca, estimasi waktu tiba pada aplikasi ojek daring, dan penilaian risiko kredit.',
     school: 'Memperkirakan jumlah porsi kantin harian agar makanan tidak berlebih atau kurang.',
     start: 'Google Sheets untuk data awal, lalu scikit-learn atau XGBoost di Google Colab.',
   },
@@ -73,7 +73,7 @@ export const TECHS = [
     what: 'Perangkat fisik bersensor yang terhubung ke internet dan mengirim data secara terus-menerus.',
     analogy: 'Seperti memberi indra perasa pada benda: tanah bisa "melapor" ketika kering, keran bisa "melapor" ketika bocor.',
     fit: 'Masalah di dunia fisik yang perlu dipantau terus tanpa kehadiran manusia.',
-    mine: 'Di PT Aigra EON Indonesia, model forecasting dibangun untuk data sensor tanah, cuaca, dan kondisi lahan yang mengalir secara real-time.',
+    mine: 'Meteran listrik pintar, irigasi otomatis berbasis sensor kelembapan tanah, dan pelacak lokasi armada pengiriman.',
     school: 'Sensor pemantau pemakaian air di asrama untuk mendeteksi keran yang lupa ditutup.',
     start: 'Mikrokontroler ESP32 atau Arduino dengan sensor sederhana.',
   },
@@ -82,7 +82,7 @@ export const TECHS = [
     what: 'Teknik menemukan pola dalam data dan menjelaskan mengapa sebuah model mengambil keputusan tertentu.',
     analogy: 'Bukan hanya memberi nilai rapor, tetapi juga menjelaskan mata pelajaran mana yang paling memengaruhi nilai tersebut.',
     fit: 'Keputusan penting yang harus dapat dijelaskan kepada orang lain, terutama pengambil kebijakan.',
-    mine: 'EduGap-XAI dan SURE-MAP Indonesia memakai clustering, analisis spasial, dan SHAP untuk menjelaskan faktor penyebab kesenjangan antarprovinsi.',
+    mine: 'Dashboard pemantauan program pemerintah, analisis perilaku pelanggan toko daring, dan sistem kredit yang dapat menjelaskan alasan penolakan.',
     school: 'Menganalisis faktor yang paling berkaitan dengan keterlambatan setoran hafalan.',
     start: 'Looker Studio atau Tableau untuk visualisasi, lalu pustaka SHAP di Python.',
   },
@@ -91,7 +91,7 @@ export const TECHS = [
     what: 'Lapisan yang mengantarkan teknologi kepada pengguna: aplikasi, server, dan infrastruktur daring.',
     analogy: 'Seperti etalase dan jalur distribusi. Produk sebagus apa pun tidak berguna jika tidak sampai ke tangan pembeli.',
     fit: 'Hampir semua solusi, karena model AI pun membutuhkan antarmuka agar dapat dipakai.',
-    mine: 'AIO PestGuard mengekspor model ke ONNX agar berjalan langsung di browser, dibangun dengan Next.js dan FastAPI, lalu di-deploy di Vercel.',
+    mine: 'Hampir semua layanan digital: marketplace, aplikasi perbankan, platform belajar daring, dan layanan pemerintah daring.',
     school: 'Halaman web sederhana untuk pendaftaran ekstrakurikuler dan pengumuman.',
     start: 'Streamlit untuk prototipe cepat, Next.js dan Vercel untuk produk yang lebih lengkap.',
   },
@@ -117,19 +117,19 @@ export const PIPELINE = [
 export const LESSONS = [
   {
     t: 'Akurasi bukan segalanya',
-    d: 'Model juga harus tahu kapan ia ragu. Pada AIO PestGuard, selain mAP50 0,794, diukur pula calibration error 0,036, yaitu seberapa sesuai tingkat keyakinan model dengan kenyataan. Pada sistem deteksi glaukoma (AUC-ROC 0,9812), Monte Carlo Dropout dipakai untuk menandai prediksi yang tidak pasti agar diperiksa dokter.',
+    d: 'Model yang benar 95% terdengar hebat. Namun pada deteksi penyakit, 5% yang terlewat bisa berarti pasien tidak tertangani. Produk yang baik tahu kapan ia ragu dan menyerahkan keputusan penting kepada manusia.',
   },
   {
     t: 'Data bisa menipu',
-    d: 'Pada EduGap-XAI, data empat provinsi baru di Papua ternyata salinan dari provinsi induknya. Tanpa pemeriksaan, analisis akan menyimpulkan kesenjangan melebar 49,2%, padahal sebagian besar adalah kesenjangan lama yang baru terlihat setelah pemekaran.',
+    d: 'Data ganda, kosong, atau salah catat menghasilkan kesimpulan yang keliru. Jika satu siswa tercatat dua kali, angka kehadiran tampak lebih tinggi daripada kenyataan. Periksa data sebelum memercayai hasilnya.',
   },
   {
-    t: 'Model harus sampai ke pengguna',
-    d: 'Model terbaik tidak berguna jika sulit dipakai. AIO PestGuard dijalankan langsung di browser dan tersedia dalam tiga bahasa. StockSense AI menyediakan chatbot yang memahami bahasa sehari-hari pemilik warung.',
+    t: 'Teknologi harus sampai ke pengguna',
+    d: 'Model terbaik tidak berguna jika sulit dipakai. Petani, pedagang, atau orang tua membutuhkan tampilan sederhana, bahasa sehari-hari, dan aplikasi yang lancar di ponsel biasa.',
   },
   {
     t: 'Pilih ukuran keberhasilan yang tepat',
-    d: 'Pada bluRadar, ukuran "jumlah akun dibuka" ternyata mendorong perilaku yang salah. Ukuran diganti menjadi "nasabah yang benar-benar aktif", sehingga teknologi dan tim bergerak ke arah yang benar.',
+    d: 'Jumlah unduhan aplikasi terlihat mengesankan, tetapi yang lebih penting adalah berapa banyak yang terus memakainya. Ukuran yang salah membuat tim mengejar angka yang salah.',
   },
 ]
 
@@ -147,10 +147,10 @@ export const PAYER_EXAMPLES = [
 ]
 
 export const MARKETS = [
-  ['B2C', 'Individu', 'Sangat banyak', 'Kecil', 'Cepat', 'Contoh umum: aplikasi belajar berbayar'],
-  ['B2B', 'Perusahaan atau UMKM', 'Banyak sampai sedang', 'Sedang sampai besar', 'Menengah', 'StockSense AI (UMKM), bluRadar (bank)'],
-  ['B2G', 'Instansi pemerintah', 'Sedikit', 'Besar', 'Lama, melalui proses pengadaan', 'EduGap-XAI, CIVIC-FOOD AI'],
-  ['B2B2C', 'Lembaga membayar, individu memakai', 'Sedang', 'Sedang', 'Menengah', 'AIO PestGuard (koperasi membayar, petani memakai)'],
+  ['B2C', 'Individu', 'Sangat banyak', 'Kecil', 'Cepat', 'Aplikasi musik atau aplikasi belajar berbayar'],
+  ['B2B', 'Perusahaan atau UMKM', 'Banyak sampai sedang', 'Sedang sampai besar', 'Menengah', 'Aplikasi kasir untuk toko, sistem gudang untuk perusahaan'],
+  ['B2G', 'Instansi pemerintah', 'Sedikit', 'Besar', 'Lama, melalui proses pengadaan', 'Layanan administrasi daring, dashboard data untuk pemerintah daerah'],
+  ['B2B2C', 'Lembaga membayar, individu memakai', 'Sedang', 'Sedang', 'Menengah', 'Platform belajar yang dibayar sekolah dan dipakai siswa'],
 ]
 
 export const REVENUE = [
@@ -174,7 +174,7 @@ export const CASES = [
   {
     id: 'pestguard', name: 'AIO PestGuard', segment: 'B2B2C', link: 'https://aio-pestguard-simulation.vercel.app',
     problem: 'Serangan hama sering baru disadari setelah tanaman rusak, dan petani membutuhkan panduan pengendalian yang aman.',
-    tech: 'YOLO11l untuk 24 kelas hama padi, jagung, dan bawang merah (mAP50 0,794, calibration error 0,036), diekspor ke ONNX agar berjalan di browser. Web app Next.js dan FastAPI dalam tiga bahasa.',
+    tech: 'Computer vision untuk mengenali 24 jenis hama dari foto, berjalan langsung di browser ponsel tanpa aplikasi tambahan. Hasil deteksi diubah menjadi status risiko lahan dan rekomendasi pengendalian organik, tersedia dalam tiga bahasa.',
     model: 'Petani memakai secara gratis. Koperasi, dinas pertanian, atau perusahaan agrikultur membayar lisensi per petani binaan.',
     context: 'Menurut FAO (2021), hingga 40% produksi tanaman dunia hilang akibat hama dan penyakit setiap tahun.',
     market: [
@@ -183,7 +183,7 @@ export const CASES = [
       { k: 'SOM', v: '44 ribu', d: 'asumsi 0,5% dari SAM terjangkau dalam 3 tahun melalui mitra koperasi' },
     ],
     calc: '29,34 juta x 30% = 8,8 juta (SAM), lalu 8,8 juta x 0,5% = sekitar 44 ribu petani (SOM).',
-    terms: [['ONNX', 'Format penyimpanan model yang dapat dijalankan di berbagai platform, termasuk langsung di browser tanpa server mahal.'], ['B2B2C', 'Lembaga (koperasi atau dinas) yang membayar, petani yang memakai.'], ['Lisensi per petani binaan', 'Lembaga membayar biaya tetap untuk setiap petani yang didampinginya.']],
+    terms: [['Berjalan di browser', 'Petani cukup membuka tautan tanpa memasang aplikasi, sehingga biaya distribusi sangat rendah.'], ['B2B2C', 'Lembaga (koperasi atau dinas) yang membayar, petani yang memakai.'], ['Lisensi per petani binaan', 'Lembaga membayar biaya tetap untuk setiap petani yang didampinginya.']],
     revenue: '44 ribu petani x Rp10.000 per bulan x 12 bulan = sekitar Rp5,3 miliar per tahun',
     status: 'Top 3 Energy Future di Pertamuda by Pertamina dan Best Presentation di Call for Paper Faperta UPN Veteran Jawa Timur. Keduanya adalah validasi teknis dan gagasan dari juri.',
     next: 'Uji coba dengan satu kelompok tani selama satu musim tanam, lalu mengajukan surat minat kepada koperasi.',
@@ -191,7 +191,7 @@ export const CASES = [
   {
     id: 'stocksense', name: 'StockSense AI', segment: 'B2B', link: null,
     problem: 'Banyak UMKM mengatur stok berdasarkan perkiraan, sehingga sering kehabisan barang laku atau menumpuk barang yang tidak laku.',
-    tech: 'Prediksi penjualan 7 hari dengan XGBoost, dashboard Streamlit, dan chatbot lokal Gemma 2B melalui Ollama yang memahami Bahasa Indonesia sehari-hari.',
+    tech: 'Machine learning untuk memprediksi penjualan 7 hari ke depan, dashboard sederhana, dan chatbot AI yang memahami Bahasa Indonesia sehari-hari.',
     model: 'Langganan bulanan berbiaya rendah (SaaS), atau bermitra dengan aplikasi kasir yang sudah dipakai UMKM.',
     context: 'UMKM non-pertanian didominasi sektor perdagangan dan penyediaan makan minum, dua sektor yang paling bergantung pada pengelolaan stok.',
     market: [
@@ -200,7 +200,7 @@ export const CASES = [
       { k: 'SOM', v: '20.850', d: 'asumsi 0,1% dari SAM berlangganan dalam 3 tahun' },
     ],
     calc: '14,44 juta + 6,41 juta = 20,85 juta (SAM), lalu 20,85 juta x 0,1% = 20.850 usaha (SOM).',
-    terms: [['XGBoost', 'Kumpulan banyak pohon keputusan sederhana yang saling memperbaiki kesalahan, sangat kuat untuk data tabel.'], ['Ollama', 'Alat untuk menjalankan model bahasa di komputer sendiri, sehingga data usaha tidak perlu dikirim ke internet.'], ['SaaS', 'Perangkat lunak yang dibayar dengan langganan bulanan.']],
+    terms: [['Prediksi penjualan', 'Perkiraan barang apa yang akan laku, sehingga pemilik usaha dapat menyiapkan stok yang tepat.'], ['AI lokal', 'Model AI yang berjalan di komputer sendiri, sehingga data usaha tetap aman.'], ['SaaS', 'Perangkat lunak yang dibayar dengan langganan bulanan.']],
     revenue: '20.850 usaha x Rp49.000 per bulan x 12 bulan = sekitar Rp12,3 miliar per tahun',
     status: 'Prototipe berfungsi. Belum diuji kepada pemilik usaha secara langsung.',
     next: 'Mewawancarai 10 pemilik warung di sekitar sekolah, lalu uji coba gratis selama satu bulan.',
@@ -208,7 +208,7 @@ export const CASES = [
   {
     id: 'edugap', name: 'EduGap-XAI', segment: 'B2G', link: 'https://edugap-xai.vercel.app/',
     problem: 'Partisipasi sekolah usia 16 sampai 18 tahun di beberapa provinsi tertinggal, tetapi penyebab dan lokasi prioritasnya belum jelas.',
-    tech: '20 indikator dari BPS dan Badan Pangan Nasional (2021 sampai 2025) dianalisis dengan Moran\'s I, LISA, association rule mining, LightGBM, SHAP, dan conformal prediction, menghasilkan Intervention Priority Index.',
+    tech: 'Analisis 20 indikator dari BPS dan Badan Pangan Nasional (2021 sampai 2025) dengan analisis wilayah, machine learning, dan explainable AI, menghasilkan indeks prioritas intervensi untuk setiap provinsi.',
     model: 'Kontrak atau lisensi tahunan kepada pemerintah daerah, umumnya melalui mekanisme pengadaan pemerintah.',
     context: 'Anggaran fungsi pendidikan pada APBN 2026 ditetapkan sebesar Rp769,09 triliun melalui Perpres Nomor 118 Tahun 2025. Alat bantu prioritas membantu anggaran tepat sasaran.',
     market: [
@@ -217,7 +217,7 @@ export const CASES = [
       { k: 'SOM', v: '10', d: 'asumsi: pemerintah daerah yang menjadi klien dalam 3 tahun' },
     ],
     calc: 'Pada B2G, pasar dihitung dari jumlah instansi pembeli, bukan jumlah siswa. 552 pemerintah daerah, sekitar 150 yang relevan, 10 yang realistis dalam 3 tahun.',
-    terms: [["Moran's I dan LISA", 'Mengukur apakah wilayah yang berdekatan cenderung memiliki nilai yang mirip, sehingga terlihat kantong-kantong masalah.'], ['SHAP', 'Menunjukkan seberapa besar setiap faktor memengaruhi hasil prediksi.'], ['Conformal prediction', 'Memberikan rentang prediksi beserta tingkat keyakinannya, bukan hanya satu angka.']],
+    terms: [['Analisis wilayah', 'Melihat apakah daerah yang berdekatan memiliki masalah serupa, sehingga terlihat kantong-kantong masalah.'], ['Explainable AI', 'AI yang dapat menjelaskan alasan di balik hasilnya, penting agar pemerintah dapat mempertanggungjawabkan keputusan.'], ['Pengadaan pemerintah', 'Proses resmi pemerintah membeli barang atau jasa, sehingga penjualan B2G membutuhkan waktu lebih lama.']],
     revenue: '10 daerah x Rp150 juta per tahun = sekitar Rp1,5 miliar per tahun',
     status: 'Dashboard 8 halaman telah dibangun dan menandai 6 provinsi prioritas.',
     next: 'Presentasi kepada satu Bappeda atau Dinas Pendidikan untuk uji coba sebagai alat bantu perencanaan.',
@@ -225,7 +225,7 @@ export const CASES = [
   {
     id: 'bluradar', name: 'bluRadar', segment: 'B2B enterprise', link: 'https://bluradar.vercel.app',
     problem: 'Banyak akun baru blu by BCA Digital cepat menjadi tidak aktif, sementara tim penjualan lapangan dinilai dari jumlah akun yang dibuka.',
-    tech: 'Analisis 8.726 ulasan aplikasi menunjukkan 40,1% keluhan berkaitan dengan proses awal yang rumit. Penempatan tim lapangan dengan Thompson Sampling dan dorongan aktivasi dengan uplift modeling.',
+    tech: 'Analisis 8.726 ulasan aplikasi menunjukkan 40,1% keluhan berkaitan dengan proses awal yang rumit. Solusinya adalah mesin penjualan berbasis AI yang menentukan lokasi tim lapangan dan nasabah mana yang perlu didorong agar aktif.',
     model: 'Solusi internal untuk satu klien besar. Nilainya diukur dari penghematan dan tambahan nasabah aktif, bukan dari jumlah pembeli.',
     context: 'Pada pasar B2B enterprise, validasi tidak diukur dari ukuran pasar, melainkan dari besarnya manfaat bagi satu klien.',
     market: [
@@ -234,7 +234,7 @@ export const CASES = [
       { k: 'Ketahanan', v: '93,7%', d: 'dari 10.000 skenario simulasi Monte Carlo tetap menunjukkan hasil positif' },
     ],
     calc: 'Pada B2B enterprise dengan satu klien, yang dihitung adalah manfaat finansial bagi klien tersebut, bukan ukuran pasar.',
-    terms: [['NPV', 'Net Present Value, yaitu total keuntungan masa depan dikurangi biaya, dihitung dalam nilai uang hari ini.'], ['Payback', 'Waktu yang dibutuhkan hingga modal kembali. Bulan ke-6 berarti investasi balik modal setelah enam bulan.'], ['Monte Carlo', 'Simulasi ribuan skenario acak untuk menguji apakah hasil tetap baik meski kondisi berubah.'], ['Thompson Sampling', 'Algoritma yang menyeimbangkan antara mencoba lokasi baru dan memakai lokasi yang sudah terbukti baik.'], ['Uplift modeling', 'Memprediksi siapa yang benar-benar berubah perilaku karena diberi dorongan, bukan yang akan aktif dengan sendirinya.']],
+    terms: [['NPV', 'Net Present Value, yaitu total keuntungan masa depan dikurangi biaya, dihitung dalam nilai uang hari ini.'], ['Payback', 'Waktu yang dibutuhkan hingga modal kembali. Bulan ke-6 berarti investasi balik modal setelah enam bulan.'], ['Monte Carlo', 'Simulasi ribuan skenario acak untuk menguji apakah hasil tetap baik meski kondisi berubah.']],
     revenue: 'Proyeksi NPV 3 tahun sebesar Rp48,5 miliar dengan titik balik modal pada bulan ke-6',
     status: 'Peringkat 7 dari 87 tim (8% teratas) di babak penyisihan MarkUp Mini Case Competition 2026.',
     next: 'Menguji asumsi aktivasi dengan data internal klien melalui uji coba terbatas di satu kota.',
@@ -242,10 +242,11 @@ export const CASES = [
 ]
 
 export const SDG_MAP = [
-  ['AIO PestGuard', 'SDG 2: Tanpa Kelaparan'],
-  ['EduGap-XAI', 'SDG 4: Pendidikan Berkualitas'],
-  ['StockSense AI', 'SDG 8: Pekerjaan Layak dan Pertumbuhan Ekonomi'],
-  ['Deteksi glaukoma', 'SDG 3: Kehidupan Sehat dan Sejahtera'],
+  ['Deteksi hama dan pertanian presisi', 'SDG 2: Tanpa Kelaparan'],
+  ['Layanan konsultasi kesehatan daring', 'SDG 3: Kehidupan Sehat dan Sejahtera'],
+  ['Platform belajar daring', 'SDG 4: Pendidikan Berkualitas'],
+  ['Sensor kualitas air', 'SDG 6: Air Bersih dan Sanitasi Layak'],
+  ['Aplikasi pencatatan keuangan UMKM', 'SDG 8: Pekerjaan Layak dan Pertumbuhan Ekonomi'],
 ]
 
 export const ETHICS = [
@@ -268,7 +269,7 @@ export const SUMMARY = [
   'Teknologi adalah alat untuk menciptakan dan menangkap nilai, bukan tujuan akhir.',
   'Setiap teknologi cocok untuk jenis masalah tertentu, dan tidak semua masalah membutuhkan AI.',
   'Ide yang kuat berangkat dari masalah nyata yang bersifat mendesak dan merugikan.',
-  'Produk teknologi yang baik memperhatikan kualitas data, ketidakpastian model, dan kemudahan pengguna.',
+  'Produk teknologi yang baik memperhatikan kualitas data, kejujuran model, dan kemudahan pengguna.',
   'Pilih model bisnis (B2C, B2B, B2G, B2B2C) berdasarkan siapa yang memakai dan siapa yang membayar.',
   'Validasi pasar bergerak dari data sekunder hingga pembayaran pertama, dan menang lomba belum termasuk validasi pasar.',
   'Teknologi harus amanah: menjaga privasi, adil, aman, jujur, dan transparan.',
@@ -282,7 +283,7 @@ export const GLOSSARY = [
   { t: 'B2B, B2G, B2B2C', d: 'Penjualan kepada bisnis, kepada pemerintah, dan kepada lembaga yang melayani individu.' },
   { t: 'TAM, SAM, SOM', d: 'Total pasar, pasar yang dapat dilayani, dan pasar yang realistis direbut.' },
   { t: 'MVP', d: 'Minimum Viable Product, versi paling sederhana untuk menguji ide.' },
-  { t: 'Kalibrasi', d: 'Kesesuaian antara tingkat keyakinan model dan kenyataan.' },
+  { t: 'NPV', d: 'Net Present Value, total keuntungan masa depan dikurangi biaya dalam nilai uang hari ini.' },
 ]
 
 export const REFERENCES = [

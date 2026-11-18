@@ -33,7 +33,7 @@ export default function Technopreneur() {
       <SubHead>1.2 Empat lapisan produk teknologi</SubHead>
       <Para className="mb-8">
         Hampir setiap produk teknologi, sesederhana atau secanggih apa pun, tersusun dari empat lapisan berikut.
-        Contohnya diambil dari AIO PestGuard.
+        Contohnya diambil dari aplikasi ojek daring yang sudah akrab dalam keseharian.
       </Para>
       <ol className="grid gap-4 md:grid-cols-4">
         {LAYERS.map((l, k) => (

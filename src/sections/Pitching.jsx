@@ -14,12 +14,12 @@ export default function Pitching() {
     <Section id="pitching" dark>
       <ChapterHead
         dark
-        no={9}
+        no={8}
         title="Menyampaikan ide"
         lead="Ide yang baik perlu disampaikan dengan jelas agar mendapat dukungan. Untuk produk teknologi, tantangannya adalah menjelaskan hal teknis dengan bahasa yang dipahami juri, calon mitra, maupun calon pengguna."
       />
 
-      <SubHead>9.1 Struktur pitch 90 detik</SubHead>
+      <SubHead>8.1 Struktur pitch 90 detik</SubHead>
       <Para dark className="mb-8">Struktur berikut membagi 90 detik menjadi lima bagian yang saling berurutan.</Para>
       <div className="flex h-4 overflow-hidden rounded-full bg-white/10">
         {PITCH_STAGES.map((s, k) => (
@@ -46,7 +46,7 @@ export default function Pitching() {
         ))}
       </ol>
 
-      <SubHead>9.2 Tips penyampaian</SubHead>
+      <SubHead>8.2 Tips penyampaian</SubHead>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {TIPS.map((t) => (
           <div key={t.t} className="border-t-[5px] border-marker pt-4">

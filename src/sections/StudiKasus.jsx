@@ -11,9 +11,9 @@ export default function StudiKasus() {
     <Section id="studi-kasus" dark>
       <ChapterHead
         dark
-        no={7}
-        title="Studi kasus: proyek pemateri"
-        lead="Empat proyek berikut menunjukkan penerapan seluruh materi: masalah, teknologi, model bisnis, ukuran pasar, dan status validasi. Setiap proyek mewakili jenis pasar yang berbeda."
+        kicker="Studi kasus"
+        title="Penerapan pada karya pemateri"
+        lead="Setelah memahami konsepnya, mari lihat penerapannya. Empat proyek berikut menunjukkan penerapan seluruh materi: masalah, teknologi, model bisnis, ukuran pasar, dan status validasi. Setiap proyek mewakili jenis pasar yang berbeda."
       />
       <Para dark className="mb-8">
         Catatan: angka TAM bersumber dari data resmi, sedangkan SAM, SOM, dan harga adalah asumsi ilustratif untuk

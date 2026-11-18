@@ -6,7 +6,7 @@ export default function TanggungJawab() {
   return (
     <Section id="etika">
       <ChapterHead
-        no={8}
+        no={7}
         title="Dampak dan etika teknologi"
         lead="Teknologi yang baik tidak hanya berhasil secara teknis dan bisnis, tetapi juga membawa manfaat dan tidak merugikan pihak lain."
       />
@@ -25,7 +25,7 @@ export default function TanggungJawab() {
         menjadi kerangka bersama negara-negara dunia untuk mengatasi kemiskinan, ketimpangan, dan krisis lingkungan.
       </Cite>
       <Para className="mb-8">Mengaitkan produk dengan SDGs membantu menunjukkan relevansi dampaknya, terutama pada pasar B2G.</Para>
-      <Table head={['Proyek', 'Tujuan yang didukung']} rows={SDG_MAP} />
+      <Table head={['Contoh solusi', 'Tujuan yang didukung']} rows={SDG_MAP} />
 
       <SubHead>8.2 Lima prinsip etika teknologi</SubHead>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

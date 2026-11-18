@@ -29,9 +29,9 @@ export default function App() {
         <Produk />
         <Bisnis />
         <Validasi />
-        <StudiKasus />
         <TanggungJawab />
         <Pitching />
+        <StudiKasus />
         <Kuis />
         <Penutup />
       </main>

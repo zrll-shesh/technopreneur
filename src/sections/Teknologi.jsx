@@ -9,7 +9,7 @@ function TechExplorer() {
   const rows = [
     { l: 'Cara kerja sederhana', v: t.analogy },
     { l: 'Cocok untuk masalah', v: t.fit },
-    { l: 'Penerapan di karya pemateri', v: t.mine, hl: true },
+    { l: 'Contoh di dunia nyata', v: t.mine, hl: true },
     { l: 'Contoh di lingkungan sekolah', v: t.school },
     { l: 'Alat untuk mulai belajar', v: t.start },
   ]

@@ -44,7 +44,7 @@ export default function Tujuan() {
         {chapters.map((c, k) => (
           <li key={c.id}>
             <a href={`#${c.id}`} className="group grid gap-1 py-5 sm:grid-cols-[6rem_1fr_1.4fr] sm:items-baseline sm:gap-6">
-              <span className="hand text-xl text-cobalt">Bab {k + 1}</span>
+              <span className="hand text-xl text-cobalt">{c.id === 'studi-kasus' ? 'Penerapan' : `Bab ${k + 1}`}</span>
               <span className="text-xl font-bold transition-colors group-hover:text-cobalt">{c.label}</span>
               <span className="text-ink/65">{MAP_DESC[c.id]}</span>
             </a>
