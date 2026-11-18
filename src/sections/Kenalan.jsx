@@ -138,7 +138,7 @@ export default function Kenalan() {
       </div>
 
       {/* Angka */}
-      <div className="mt-24 grid gap-px overflow-hidden rounded-[22px] border-2 border-ink bg-ink sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-24 grid gap-px overflow-hidden rounded-[22px] border-2 border-ink bg-ink sm:grid-cols-3">
         {STATS.map((s, k) => (
           <Reveal key={k} delay={k * 0.08} className="h-full">
             <div className="flex h-full flex-col justify-between gap-6 bg-paper p-6">

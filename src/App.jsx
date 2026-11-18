@@ -4,11 +4,10 @@ import Hero from './sections/Hero'
 import Kenalan from './sections/Kenalan'
 import Tujuan from './sections/Tujuan'
 import Masalah from './sections/Masalah'
-import Evaluasi from './sections/Evaluasi'
 import Kuis from './sections/Kuis'
 import Technopreneur from './sections/Technopreneur'
-import Menemukan from './sections/Menemukan'
-import Dampak from './sections/Dampak'
+import Teknologi from './sections/Teknologi'
+import Produk from './sections/Produk'
 import Bisnis from './sections/Bisnis'
 import Validasi from './sections/Validasi'
 import StudiKasus from './sections/StudiKasus'
@@ -25,15 +24,14 @@ export default function App() {
         <Kenalan />
         <Tujuan />
         <Technopreneur />
-        <Menemukan />
+        <Teknologi />
         <Masalah />
-        <Dampak />
+        <Produk />
         <Bisnis />
         <Validasi />
-        <Evaluasi />
+        <StudiKasus />
         <TanggungJawab />
         <Pitching />
-        <StudiKasus />
         <Kuis />
         <Penutup />
       </main>

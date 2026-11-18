@@ -2,20 +2,293 @@ export const SECTIONS = [
   { id: 'mulai', label: 'Pembuka' },
   { id: 'kenalan', label: 'Profil pemateri' },
   { id: 'tujuan', label: 'Tujuan pembelajaran' },
-  { id: 'konsep', label: 'Konsep technopreneurship' },
-  { id: 'sumber-ide', label: 'Sumber ide' },
-  { id: 'masalah', label: 'Masalah yang layak' },
-  { id: 'dampak', label: 'Mengukur dampak' },
-  { id: 'bisnis', label: 'Nilai bisnis' },
-  { id: 'validasi', label: 'Validasi ide' },
-  { id: 'evaluasi', label: 'Evaluasi ide' },
-  { id: 'etika', label: 'Etika teknologi' },
-  { id: 'pitching', label: 'Menyampaikan ide' },
+  { id: 'konsep', label: 'Teknologi sebagai alat' },
+  { id: 'teknologi', label: 'Peta teknologi' },
+  { id: 'masalah', label: 'Menemukan masalah' },
+  { id: 'produk', label: 'Dari masalah ke produk' },
+  { id: 'bisnis', label: 'Model bisnis' },
+  { id: 'validasi', label: 'Validasi pasar' },
   { id: 'studi-kasus', label: 'Studi kasus' },
+  { id: 'etika', label: 'Dampak dan etika' },
+  { id: 'pitching', label: 'Menyampaikan ide' },
   { id: 'cek-pemahaman', label: 'Cek pemahaman' },
   { id: 'penutup', label: 'Ringkasan dan penutup' },
 ]
 
+export const OBJECTIVES = [
+  'Menjelaskan peran teknologi dalam technopreneurship.',
+  'Mengenali jenis teknologi masa kini beserta masalah yang cocok diselesaikannya.',
+  'Menemukan dan merumuskan masalah yang layak diselesaikan.',
+  'Memahami alur mengubah masalah menjadi produk teknologi.',
+  'Membedakan model bisnis B2C, B2B, B2G, dan B2B2C.',
+  'Melakukan validasi pasar dan menghitung ukuran pasar sederhana.',
+]
+
+export const LAYERS = [
+  { t: 'Data', d: 'Bahan mentah: foto, teks, angka, atau sinyal sensor.', ex: 'Foto daun dan hama dari kamera ponsel' },
+  { t: 'Model atau logika', d: 'Otak yang mengolah data menjadi jawaban.', ex: 'Model deteksi objek YOLO11l' },
+  { t: 'Aplikasi', d: 'Wajah yang dilihat dan disentuh pengguna.', ex: 'Web app Next.js yang berjalan di browser' },
+  { t: 'Keputusan pengguna', d: 'Tindakan nyata yang diambil berkat jawaban tersebut.', ex: 'Petani memilih pengendalian hama yang aman' },
+]
+
+export const TECHS = [
+  {
+    name: 'Computer vision',
+    what: 'Teknologi yang membuat komputer mampu "melihat": mengenali, menghitung, dan menandai objek dalam gambar atau video.',
+    analogy: 'Seperti mengajari mata baru dengan ribuan contoh foto berlabel, hingga ia bisa mengenali objek yang belum pernah dilihatnya.',
+    fit: 'Pekerjaan yang biasanya dinilai dengan mata manusia dan dilakukan berulang kali.',
+    mine: 'AIO PestGuard membandingkan tiga model YOLO pada 24 kelas hama dan memilih YOLO11l (mAP50 0,794). Proyek UAV memakai SegFormer untuk memetakan 8 kelas objek dari foto udara.',
+    school: 'Mendeteksi sampah yang dibuang di tempat yang salah, atau memeriksa kerapian rak buku perpustakaan.',
+    start: 'Teachable Machine dari Google (tanpa kode), lalu Ultralytics YOLO di Google Colab.',
+  },
+  {
+    name: 'NLP dan LLM',
+    what: 'Natural Language Processing membuat komputer memahami bahasa manusia. Large Language Model (LLM) adalah model bahasa berukuran besar yang dapat menulis dan menjawab pertanyaan.',
+    analogy: 'Seperti pembaca super cepat yang mampu membaca ribuan keluhan dalam semenit lalu merangkum polanya.',
+    fit: 'Masalah yang melibatkan banyak teks: ulasan, keluhan, dokumen, atau percakapan.',
+    mine: 'Fine-tuning model IndoRoBERTa (akurasi 88,2%) untuk membaca sentimen 1.883 unggahan di X. StockSense AI memakai Gemma 2B lewat Ollama sebagai chatbot berbahasa Indonesia.',
+    school: 'Merangkum masukan santri dari kotak saran digital setiap bulan.',
+    start: 'Hugging Face untuk model siap pakai, Ollama untuk menjalankan LLM di laptop.',
+  },
+  {
+    name: 'Retrieval-Augmented Generation (RAG)',
+    what: 'Teknik menghubungkan LLM dengan kumpulan dokumen milik kita, sehingga jawabannya berdasarkan sumber yang jelas, bukan karangan.',
+    analogy: 'Seperti ujian open book: sebelum menjawab, model mencari halaman yang relevan terlebih dahulu.',
+    fit: 'Tanya jawab atas dokumen khusus yang tidak diketahui LLM umum, dan ketika jawaban harus dapat dipertanggungjawabkan.',
+    mine: 'AgriPest-RAG menggabungkan deteksi hama dengan basis pengetahuan pengendalian. Proyek UAV menghubungkan hasil segmentasi dengan ChromaDB dan Gemini 2.5 Flash.',
+    school: 'Asisten tanya jawab tentang tata tertib pondok dan jadwal kegiatan yang selalu merujuk dokumen resmi.',
+    start: 'ChromaDB sebagai basis data vektor, ditambah API LLM seperti Gemini.',
+  },
+  {
+    name: 'Forecasting dan machine learning tabular',
+    what: 'Model yang belajar dari data berbentuk tabel untuk memprediksi angka atau kategori, termasuk memperkirakan masa depan.',
+    analogy: 'Seperti pedagang berpengalaman yang menebak penjualan minggu depan, tetapi dengan ingatan atas ribuan transaksi.',
+    fit: 'Keputusan yang bergantung pada perkiraan: stok, permintaan, risiko, atau anggaran.',
+    mine: 'StockSense AI memprediksi penjualan 7 hari dengan XGBoost. CIVIC-FOOD AI memproyeksikan indeks ketahanan pangan 38 provinsi hingga 2028 (MAPE 4,02%, R2 0,91).',
+    school: 'Memperkirakan jumlah porsi kantin harian agar makanan tidak berlebih atau kurang.',
+    start: 'Google Sheets untuk data awal, lalu scikit-learn atau XGBoost di Google Colab.',
+  },
+  {
+    name: 'Internet of Things (IoT)',
+    what: 'Perangkat fisik bersensor yang terhubung ke internet dan mengirim data secara terus-menerus.',
+    analogy: 'Seperti memberi indra perasa pada benda: tanah bisa "melapor" ketika kering, keran bisa "melapor" ketika bocor.',
+    fit: 'Masalah di dunia fisik yang perlu dipantau terus tanpa kehadiran manusia.',
+    mine: 'Di PT Aigra EON Indonesia, model forecasting dibangun untuk data sensor tanah, cuaca, dan kondisi lahan yang mengalir secara real-time.',
+    school: 'Sensor pemantau pemakaian air di asrama untuk mendeteksi keran yang lupa ditutup.',
+    start: 'Mikrokontroler ESP32 atau Arduino dengan sensor sederhana.',
+  },
+  {
+    name: 'Analitik data dan explainable AI',
+    what: 'Teknik menemukan pola dalam data dan menjelaskan mengapa sebuah model mengambil keputusan tertentu.',
+    analogy: 'Bukan hanya memberi nilai rapor, tetapi juga menjelaskan mata pelajaran mana yang paling memengaruhi nilai tersebut.',
+    fit: 'Keputusan penting yang harus dapat dijelaskan kepada orang lain, terutama pengambil kebijakan.',
+    mine: 'EduGap-XAI dan SURE-MAP Indonesia memakai clustering, analisis spasial, dan SHAP untuk menjelaskan faktor penyebab kesenjangan antarprovinsi.',
+    school: 'Menganalisis faktor yang paling berkaitan dengan keterlambatan setoran hafalan.',
+    start: 'Looker Studio atau Tableau untuk visualisasi, lalu pustaka SHAP di Python.',
+  },
+  {
+    name: 'Web, mobile, dan cloud',
+    what: 'Lapisan yang mengantarkan teknologi kepada pengguna: aplikasi, server, dan infrastruktur daring.',
+    analogy: 'Seperti etalase dan jalur distribusi. Produk sebagus apa pun tidak berguna jika tidak sampai ke tangan pembeli.',
+    fit: 'Hampir semua solusi, karena model AI pun membutuhkan antarmuka agar dapat dipakai.',
+    mine: 'AIO PestGuard mengekspor model ke ONNX agar berjalan langsung di browser, dibangun dengan Next.js dan FastAPI, lalu di-deploy di Vercel.',
+    school: 'Halaman web sederhana untuk pendaftaran ekstrakurikuler dan pengumuman.',
+    start: 'Streamlit untuk prototipe cepat, Next.js dan Vercel untuk produk yang lebih lengkap.',
+  },
+]
+
+export const NO_AI = [
+  ['Aturannya jelas dan sederhana', 'Logika "jika... maka..." atau rumus spreadsheet'],
+  ['Belum ada data sama sekali', 'Kumpulkan data terlebih dahulu melalui formulir atau pencatatan'],
+  ['Kesalahan dapat berakibat fatal', 'Sistem pendukung keputusan, manusia tetap menjadi pengambil keputusan akhir'],
+  ['Masalah utamanya koordinasi', 'Jadwal bersama, grup pesan, atau papan pengumuman digital'],
+]
+
+export const PIPELINE = [
+  { t: 'Rumuskan masalah', q: 'Keputusan apa yang ingin dibantu, dan oleh siapa?' },
+  { t: 'Kumpulkan data', q: 'Data apa yang tersedia, dan apakah cukup mewakili kenyataan?' },
+  { t: 'Siapkan data', q: 'Apakah ada data ganda, kosong, atau keliru?' },
+  { t: 'Bangun model', q: 'Pendekatan mana yang paling sederhana namun memadai? Bandingkan beberapa.' },
+  { t: 'Evaluasi', q: 'Metrik apa yang benar-benar mencerminkan keberhasilan bagi pengguna?' },
+  { t: 'Jadikan produk', q: 'Bagaimana pengguna awam dapat memakainya tanpa pelatihan?' },
+  { t: 'Pantau dan perbaiki', q: 'Apakah performa tetap baik ketika kondisi di lapangan berubah?' },
+]
+
+export const LESSONS = [
+  {
+    t: 'Akurasi bukan segalanya',
+    d: 'Model juga harus tahu kapan ia ragu. Pada AIO PestGuard, selain mAP50 0,794, diukur pula calibration error 0,036, yaitu seberapa sesuai tingkat keyakinan model dengan kenyataan. Pada sistem deteksi glaukoma (AUC-ROC 0,9812), Monte Carlo Dropout dipakai untuk menandai prediksi yang tidak pasti agar diperiksa dokter.',
+  },
+  {
+    t: 'Data bisa menipu',
+    d: 'Pada EduGap-XAI, data empat provinsi baru di Papua ternyata salinan dari provinsi induknya. Tanpa pemeriksaan, analisis akan menyimpulkan kesenjangan melebar 49,2%, padahal sebagian besar adalah kesenjangan lama yang baru terlihat setelah pemekaran.',
+  },
+  {
+    t: 'Model harus sampai ke pengguna',
+    d: 'Model terbaik tidak berguna jika sulit dipakai. AIO PestGuard dijalankan langsung di browser dan tersedia dalam tiga bahasa. StockSense AI menyediakan chatbot yang memahami bahasa sehari-hari pemilik warung.',
+  },
+  {
+    t: 'Pilih ukuran keberhasilan yang tepat',
+    d: 'Pada bluRadar, ukuran "jumlah akun dibuka" ternyata mendorong perilaku yang salah. Ukuran diganti menjadi "nasabah yang benar-benar aktif", sehingga teknologi dan tim bergerak ke arah yang benar.',
+  },
+]
+
+export const PROTO = [
+  ['Tanpa kode', 'Google Form, Google Sheets, Teachable Machine', 'Menguji apakah masalahnya nyata dan solusinya diminati'],
+  ['Sedikit kode', 'Google Colab, Streamlit, Looker Studio', 'Membuktikan model atau analisis dapat bekerja'],
+  ['Kode penuh', 'Next.js, FastAPI, ONNX, Vercel', 'Membangun produk yang siap dipakai banyak orang'],
+]
+
+export const PAYER_EXAMPLES = [
+  { name: 'Antrean laundry asrama', user: 'Santri', payer: 'Pengelola asrama atau sekolah' },
+  { name: 'Mesin pencari internet', user: 'Masyarakat umum', payer: 'Pengiklan' },
+  { name: 'AI deteksi hama', user: 'Petani', payer: 'Koperasi, dinas pertanian, atau perusahaan agrikultur' },
+  { name: 'Dashboard prioritas pendidikan', user: 'Analis dan pengambil kebijakan', payer: 'Pemerintah daerah' },
+]
+
+export const MARKETS = [
+  ['B2C', 'Individu', 'Sangat banyak', 'Kecil', 'Cepat', 'Contoh umum: aplikasi belajar berbayar'],
+  ['B2B', 'Perusahaan atau UMKM', 'Banyak sampai sedang', 'Sedang sampai besar', 'Menengah', 'StockSense AI (UMKM), bluRadar (bank)'],
+  ['B2G', 'Instansi pemerintah', 'Sedikit', 'Besar', 'Lama, melalui proses pengadaan', 'EduGap-XAI, CIVIC-FOOD AI'],
+  ['B2B2C', 'Lembaga membayar, individu memakai', 'Sedang', 'Sedang', 'Menengah', 'AIO PestGuard (koperasi membayar, petani memakai)'],
+]
+
+export const REVENUE = [
+  ['Langganan (SaaS)', 'Biaya rutin untuk memakai perangkat lunak', 'Rp49.000 per bulan per warung'],
+  ['Lisensi', 'Hak pakai untuk satu lembaga dalam periode tertentu', 'Lisensi tahunan untuk satu dinas'],
+  ['Per penggunaan', 'Dibayar sesuai jumlah pemakaian, misalnya per pemindaian', 'Rp200 per foto yang dianalisis'],
+  ['Kontrak proyek', 'Pembuatan solusi khusus untuk satu klien', 'Dashboard kebijakan untuk satu kabupaten'],
+  ['Freemium', 'Fitur dasar gratis, fitur lanjutan berbayar', 'Deteksi gratis, laporan lahan lengkap berbayar'],
+]
+
+export const EVIDENCE = [
+  { t: 'Data sekunder', d: 'Statistik resmi menunjukkan masalahnya besar.', s: 1 },
+  { t: 'Wawancara', d: 'Calon pengguna mengakui masalahnya nyata.', s: 2 },
+  { t: 'Daftar tunggu', d: 'Orang bersedia mendaftar atau meninggalkan kontak.', s: 3 },
+  { t: 'Uji coba', d: 'Pengguna benar-benar memakai versi awal secara rutin.', s: 4 },
+  { t: 'Surat minat', d: 'Lembaga menandatangani letter of intent atau nota kesepahaman.', s: 5 },
+  { t: 'Pembayaran pertama', d: 'Ada pihak yang membayar. Ini bukti paling kuat.', s: 6 },
+]
+
+export const CASES = [
+  {
+    id: 'pestguard', name: 'AIO PestGuard', segment: 'B2B2C', link: 'https://aio-pestguard-simulation.vercel.app',
+    problem: 'Serangan hama sering baru disadari setelah tanaman rusak, dan petani membutuhkan panduan pengendalian yang aman.',
+    tech: 'YOLO11l untuk 24 kelas hama padi, jagung, dan bawang merah (mAP50 0,794, calibration error 0,036), diekspor ke ONNX agar berjalan di browser. Web app Next.js dan FastAPI dalam tiga bahasa.',
+    model: 'Petani memakai secara gratis. Koperasi, dinas pertanian, atau perusahaan agrikultur membayar lisensi per petani binaan.',
+    context: 'Menurut FAO (2021), hingga 40% produksi tanaman dunia hilang akibat hama dan penyakit setiap tahun.',
+    market: [
+      { k: 'TAM', v: '29,34 juta', d: 'unit usaha pertanian perorangan di Indonesia (BPS, Sensus Pertanian 2023)' },
+      { k: 'SAM', v: '8,8 juta', d: 'asumsi 30%: komoditas pangan dan hortikultura yang relevan serta memiliki ponsel pintar' },
+      { k: 'SOM', v: '44 ribu', d: 'asumsi 0,5% dari SAM terjangkau dalam 3 tahun melalui mitra koperasi' },
+    ],
+    revenue: '44 ribu petani x Rp10.000 per bulan x 12 bulan = sekitar Rp5,3 miliar per tahun',
+    status: 'Top 3 Energy Future di Pertamuda by Pertamina dan Best Presentation di Call for Paper Faperta UPN Veteran Jawa Timur. Keduanya adalah validasi teknis dan gagasan dari juri.',
+    next: 'Uji coba dengan satu kelompok tani selama satu musim tanam, lalu mengajukan surat minat kepada koperasi.',
+  },
+  {
+    id: 'stocksense', name: 'StockSense AI', segment: 'B2B', link: null,
+    problem: 'Banyak UMKM mengatur stok berdasarkan perkiraan, sehingga sering kehabisan barang laku atau menumpuk barang yang tidak laku.',
+    tech: 'Prediksi penjualan 7 hari dengan XGBoost, dashboard Streamlit, dan chatbot lokal Gemma 2B melalui Ollama yang memahami Bahasa Indonesia sehari-hari.',
+    model: 'Langganan bulanan berbiaya rendah (SaaS), atau bermitra dengan aplikasi kasir yang sudah dipakai UMKM.',
+    context: 'UMKM non-pertanian didominasi sektor perdagangan dan penyediaan makan minum, dua sektor yang paling bergantung pada pengelolaan stok.',
+    market: [
+      { k: 'TAM', v: '30,2 juta', d: 'UMKM non-pertanian di Indonesia (Kementerian UMKM, SIDT-UMKM 2025)' },
+      { k: 'SAM', v: '20,85 juta', d: 'sektor perdagangan besar dan eceran (14,44 juta) serta penyediaan makan minum (6,41 juta)' },
+      { k: 'SOM', v: '20.850', d: 'asumsi 0,1% dari SAM berlangganan dalam 3 tahun' },
+    ],
+    revenue: '20.850 usaha x Rp49.000 per bulan x 12 bulan = sekitar Rp12,3 miliar per tahun',
+    status: 'Prototipe berfungsi. Belum diuji kepada pemilik usaha secara langsung.',
+    next: 'Mewawancarai 10 pemilik warung di sekitar sekolah, lalu uji coba gratis selama satu bulan.',
+  },
+  {
+    id: 'edugap', name: 'EduGap-XAI', segment: 'B2G', link: 'https://edugap-xai.vercel.app/',
+    problem: 'Partisipasi sekolah usia 16 sampai 18 tahun di beberapa provinsi tertinggal, tetapi penyebab dan lokasi prioritasnya belum jelas.',
+    tech: '20 indikator dari BPS dan Badan Pangan Nasional (2021 sampai 2025) dianalisis dengan Moran\'s I, LISA, association rule mining, LightGBM, SHAP, dan conformal prediction, menghasilkan Intervention Priority Index.',
+    model: 'Kontrak atau lisensi tahunan kepada pemerintah daerah, umumnya melalui mekanisme pengadaan pemerintah.',
+    context: 'Anggaran fungsi pendidikan pada APBN 2026 ditetapkan sebesar Rp769,09 triliun melalui Perpres Nomor 118 Tahun 2025. Alat bantu prioritas membantu anggaran tepat sasaran.',
+    market: [
+      { k: 'TAM', v: '552', d: 'calon pembeli: 38 pemerintah provinsi dan 514 pemerintah kabupaten atau kota' },
+      { k: 'SAM', v: '150', d: 'asumsi: daerah dengan kesenjangan partisipasi sekolah yang tinggi' },
+      { k: 'SOM', v: '10', d: 'asumsi: pemerintah daerah yang menjadi klien dalam 3 tahun' },
+    ],
+    revenue: '10 daerah x Rp150 juta per tahun = sekitar Rp1,5 miliar per tahun',
+    status: 'Dashboard 8 halaman telah dibangun dan menandai 6 provinsi prioritas.',
+    next: 'Presentasi kepada satu Bappeda atau Dinas Pendidikan untuk uji coba sebagai alat bantu perencanaan.',
+  },
+  {
+    id: 'bluradar', name: 'bluRadar', segment: 'B2B enterprise', link: 'https://bluradar.vercel.app',
+    problem: 'Banyak akun baru blu by BCA Digital cepat menjadi tidak aktif, sementara tim penjualan lapangan dinilai dari jumlah akun yang dibuka.',
+    tech: 'Analisis 8.726 ulasan aplikasi menunjukkan 40,1% keluhan berkaitan dengan proses awal yang rumit. Penempatan tim lapangan dengan Thompson Sampling dan dorongan aktivasi dengan uplift modeling.',
+    model: 'Solusi internal untuk satu klien besar. Nilainya diukur dari penghematan dan tambahan nasabah aktif, bukan dari jumlah pembeli.',
+    context: 'Pada pasar B2B enterprise, validasi tidak diukur dari ukuran pasar, melainkan dari besarnya manfaat bagi satu klien.',
+    market: [
+      { k: 'Biaya', v: '-53%', d: 'proyeksi penurunan biaya per nasabah aktif' },
+      { k: 'Nasabah', v: '+5.400', d: 'proyeksi tambahan nasabah aktif dengan anggaran lebih kecil' },
+      { k: 'Ketahanan', v: '93,7%', d: 'dari 10.000 skenario simulasi Monte Carlo tetap menunjukkan hasil positif' },
+    ],
+    revenue: 'Proyeksi NPV 3 tahun sebesar Rp48,5 miliar dengan titik balik modal pada bulan ke-6',
+    status: 'Peringkat 7 dari 87 tim (8% teratas) di babak penyisihan MarkUp Mini Case Competition 2026.',
+    next: 'Menguji asumsi aktivasi dengan data internal klien melalui uji coba terbatas di satu kota.',
+  },
+]
+
+export const SDG_MAP = [
+  ['AIO PestGuard', 'SDG 2: Tanpa Kelaparan'],
+  ['EduGap-XAI', 'SDG 4: Pendidikan Berkualitas'],
+  ['StockSense AI', 'SDG 8: Pekerjaan Layak dan Pertumbuhan Ekonomi'],
+  ['Deteksi glaukoma', 'SDG 3: Kehidupan Sehat dan Sejahtera'],
+]
+
+export const ETHICS = [
+  { title: 'Privasi', body: 'Data pribadi adalah amanah. Kumpulkan seperlunya, simpan dengan aman, dan minta izin sebelum digunakan.', color: 'bg-marker' },
+  { title: 'Keadilan', body: 'Model belajar dari data yang bisa berat sebelah. Audit keadilan memastikan hasilnya tidak merugikan kelompok tertentu.', color: 'bg-[#D4DBFF]' },
+  { title: 'Keamanan', body: 'Rekomendasi yang keliru dapat lebih berbahaya daripada tidak ada rekomendasi. Periksa keluaran terhadap aturan keselamatan.', color: 'bg-[#BFE8D6]' },
+  { title: 'Kejujuran AI', body: 'LLM dapat mengarang jawaban (halusinasi). RAG dan pencantuman sumber membantu jawaban tetap dapat dipertanggungjawabkan.', color: 'bg-[#FFD1D8]' },
+  { title: 'Transparansi', body: 'Keputusan penting harus dapat dijelaskan. Teknik seperti SHAP membantu menunjukkan alasan di balik prediksi.', color: 'bg-white' },
+]
+
+export const QUIZ = [
+  { q: 'Menurut Bailetti (2012), technology entrepreneurship bertujuan untuk...', options: ['Menciptakan dan menangkap nilai', 'Membuat teknologi secanggih mungkin', 'Merekrut dan melatih karyawan', 'Meneliti dan mempublikasikan jurnal'], a: 0 },
+  { q: 'Kapan sebuah masalah sebaiknya tidak diselesaikan dengan AI?', options: ['Ketika datanya sangat banyak', 'Ketika aturannya jelas dan sederhana', 'Ketika polanya rumit', 'Ketika melibatkan gambar'], a: 1 },
+  { q: 'Produk yang dibayar koperasi tetapi dipakai petani termasuk model...', options: ['B2C', 'B2G', 'B2B2C', 'C2C'], a: 2 },
+  { q: 'SOM dalam perhitungan ukuran pasar berarti...', options: ['Seluruh pasar di dunia', 'Pasar yang dapat dilayani secara teori', 'Jumlah pesaing', 'Bagian pasar yang realistis direbut dalam waktu dekat'], a: 3 },
+  { q: 'Bukti validasi pasar yang paling kuat adalah...', options: ['Pembayaran pertama dari pelanggan', 'Pujian dari teman', 'Banyaknya fitur', 'Logo yang menarik'], a: 0 },
+]
+
+export const SUMMARY = [
+  'Teknologi adalah alat untuk menciptakan dan menangkap nilai, bukan tujuan akhir.',
+  'Setiap teknologi cocok untuk jenis masalah tertentu, dan tidak semua masalah membutuhkan AI.',
+  'Ide yang kuat berangkat dari masalah nyata yang bersifat mendesak dan merugikan.',
+  'Produk teknologi yang baik memperhatikan kualitas data, ketidakpastian model, dan kemudahan pengguna.',
+  'Pilih model bisnis (B2C, B2B, B2G, B2B2C) berdasarkan siapa yang memakai dan siapa yang membayar.',
+  'Validasi pasar bergerak dari data sekunder hingga pembayaran pertama, dan menang lomba belum termasuk validasi pasar.',
+  'Teknologi harus amanah: menjaga privasi, adil, aman, jujur, dan transparan.',
+]
+
+export const GLOSSARY = [
+  { t: 'Technopreneur', d: 'Wirausahawan yang menjadikan teknologi sebagai alat utama penciptaan nilai.' },
+  { t: 'Model AI', d: 'Program yang belajar pola dari data untuk membuat prediksi atau keputusan.' },
+  { t: 'RAG', d: 'Retrieval-Augmented Generation, teknik menghubungkan LLM dengan dokumen sumber.' },
+  { t: 'SaaS', d: 'Software as a Service, perangkat lunak yang dibayar secara berlangganan.' },
+  { t: 'B2B, B2G, B2B2C', d: 'Penjualan kepada bisnis, kepada pemerintah, dan kepada lembaga yang melayani individu.' },
+  { t: 'TAM, SAM, SOM', d: 'Total pasar, pasar yang dapat dilayani, dan pasar yang realistis direbut.' },
+  { t: 'MVP', d: 'Minimum Viable Product, versi paling sederhana untuk menguji ide.' },
+  { t: 'Kalibrasi', d: 'Kesesuaian antara tingkat keyakinan model dan kenyataan.' },
+]
+
+export const REFERENCES = [
+  { text: 'Bailetti, T. (2012). Technology Entrepreneurship: Overview, Definition, and Distinctive Aspects. Technology Innovation Management Review. Akses terbuka.', href: 'https://timreview.ca/node/520' },
+  { text: 'Graham, P. (2012). How to Get Startup Ideas. Esai daring, akses terbuka.', href: 'https://paulgraham.com/startupideas.html' },
+  { text: 'Badan Pusat Statistik. (2023). Hasil Pencacahan Lengkap Sensus Pertanian 2023 Tahap I.', href: 'https://www.bps.go.id/id/pressrelease/2023/12/04/2050/' },
+  { text: 'FAO. (2021). Climate change fans spread of pests and threatens plants and crops, new FAO study.', href: 'https://sfcs.fao.org/newsroom/detail/Climate-change-fans-spread-of-pests-and-threatens-plants-and-crops-new-FAO-study/en' },
+  { text: 'Kementerian UMKM RI. (2025). Sistem Informasi Data Tunggal UMKM, dikutip melalui UKMIndonesia.id.', href: 'https://ukmindonesia.id/baca-deskripsi-posts/data-umkm-jumlah-dan-pertumbuhan-usaha-mikro-kecil-dan-menengah-di-indonesia' },
+  { text: 'Peraturan Presiden Nomor 118 Tahun 2025 tentang Rincian APBN 2026, dikutip melalui Harian Jogja.', href: 'https://news.harianjogja.com/r-1275584/apbn-2027-tertinggi-sepanjang-sejarah-anggaran-pendidikan-tembus-rp824-triliun' },
+  { text: 'United Nations. (2015). Transforming our world: the 2030 Agenda for Sustainable Development.', href: 'https://sdgs.un.org/goals' },
+  { text: 'CB Insights. The Top Reasons Startups Fail.', href: 'https://www.cbinsights.com/research/startup-failure-reasons-top/' },
+  { text: 'Gross, B. (2015). The single biggest reason why start-ups succeed. TED Talk.', href: 'https://www.ted.com/talks/bill_gross_the_single_biggest_reason_why_start_ups_succeed' },
+  { text: 'Fitzpatrick, R. (2013). The Mom Test.', href: null },
+]
 export const CONTACT = {
   portfolio: 'https://nazrilravipratama.vercel.app/',
   whatsapp: 'https://wa.me/6282333970758',
@@ -48,7 +321,6 @@ export const PHOTOS = [
 
 export const STATS = [
   { value: 35, suffix: '+', label: 'prestasi nasional dan internasional' },
-  { value: 50, prefix: 'Rp', suffix: ' jt', label: 'dana pembinaan Top 3 Pertamuda by Pertamina' },
   { value: 4400, prefix: '1 dari 10 tim, ', suffix: '+ pendaftar', label: 'COMPFEST Data Science Academy UI', compact: true },
   { value: 3.84, decimals: 2, label: 'IPK Sains Data UNESA' },
 ]
@@ -65,15 +337,6 @@ export const TIMELINE = [
   { when: 'Okt 2026', what: 'Top 3 Pertamuda by Pertamina, Juara 1 Smart Data Analytics USK, dan Juara 3 NEC UNUSA.' },
 ]
 
-export const OBJECTIVES = [
-  'Menjelaskan pengertian technopreneurship dan perbedaannya dengan kewirausahaan pada umumnya.',
-  'Mengidentifikasi sumber ide teknologi dari lingkungan sekitar.',
-  'Membedakan masalah yang layak diselesaikan dari masalah yang kurang bernilai.',
-  'Menilai dampak dan nilai bisnis sebuah ide secara sistematis.',
-  'Melakukan validasi awal ide melalui wawancara dan prototipe sederhana.',
-  'Menyusun dan menyampaikan ide dalam bentuk pitch singkat.',
-]
-
 export const EXAMPLES = [
   { name: 'Gojek', year: '2010', story: 'Gojek tidak dimulai sebagai aplikasi super. Awalnya ia adalah layanan pemesanan ojek melalui telepon, karena mencari ojek yang jelas dan dapat dipesan saat itu sulit. Aplikasinya baru diluncurkan pada 2015.' },
   { name: 'Ruangguru', year: '2014', story: 'Ruangguru berangkat dari sulitnya mencari guru les yang sesuai. Platform ini mulai sebagai tempat mempertemukan siswa dengan guru privat, lalu berkembang menjadi layanan belajar daring.' },
@@ -88,35 +351,11 @@ export const IDEA_SOURCES = [
   { title: 'Data', body: 'Angka dapat mengungkap masalah yang tidak terlihat oleh mata. Pola kecil sering menyimpan cerita besar.', ask: 'Pola apa yang mungkin muncul dari data absensi atau nilai satu angkatan?' },
 ]
 
-export const LENSES = {
-  Asrama: ['Pada jam berapa antrean paling panjang terjadi, dan untuk keperluan apa?', 'Barang apa yang paling sering hilang atau tertukar?', 'Informasi apa yang sering terlambat sampai ke santri?'],
-  Kelas: ['Materi mana yang paling sering membingungkan?', 'Tugas apa yang paling sering terlupa dikumpulkan?', 'Pekerjaan apa yang guru lakukan berulang setiap hari?'],
-  Kantin: ['Menu apa yang selalu habis lebih dulu, dan mana yang sering tersisa?', 'Berapa lama waktu antre saat jam istirahat?', 'Bagaimana pengelola menentukan jumlah porsi yang dimasak?'],
-  Masjid: ['Bagaimana jadwal imam, muadzin, dan petugas kebersihan diatur?', 'Bagaimana kas dan infaq dicatat serta dilaporkan?', 'Apa yang sering membuat kegiatan kajian tertunda?'],
-  Rumah: ['Apa yang paling merepotkan orang tua setiap pagi?', 'Usaha apa di sekitar rumah yang masih dicatat secara manual?', 'Apa yang sering dikeluhkan keluarga atau tetangga?'],
-}
-
 export const PK_TABLE = [
   { aspect: 'Urgensi', pk: 'Harus segera diselesaikan', vit: 'Dapat ditunda tanpa kerugian berarti' },
   { aspect: 'Frekuensi', pk: 'Terjadi rutin, sering setiap hari', vit: 'Sesekali atau tidak menentu' },
   { aspect: 'Kerugian jika dibiarkan', pk: 'Waktu, uang, kesehatan, atau kesempatan hilang', vit: 'Hampir tidak ada' },
   { aspect: 'Kesediaan membayar', pk: 'Tinggi, karena rasa sakitnya nyata', vit: 'Rendah, banyak alternatif gratis' },
-]
-
-export const PK_EXAMPLES = [
-  { idea: 'Notifikasi ketika mesin cuci asrama kosong', type: 'Painkiller', why: 'Terjadi hampir setiap hari dan menghabiskan waktu seluruh penghuni.' },
-  { idea: 'AI pendeteksi hama dari foto daun', type: 'Painkiller', why: 'Keterlambatan deteksi dapat menyebabkan gagal panen.' },
-  { idea: 'Pengingat minum obat untuk lansia', type: 'Painkiller', why: 'Lupa minum obat berisiko terhadap kesehatan.' },
-  { idea: 'Filter foto bertema pesantren', type: 'Vitamin', why: 'Menyenangkan, tetapi tidak menyelesaikan kerugian apa pun.' },
-  { idea: 'Aplikasi kutipan motivasi harian', type: 'Vitamin', why: 'Bermanfaat ringan dan banyak alternatif gratis.' },
-  { idea: 'Tema tampilan grup kelas mingguan', type: 'Vitamin', why: 'Mempercantik, tetapi tidak mengurangi kerepotan siapa pun.' },
-]
-
-export const PROBLEM_TRAITS = [
-  { t: 'Sering terjadi', d: 'Masalah harian lebih kuat daripada masalah tahunan, karena manfaat solusinya terasa berulang kali.' },
-  { t: 'Mendesak', d: 'Orang ingin masalah itu selesai sekarang, bukan suatu saat nanti.' },
-  { t: 'Merugikan', d: 'Ada kerugian yang jelas: waktu, uang, tenaga, kesehatan, atau kesempatan.' },
-  { t: 'Pihak terdampak jelas', d: 'Dapat disebutkan siapa yang paling merasakannya, secara spesifik.' },
 ]
 
 export const WHY_DEMO = {
@@ -131,61 +370,11 @@ export const WHY_DEMO = {
   insight: 'Akar masalahnya ternyata bukan kedisiplinan semata, melainkan ketiadaan informasi. Informasi adalah wilayah di mana teknologi paling berperan.',
 }
 
-export const MODELS = [
-  { name: 'Langganan', what: 'Pengguna membayar rutin per bulan atau per tahun.', example: 'Sekolah membayar biaya bulanan untuk sistem antrean laundry.', plus: 'Pendapatan stabil dan dapat diprediksi.', minus: 'Harus terus memberi alasan agar pengguna tidak berhenti.' },
-  { name: 'Komisi', what: 'Mengambil persentase kecil dari setiap transaksi.', example: 'Aplikasi pemesanan kantin mengambil Rp500 per pesanan.', plus: 'Pendapatan tumbuh seiring jumlah transaksi.', minus: 'Membutuhkan volume transaksi yang tinggi.' },
-  { name: 'Freemium', what: 'Fitur dasar gratis, fitur lanjutan berbayar.', example: 'Pencatat hafalan gratis, laporan rinci untuk orang tua berbayar.', plus: 'Mudah menarik pengguna awal.', minus: 'Sebagian besar pengguna mungkin tidak beralih ke versi berbayar.' },
-  { name: 'Penjualan ke lembaga', what: 'Pembelinya organisasi seperti sekolah, pemerintah, atau perusahaan (B2B atau B2G).', example: 'Dinas pertanian membeli lisensi AI deteksi hama untuk penyuluh.', plus: 'Nilai satu kontrak dapat besar.', minus: 'Proses penjualan lama dan memerlukan kepercayaan.' },
-  { name: 'Iklan', what: 'Pengguna gratis, pendapatan berasal dari pengiklan.', example: 'Portal info lomba dan beasiswa yang disponsori lembaga pendidikan.', plus: 'Pengguna tidak dikenai biaya.', minus: 'Membutuhkan jumlah pengguna yang sangat besar.' },
-]
-
-export const PAYER_EXAMPLES = [
-  { name: 'Antrean laundry asrama', user: 'Santri', payer: 'Pengelola asrama atau sekolah' },
-  { name: 'Mesin pencari internet', user: 'Masyarakat umum', payer: 'Pengiklan' },
-  { name: 'AI deteksi hama', user: 'Petani', payer: 'Koperasi, dinas pertanian, atau perusahaan agrikultur' },
-  { name: 'Laporan perkembangan santri', user: 'Santri dan ustadz', payer: 'Orang tua' },
-]
-
-export const CANVAS_BLOCKS = [
-  { t: 'Masalah', d: 'Tiga masalah utama yang dialami pelanggan.', area: 'problem' },
-  { t: 'Solusi', d: 'Fitur paling sederhana yang menjawab masalah.', area: 'solution' },
-  { t: 'Proposisi nilai unik', d: 'Satu kalimat: mengapa solusi ini berbeda dan layak dipilih.', area: 'uvp' },
-  { t: 'Keunggulan yang sulit ditiru', d: 'Hal yang tidak mudah disalin pesaing, misalnya pemahaman mendalam tentang pengguna.', area: 'advantage' },
-  { t: 'Segmen pelanggan', d: 'Siapa pengguna dan siapa pembayarnya.', area: 'segment' },
-  { t: 'Metrik kunci', d: 'Angka yang menunjukkan solusi berhasil, misalnya pengguna aktif mingguan.', area: 'metrics' },
-  { t: 'Saluran', d: 'Cara menjangkau pelanggan.', area: 'channels' },
-  { t: 'Struktur biaya', d: 'Biaya utama untuk membangun dan menjalankan solusi.', area: 'cost' },
-  { t: 'Aliran pendapatan', d: 'Dari mana dan bagaimana uang masuk.', area: 'revenue' },
-]
-
 export const MOM_TABLE = [
   { weak: 'Kamu mau memakai aplikasi antrean laundry?', strong: 'Terakhir kali mencuci, berapa lama kamu menunggu mesin kosong?', why: 'Fakta dari kejadian nyata lebih jujur daripada janji di masa depan.' },
   { weak: 'Menurutmu ideku bagus?', strong: 'Selama ini kamu mengatasi masalah ini dengan cara apa?', why: 'Orang cenderung sopan terhadap ide kita, tetapi jujur tentang kebiasaannya.' },
   { weak: 'Kamu mau membayar berapa?', strong: 'Berapa waktu atau uang yang hilang karena masalah ini bulan lalu?', why: 'Kerugian yang sudah terjadi adalah bukti, harga yang dibayangkan hanya perkiraan.' },
   { weak: 'Masalah ini sangat mengganggu, kan?', strong: 'Ceritakan kejadian terakhir ketika hal ini terjadi.', why: 'Pertanyaan menggiring menghasilkan jawaban yang kita harapkan, bukan kenyataan.' },
-]
-
-export const VALIDATION_STEPS = [
-  { t: 'Tuliskan asumsi', d: 'Contoh: "santri bersedia memakai aplikasi untuk antrean laundry." Ini masih dugaan, belum fakta.' },
-  { t: 'Wawancarai lima orang', d: 'Gunakan pertanyaan tentang pengalaman nyata. Dengarkan lebih banyak daripada menjelaskan.' },
-  { t: 'Buat versi paling sederhana', d: 'Tidak perlu aplikasi. Formulir daring, grup pesan, atau papan kertas sudah cukup untuk menguji.' },
-  { t: 'Amati perilaku', d: 'Tindakan lebih jujur daripada ucapan. Jika orang benar-benar memakainya, itu sinyal positif.' },
-  { t: 'Perbaiki dan ulangi', d: 'Setiap putaran membuat ide semakin tajam. Kegagalan kecil di tahap ini adalah proses belajar.' },
-]
-
-export const RUBRIC = [
-  { c: 'Jangkauan', q: 'Berapa banyak orang yang merasakan masalah ini?', s1: 'Hanya segelintir orang', s3: 'Satu kelompok, misalnya satu asrama', s5: 'Banyak kelompok di banyak tempat' },
-  { c: 'Frekuensi', q: 'Seberapa sering masalah terjadi?', s1: 'Setahun sekali', s3: 'Setiap minggu', s5: 'Setiap hari' },
-  { c: 'Tingkat kerugian', q: 'Seberapa besar kerugian jika dibiarkan?', s1: 'Hampir tidak ada', s3: 'Merepotkan dan membuang waktu', s5: 'Merugikan uang, kesehatan, atau masa depan' },
-  { c: 'Pihak pembayar', q: 'Adakah pihak yang bersedia membiayai solusi?', s1: 'Belum terlihat', s3: 'Ada, tetapi belum pasti', s5: 'Jelas dan sudah mengeluarkan biaya untuk masalah ini' },
-  { c: 'Kelayakan', q: 'Dapatkah solusi dibuat dengan sumber daya yang ada?', s1: 'Memerlukan teknologi yang belum tersedia', s3: 'Bisa, dengan bantuan pihak lain', s5: 'Bisa dibuat versi awalnya sekarang' },
-]
-
-export const SCORE_BANDS = [
-  { range: '21 sampai 25', t: 'Kuat', d: 'Segera lakukan validasi kepada calon pengguna.' },
-  { range: '15 sampai 20', t: 'Menjanjikan', d: 'Perbaiki kriteria dengan skor terendah terlebih dahulu.' },
-  { range: '9 sampai 14', t: 'Perlu dipertajam', d: 'Gali kembali akar masalah dengan teknik 5 Whys.' },
-  { range: '5 sampai 8', t: 'Tunda dahulu', d: 'Cari masalah lain yang lebih nyata dan mendesak.' },
 ]
 
 export const PITCH_STAGES = [
@@ -194,67 +383,4 @@ export const PITCH_STAGES = [
   { from: 35, to: 60, title: 'Solusi', body: 'Jelaskan cara kerja solusi dengan bahasa yang mudah dipahami.' },
   { from: 60, to: 75, title: 'Nilai bisnis', body: 'Sebutkan siapa pengguna, siapa pembayar, dan model pendapatannya.' },
   { from: 75, to: 90, title: 'Penutup', body: 'Jelaskan mengapa tim kalian tepat dan mengapa waktunya sekarang.' },
-]
-
-export const CASES = [
-  {
-    id: 'pestguard', name: 'AIO PestGuard', tag: 'AI untuk petani', link: 'https://aio-pestguard-simulation.vercel.app',
-    pain: 'Petani sering baru menyadari serangan hama ketika tanaman sudah rusak, dan membutuhkan panduan pengendalian yang aman.',
-    tech: 'Perbandingan tiga model YOLO pada 24 kelas hama padi, jagung, dan bawang merah. YOLO11l terpilih (mAP50 0,794) dan dijalankan langsung di browser melalui web Next.js dan FastAPI.',
-    business: 'Top 3 kategori Energy Future di Pertamuda by Pertamina dengan dana pembinaan Rp50 juta. Calon pembayar meliputi koperasi dan lembaga pertanian.',
-    lesson: 'Akurasi model belum cukup. Pengguna membutuhkan jawaban atas pertanyaan "lalu apa yang harus saya lakukan?".',
-  },
-  {
-    id: 'bluradar', name: 'bluRadar', tag: 'Strategi bisnis bank digital', link: 'https://bluradar.vercel.app',
-    pain: 'Banyak akun baru blu by BCA Digital cepat menjadi tidak aktif, sementara tim penjualan dinilai dari jumlah akun yang dibuka.',
-    tech: 'Analisis 8.726 ulasan aplikasi menunjukkan 40,1% keluhan berkaitan dengan proses awal yang rumit. Solusinya memakai Thompson Sampling dan uplift modeling.',
-    business: 'Diproyeksikan menurunkan biaya per nasabah aktif sebesar 53% dan bertahan pada 93,7% dari 10.000 skenario simulasi Monte Carlo.',
-    lesson: 'Masalah di permukaan belum tentu masalah sebenarnya. Terkadang yang perlu diubah adalah ukuran keberhasilan.',
-  },
-  {
-    id: 'stocksense', name: 'StockSense AI', tag: 'Analitik untuk UMKM', link: null,
-    pain: 'Banyak UMKM mengatur stok berdasarkan perkiraan, sehingga sering kehabisan atau kelebihan barang.',
-    tech: 'Prediksi penjualan 7 hari dengan XGBoost, dashboard Streamlit, dan chatbot lokal Gemma 2B yang memahami Bahasa Indonesia sehari-hari.',
-    business: 'Berpotensi menggunakan model langganan berbiaya rendah atau digabungkan dengan aplikasi kasir.',
-    lesson: 'Teknologi yang canggih tidak berguna apabila penggunanya tidak dapat mengoperasikannya.',
-  },
-]
-
-export const QUIZ = [
-  { q: 'Menurut Bailetti (2012), technology entrepreneurship bertujuan untuk...', options: ['Menciptakan dan menangkap nilai', 'Menjual dan mengiklankan produk', 'Merekrut dan melatih karyawan', 'Meneliti dan mempublikasikan jurnal'], a: 0 },
-  { q: 'Cara mendapatkan ide yang dianjurkan Paul Graham adalah...', options: ['Brainstorming sebanyak mungkin', 'Memperhatikan masalah, terutama yang dialami sendiri', 'Meniru startup dari luar negeri', 'Memilih teknologi terbaru terlebih dahulu'], a: 1 },
-  { q: 'Ciri utama masalah bertipe painkiller adalah...', options: ['Menyenangkan tetapi tidak wajib', 'Banyak alternatif gratis', 'Mendesak dan merugikan jika dibiarkan', 'Hanya terjadi setahun sekali'], a: 2 },
-  { q: 'Pertanyaan validasi yang paling jujur adalah...', options: ['"Ideku bagus, kan?"', '"Kalau ada aplikasinya, kamu pasti pakai?"', '"Kamu mau membayar berapa?"', '"Ceritakan kejadian terakhir saat masalah ini terjadi."'], a: 3 },
-  { q: 'Menurut analisis CB Insights, alasan paling umum startup gagal adalah...', options: ['Tidak ada kebutuhan pasar', 'Logo kurang menarik', 'Terlalu banyak pelanggan', 'Kantor terlalu kecil'], a: 0 },
-]
-
-export const SUMMARY = [
-  'Technopreneurship adalah upaya menciptakan dan menangkap nilai dengan memanfaatkan teknologi.',
-  'Ide yang kuat ditemukan dengan memperhatikan masalah, bukan dipaksakan melalui khayalan.',
-  'Masalah yang layak diselesaikan bersifat sering, mendesak, merugikan, dan pihak terdampaknya jelas.',
-  'Dampak dapat diukur dari jangkauan dan kedalaman perubahan yang dirasakan pengguna.',
-  'Nilai bisnis menuntut kejelasan tentang siapa pengguna, siapa pembayar, dan bagaimana pendapatan diperoleh.',
-  'Validasi dilakukan dengan menggali pengalaman nyata dan menguji versi paling sederhana.',
-  'Teknologi yang baik harus amanah: menjaga data, adil, dan tidak membahayakan.',
-]
-
-export const GLOSSARY = [
-  { t: 'Technopreneur', d: 'Wirausahawan yang menjadikan teknologi sebagai alat utama penciptaan nilai.' },
-  { t: 'Startup', d: 'Usaha rintisan yang mencari model bisnis yang dapat tumbuh dengan cepat.' },
-  { t: 'Proposisi nilai', d: 'Alasan utama pelanggan memilih sebuah solusi dibandingkan alternatif lain.' },
-  { t: 'Model bisnis', d: 'Cara sebuah usaha menciptakan, menyampaikan, dan memperoleh nilai.' },
-  { t: 'Validasi', d: 'Proses menguji asumsi tentang masalah dan solusi kepada calon pengguna nyata.' },
-  { t: 'MVP', d: 'Minimum Viable Product, versi paling sederhana dari produk untuk menguji ide.' },
-  { t: 'B2B dan B2G', d: 'Penjualan kepada badan usaha (business) dan kepada pemerintah (government).' },
-  { t: 'Pitch', d: 'Presentasi singkat untuk meyakinkan audiens tentang sebuah ide.' },
-]
-
-export const REFERENCES = [
-  { text: 'Bailetti, T. (2012). Technology Entrepreneurship: Overview, Definition, and Distinctive Aspects. Technology Innovation Management Review, Februari 2012, 5 sampai 12. Akses terbuka.', href: 'https://timreview.ca/node/520' },
-  { text: 'Graham, P. (2012). How to Get Startup Ideas. Esai daring, akses terbuka.', href: 'https://paulgraham.com/startupideas.html' },
-  { text: 'Graham, P. (2012). Schlep Blindness. Esai daring, akses terbuka.', href: 'https://paulgraham.com/schlep.html' },
-  { text: 'United Nations. (2015). Transforming our world: the 2030 Agenda for Sustainable Development. Akses terbuka.', href: 'https://sdgs.un.org/goals' },
-  { text: 'CB Insights. The Top Reasons Startups Fail. Analisis 101 catatan kegagalan startup.', href: 'https://www.cbinsights.com/research/startup-failure-reasons-top/' },
-  { text: 'Gross, B. (2015). The single biggest reason why start-ups succeed. TED Talk, akses terbuka.', href: 'https://www.ted.com/talks/bill_gross_the_single_biggest_reason_why_start_ups_succeed' },
-  { text: 'Fitzpatrick, R. (2013). The Mom Test: How to talk to customers and learn if your business is a good idea when everyone is lying to you.', href: null },
 ]

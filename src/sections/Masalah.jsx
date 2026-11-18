@@ -1,49 +1,57 @@
 import { motion } from 'framer-motion'
-import { Section, ChapterHead, Margin, KeyPoints, SubHead, Para, Table } from '../components/ui'
-import { PK_TABLE, PK_EXAMPLES, PROBLEM_TRAITS, WHY_DEMO } from '../data'
+import { Section, ChapterHead, Cite, Margin, KeyPoints, SubHead, Para, Table } from '../components/ui'
+import { IDEA_SOURCES, PK_TABLE, WHY_DEMO } from '../data'
 
 export default function Masalah() {
   return (
     <Section id="masalah">
       <ChapterHead
         no={3}
-        title="Masalah yang layak diselesaikan"
-        lead="Tidak semua masalah layak dijadikan dasar sebuah usaha. Bab ini membahas cara membedakan masalah yang bernilai, menemukan akarnya, dan merumuskannya dengan jelas."
+        title="Menemukan masalah yang tepat"
+        lead="Teknologi sehebat apa pun akan sia-sia jika dipakai untuk masalah yang salah. Bab ini membahas cara menemukan masalah, menilai kelayakannya, dan merumuskannya agar siap diselesaikan dengan teknologi."
       />
 
-      <SubHead>3.1 Painkiller dan vitamin</SubHead>
-      <Para className="mb-8">
-        Dalam dunia startup, solusi sering diibaratkan sebagai obat. Painkiller (pereda nyeri) adalah solusi yang harus
-        ada karena menghilangkan rasa sakit yang nyata. Vitamin adalah solusi yang menyenangkan bila ada, tetapi tidak
-        dicari ketika tidak ada. Ide yang memiliki nilai bisnis umumnya berbentuk painkiller.
-      </Para>
-      <Table head={['Aspek', 'Painkiller', 'Vitamin']} rows={PK_TABLE.map((r) => [r.aspect, r.pk, r.vit])} />
-      <Para className="mb-6 mt-10">Contoh penerapannya:</Para>
+      <SubHead>3.1 Mulai dari masalah, bukan dari teknologi</SubHead>
+      <Cite source="Graham (2012), esai How to Get Startup Ideas" href="https://paulgraham.com/startupideas.html">
+        Menurut Paul Graham (2012), pendiri Y Combinator, cara mendapatkan ide startup justru bukan dengan berusaha
+        memikirkannya, melainkan dengan mencari masalah, terutama masalah yang dialami sendiri. Ia merangkumnya dalam
+        kalimat: "Live in the future, then build what's missing."
+      </Cite>
       <Table
-        head={['Ide', 'Jenis', 'Alasan']}
-        rows={PK_EXAMPLES.map((e) => [
-          e.idea,
-          <span key={e.idea} className={`inline-block rounded-full px-3 py-1 text-sm font-bold ${e.type === 'Painkiller' ? 'bg-rose/15 text-rose' : 'bg-pine/15 text-pine'}`}>{e.type}</span>,
-          e.why,
-        ])}
+        head={['Aspek', 'Mulai dari teknologi', 'Mulai dari masalah']}
+        rows={[
+          ['Pertanyaan awal', '"Apa yang bisa saya buat dengan AI?"', '"Siapa yang kesulitan, dan mengapa?"'],
+          ['Contoh hasil', 'Chatbot serba bisa untuk sekolah', 'Pengingat setoran hafalan untuk santri yang sering tertinggal'],
+          ['Risiko', 'Canggih, tetapi tidak ada yang membutuhkan', 'Tampak sederhana sehingga sering diremehkan'],
+        ]}
       />
-      <Margin className="mt-10">People pay for painkillers. They only think about buying vitamins.</Margin>
 
-      <SubHead>3.2 Empat ciri masalah bernilai</SubHead>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {PROBLEM_TRAITS.map((t) => (
-          <div key={t.t} className="rounded-[22px] border-2 border-ink/10 bg-white p-6">
-            <p className="text-xl font-bold">{t.t}</p>
-            <p className="mt-2 text-ink/75">{t.d}</p>
+      <SubHead>3.2 Lima sumber masalah</SubHead>
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {IDEA_SOURCES.map((s) => (
+          <div key={s.title} className="flex flex-col rounded-[22px] border-2 border-ink/10 bg-white p-6">
+            <h4 className="text-xl font-extrabold">{s.title}</h4>
+            <p className="mt-3 flex-1 leading-relaxed text-ink/80">{s.body}</p>
+            <p className="mt-4 rounded-xl bg-marker px-4 py-3 text-sm font-medium">{s.ask}</p>
           </div>
         ))}
       </div>
+      <Para className="mt-8">
+        Kedekatan dengan masalah adalah keunggulan yang tidak dapat dibeli. Santri memahami detail kehidupan asrama
+        yang tidak akan pernah muncul di ruang rapat perusahaan teknologi besar.
+      </Para>
 
-      <SubHead>3.3 Menemukan akar masalah dengan 5 Whys</SubHead>
+      <SubHead>3.3 Painkiller atau vitamin</SubHead>
       <Para className="mb-8">
-        Masalah yang pertama terlihat sering kali hanya gejala. Teknik 5 Whys, yang dipopulerkan dalam sistem produksi
-        Toyota, membantu menggali akar masalah dengan bertanya "mengapa?" secara berulang hingga jawabannya tidak dapat
-        digali lebih jauh. Berikut contoh penerapannya.
+        Painkiller adalah solusi yang harus ada karena menghilangkan rasa sakit yang nyata. Vitamin menyenangkan bila
+        ada, tetapi tidak dicari ketika tidak ada. Produk teknologi yang bernilai bisnis umumnya berbentuk painkiller.
+      </Para>
+      <Table head={['Aspek', 'Painkiller', 'Vitamin']} rows={PK_TABLE.map((r) => [r.aspect, r.pk, r.vit])} />
+
+      <SubHead>3.4 Menggali akar masalah dengan 5 Whys</SubHead>
+      <Para className="mb-8">
+        Teknik ini, yang dipopulerkan dalam sistem produksi Toyota, menggali akar masalah dengan bertanya "mengapa?"
+        secara berulang. Akar masalah sering kali menunjukkan di mana teknologi paling berperan.
       </Para>
       <div className="rounded-[26px] border-2 border-ink/10 bg-white p-6 sm:p-8">
         <p className="text-ink/60">Masalah yang terlihat</p>
@@ -67,11 +75,7 @@ export default function Masalah() {
         <p className="mt-6 rounded-2xl bg-marker p-5 text-lg font-semibold">{WHY_DEMO.insight}</p>
       </div>
 
-      <SubHead>3.4 Merumuskan pernyataan masalah</SubHead>
-      <Para className="mb-8">
-        Setelah akar masalah ditemukan, rumuskan dalam satu kalimat yang jelas. Rumusan ini menjadi pegangan agar
-        solusi tetap fokus.
-      </Para>
+      <SubHead>3.5 Merumuskan pernyataan masalah</SubHead>
       <div className="rounded-[26px] bg-ink p-6 text-paper sm:p-10">
         <p className="text-paper/60">Templat</p>
         <p className="mt-2 text-2xl font-bold leading-snug sm:text-3xl">
@@ -80,17 +84,17 @@ export default function Masalah() {
         </p>
         <p className="mt-8 text-paper/60">Contoh</p>
         <p className="mt-2 max-w-3xl text-xl leading-relaxed">
-          Santri putra kelas 10 kesulitan mendapatkan giliran mesin cuci, karena seluruh penghuni mencuci pada waktu yang
-          sama tanpa jadwal, sehingga waktu belajar berkurang hingga satu jam setiap pekan.
+          Petani bawang merah kesulitan mengenali serangan hama sejak dini, karena tidak ada ahli yang dapat dihubungi
+          dengan cepat, sehingga serangan baru diketahui setelah tanaman rusak.
         </p>
       </div>
+      <Margin className="mt-12">Fall in love with the problem, not with your solution.</Margin>
 
       <KeyPoints
         points={[
+          'Mulailah dari masalah nyata, bukan dari teknologi yang ingin dipakai.',
           'Prioritaskan masalah bertipe painkiller: mendesak, rutin, dan merugikan.',
-          'Masalah bernilai bersifat sering terjadi, mendesak, merugikan, dan pihak terdampaknya jelas.',
-          'Gunakan 5 Whys untuk membedakan gejala dari akar masalah.',
-          'Rumuskan masalah dalam satu kalimat: siapa, kesulitan apa, karena apa, dan kerugiannya.',
+          'Gunakan 5 Whys untuk menemukan akar masalah, lalu rumuskan dalam satu kalimat.',
         ]}
       />
     </Section>

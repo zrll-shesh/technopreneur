@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Section, ChapterHead, Cite, Margin, KeyPoints, SubHead, Para, Table } from '../components/ui'
-import { MOM_TABLE, VALIDATION_STEPS } from '../data'
+import { EVIDENCE, MOM_TABLE } from '../data'
 
 function FailBar() {
   const ref = useRef(null)
@@ -24,15 +24,51 @@ function FailBar() {
   )
 }
 
-const LOOP = ['Bangun', 'Ukur', 'Pelajari']
+function Circles() {
+  const items = [
+    { k: 'TAM', d: 'Total Addressable Market: seluruh pihak yang memiliki masalah tersebut.', size: '100%', cls: 'bg-mist' },
+    { k: 'SAM', d: 'Serviceable Available Market: bagian yang dapat dijangkau produk dengan kemampuan saat ini.', size: '68%', cls: 'bg-[#BCC6F5]' },
+    { k: 'SOM', d: 'Serviceable Obtainable Market: bagian yang realistis direbut dalam beberapa tahun.', size: '36%', cls: 'bg-cobalt text-white' },
+  ]
+  return (
+    <div className="grid items-center gap-10 lg:grid-cols-2">
+      <div className="relative mx-auto aspect-square w-full max-w-[360px]">
+        {items.map((it, k) => (
+          <motion.div
+            key={it.k}
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: 'spring', stiffness: 120, damping: 14, delay: k * 0.2 }}
+            className={`absolute bottom-0 left-1/2 flex -translate-x-1/2 items-start justify-center rounded-full pt-5 text-xl font-extrabold ${it.cls}`}
+            style={{ width: it.size, height: it.size }}
+          >
+            {it.k}
+          </motion.div>
+        ))}
+      </div>
+      <dl className="space-y-5">
+        {items.map((it) => (
+          <div key={it.k}>
+            <dt className="text-2xl font-extrabold">{it.k}</dt>
+            <dd className="mt-1 text-lg text-ink/75">{it.d}</dd>
+          </div>
+        ))}
+        <p className="rounded-2xl bg-marker p-4 font-medium">
+          Rumus pendapatan sederhana: jumlah pelanggan SOM x harga x frekuensi pembayaran.
+        </p>
+      </dl>
+    </div>
+  )
+}
 
 export default function Validasi() {
   return (
     <Section id="validasi">
       <ChapterHead
         no={6}
-        title="Validasi ide"
-        lead="Ide yang terasa hebat belum tentu dibutuhkan. Validasi adalah proses menguji asumsi tentang masalah dan solusi kepada calon pengguna sebelum sumber daya besar dikeluarkan."
+        title="Validasi pasar"
+        lead="Validasi pasar adalah proses membuktikan bahwa masalahnya nyata, pasarnya cukup besar, dan ada pihak yang bersedia membayar. Semua ini sebaiknya dibuktikan sebelum sumber daya besar dikeluarkan untuk membangun teknologi."
       />
 
       <SubHead>6.1 Mengapa validasi penting</SubHead>
@@ -40,79 +76,53 @@ export default function Validasi() {
         <FailBar />
         <Cite source="CB Insights, The Top Reasons Startups Fail" href="https://www.cbinsights.com/research/startup-failure-reasons-top/">
           Menurut analisis CB Insights terhadap 101 catatan kegagalan startup, alasan yang paling sering disebut adalah
-          tidak adanya kebutuhan pasar, yaitu pada 42 persen kasus. Banyak startup membangun solusi untuk masalah yang
-          ternyata tidak cukup dirasakan oleh calon penggunanya.
+          tidak adanya kebutuhan pasar, yaitu pada 42 persen kasus.
         </Cite>
       </div>
 
-      <SubHead>6.2 Prinsip wawancara: The Mom Test</SubHead>
-      <Para className="mb-6">
-        Rob Fitzpatrick dalam buku The Mom Test (2013) menjelaskan bahwa pertanyaan tentang pendapat cenderung
-        menghasilkan jawaban yang sopan, bukan jawaban yang jujur. Bahkan seorang ibu pasti akan mengatakan ide anaknya
-        bagus. Karena itu, wawancara sebaiknya mengikuti tiga prinsip:
-      </Para>
-      <ol className="mb-10 grid gap-4 md:grid-cols-3">
-        {[
-          'Tanyakan kejadian di masa lalu, bukan rencana di masa depan.',
-          'Tanyakan perilaku yang sudah dilakukan, bukan pendapat.',
-          'Dengarkan lebih banyak daripada menjelaskan ide sendiri.',
-        ].map((p, k) => (
-          <li key={p} className="flex gap-4 rounded-[20px] bg-white p-5">
-            <span className="text-3xl font-extrabold text-cobalt">{k + 1}</span>
-            <span className="text-lg">{p}</span>
-          </li>
+      <SubHead>6.2 Tangga bukti validasi</SubHead>
+      <Para className="mb-8">Bukti validasi memiliki tingkat kekuatan yang berbeda. Semakin tinggi anak tangganya, semakin kuat buktinya.</Para>
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
+        {EVIDENCE.map((e, k) => (
+          <motion.div
+            key={e.t}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: k * 0.1 }}
+            className={`flex-1 rounded-2xl p-5 ${k === EVIDENCE.length - 1 ? 'bg-pine text-white' : 'border-2 border-ink/10 bg-white'}`}
+            style={{ minHeight: `${120 + k * 26}px` }}
+          >
+            <p className={`text-sm ${k === EVIDENCE.length - 1 ? 'text-white/70' : 'text-ink/50'}`}>Tingkat {e.s}</p>
+            <p className="mt-1 text-lg font-bold">{e.t}</p>
+            <p className={`mt-1 text-sm ${k === EVIDENCE.length - 1 ? 'text-white/85' : 'text-ink/70'}`}>{e.d}</p>
+          </motion.div>
         ))}
-      </ol>
-      <Table head={['Pertanyaan lemah', 'Pertanyaan kuat', 'Alasan']} rows={MOM_TABLE.map((r) => [r.weak, r.strong, r.why])} />
-
-      <SubHead>6.3 Minimum Viable Product</SubHead>
-      <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
-        <Para>
-          Minimum Viable Product (MVP) adalah versi paling sederhana dari sebuah produk yang cukup untuk menguji
-          apakah ide benar-benar dibutuhkan. Konsep ini dipopulerkan Eric Ries melalui buku The Lean Startup (2011)
-          dengan siklus bangun, ukur, dan pelajari. MVP tidak harus berupa aplikasi. Formulir daring, grup pesan, atau
-          papan pengumuman sudah dapat menjadi MVP.
-        </Para>
-        <div className="relative mx-auto aspect-square w-full max-w-[300px]">
-          <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full" aria-hidden="true">
-            <motion.circle
-              cx="100" cy="100" r="74" fill="none" stroke="#2337D9" strokeWidth="3" strokeDasharray="6 8"
-              animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-              style={{ originX: '100px', originY: '100px' }}
-            />
-          </svg>
-          {LOOP.map((l, k) => {
-            const a = (Math.PI * 2 * k) / 3 - Math.PI / 2
-            return (
-              <span
-                key={l}
-                className="absolute grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-ink text-lg font-bold text-paper"
-                style={{ left: `${50 + Math.cos(a) * 37}%`, top: `${50 + Math.sin(a) * 37}%` }}
-              >
-                {l}
-              </span>
-            )
-          })}
-        </div>
+      </div>
+      <div className="mt-8 rounded-[22px] border-l-[8px] border-rose bg-white p-6">
+        <p className="text-xl font-bold">Menang lomba belum termasuk validasi pasar.</p>
+        <p className="mt-2 max-w-prose text-lg text-ink/75">
+          Penghargaan kompetisi membuktikan gagasan dan kemampuan teknis dinilai baik oleh juri. Namun juri bukan
+          pembeli. Validasi pasar baru terjadi ketika calon pengguna memakai dan calon pembayar bersedia membayar.
+        </p>
       </div>
 
-      <SubHead>6.4 Langkah validasi</SubHead>
-      <ol className="grid gap-5 md:grid-cols-5">
-        {VALIDATION_STEPS.map((s, k) => (
-          <li key={s.t} className="rounded-[22px] bg-white p-5">
-            <span className="text-5xl font-extrabold text-cobalt/25">{k + 1}</span>
-            <p className="mt-2 text-xl font-bold">{s.t}</p>
-            <p className="mt-2 text-ink/75">{s.d}</p>
-          </li>
-        ))}
-      </ol>
-      <Margin className="mt-12">Talk to people about their life, not about your idea.</Margin>
+      <SubHead>6.3 Mengukur besar pasar: TAM, SAM, SOM</SubHead>
+      <Circles />
+
+      <SubHead>6.4 Wawancara yang jujur</SubHead>
+      <Para className="mb-8">
+        Rob Fitzpatrick dalam The Mom Test (2013) menjelaskan bahwa pertanyaan tentang pendapat menghasilkan jawaban
+        sopan, bukan jawaban jujur. Tanyakan kejadian di masa lalu dan perilaku nyata.
+      </Para>
+      <Table head={['Pertanyaan lemah', 'Pertanyaan kuat', 'Alasan']} rows={MOM_TABLE.slice(0, 3).map((r) => [r.weak, r.strong, r.why])} />
+      <Margin className="mt-12">Opinions are cheap. Payments are proof.</Margin>
 
       <KeyPoints
         points={[
           'Alasan paling umum kegagalan startup adalah tidak adanya kebutuhan pasar.',
-          'Wawancara yang baik menggali pengalaman dan perilaku nyata, bukan pendapat.',
-          'MVP adalah versi paling sederhana untuk menguji ide, tidak harus berupa aplikasi.',
+          'Bukti validasi bertingkat dari data sekunder hingga pembayaran pertama.',
+          'TAM, SAM, dan SOM membantu memperkirakan besar pasar secara realistis.',
         ]}
       />
     </Section>

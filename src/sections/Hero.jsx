@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { HERO_PAIRS, MARQUEE } from '../data'
 
-const TITLE = 'Ide besar sering lahir dari hal yang membuat kita resah.'
+const TITLE = 'Teknologi terbaik lahir dari masalah yang nyata.'
 
 function KeresahanBoard() {
   const reduce = useReducedMotion()
@@ -161,8 +161,8 @@ export default function Hero() {
             transition={{ delay: 1.1 }}
             className="mt-8 max-w-xl text-xl leading-relaxed text-ink/75"
           >
-            Materi ini membahas cara menemukan ide teknologi yang memiliki dampak nyata dan nilai bisnis, berangkat
-            dari permasalahan yang ditemui dalam kehidupan sehari-hari.
+            Materi ini membahas cara memilih dan membangun teknologi untuk menyelesaikan masalah sehari-hari, hingga
+            mengubahnya menjadi produk yang berdampak dan bernilai bisnis.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -189,7 +189,7 @@ export default function Hero() {
             transition={{ delay: 1.6 }}
             className="hand mt-10 text-2xl text-cobalt"
           >
-            Every great product starts as someone's annoying problem.
+            Great technology starts with a real problem, not with a cool tool.
           </motion.p>
         </div>
         <KeresahanBoard />

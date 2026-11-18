@@ -4,7 +4,7 @@ import { PITCH_STAGES } from '../data'
 
 const TIPS = [
   { t: 'Mulai dari masalah', d: 'Audiens perlu merasakan masalahnya sebelum mendengar solusinya.' },
-  { t: 'Gunakan data sederhana', d: 'Satu angka yang jelas lebih meyakinkan daripada banyak klaim.' },
+  { t: 'Tunjukkan demo', d: 'Satu demo singkat yang berjalan lebih meyakinkan daripada sepuluh slide arsitektur.' },
   { t: 'Hindari istilah teknis', d: 'Jelaskan seolah kepada adik kelas yang belum mengenal teknologinya.' },
   { t: 'Berlatih minimal tiga kali', d: 'Latihan membuat penyampaian lebih tenang dan tepat waktu.' },
 ]
@@ -16,7 +16,7 @@ export default function Pitching() {
         dark
         no={9}
         title="Menyampaikan ide"
-        lead="Ide yang baik perlu disampaikan dengan jelas agar mendapat dukungan. Pitch adalah presentasi singkat untuk meyakinkan audiens, baik juri lomba, calon mitra, maupun calon pengguna."
+        lead="Ide yang baik perlu disampaikan dengan jelas agar mendapat dukungan. Untuk produk teknologi, tantangannya adalah menjelaskan hal teknis dengan bahasa yang dipahami juri, calon mitra, maupun calon pengguna."
       />
 
       <SubHead>9.1 Struktur pitch 90 detik</SubHead>

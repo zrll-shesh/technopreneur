@@ -1,27 +1,14 @@
+import { motion } from 'framer-motion'
 import { Section, ChapterHead, Cite, Margin, Reveal, KeyPoints, SubHead, Para, Table } from '../components/ui'
-import { EXAMPLES } from '../data'
-
-const PARTS = [
-  { label: 'Masalah nyata', color: 'bg-marker text-ink', role: 'Menjadi alasan solusi dibutuhkan.', missing: 'Teknologi canggih yang tidak digunakan siapa pun.' },
-  { label: 'Teknologi yang tepat', color: 'bg-cobalt text-white', role: 'Menjadi cara menyelesaikan masalah secara efisien dan luas.', missing: 'Usaha konvensional yang sulit menjangkau banyak orang dengan cepat.' },
-  { label: 'Model bisnis', color: 'bg-pine text-white', role: 'Menjadi sumber daya agar solusi terus berjalan.', missing: 'Proyek yang berhenti ketika dana dan tenaga pembuatnya habis.' },
-]
-
-const TRAITS = [
-  { t: 'Peka terhadap masalah', d: 'Terbiasa memperhatikan hal yang menyulitkan orang di sekitarnya.' },
-  { t: 'Berpikir berbasis data', d: 'Mengambil keputusan dari bukti, bukan sekadar perasaan.' },
-  { t: 'Berani bereksperimen', d: 'Menguji ide dalam skala kecil dan belajar dari hasilnya.' },
-  { t: 'Terus belajar', d: 'Mengikuti perkembangan teknologi yang relevan dengan masalahnya.' },
-  { t: 'Berorientasi manfaat', d: 'Mengukur keberhasilan dari perubahan yang dirasakan pengguna.' },
-]
+import { EXAMPLES, LAYERS } from '../data'
 
 export default function Technopreneur() {
   return (
     <Section id="konsep">
       <ChapterHead
         no={1}
-        title="Konsep dasar technopreneurship"
-        lead="Istilah technopreneur merupakan gabungan dari kata technology dan entrepreneur. Secara sederhana, technopreneur adalah wirausahawan yang menjadikan teknologi sebagai alat utama untuk menyelesaikan masalah dan menciptakan nilai."
+        title="Teknologi sebagai alat"
+        lead="Technopreneur adalah orang yang memakai teknologi untuk menyelesaikan masalah nyata, lalu memastikan solusinya dapat bertahan. Kata kuncinya: teknologi adalah alat, bukan tujuan."
       />
 
       <SubHead>1.1 Pengertian</SubHead>
@@ -30,70 +17,63 @@ export default function Technopreneur() {
         berkaitan erat dengan kemajuan ilmu pengetahuan dan teknologi, dengan tujuan menciptakan sekaligus menangkap
         nilai.
       </Cite>
-      <Para>
-        Definisi tersebut memuat dua kata kunci yang menjadi dasar seluruh materi ini. Keduanya harus hadir bersamaan:
-        solusi yang bermanfaat tetapi tidak berkelanjutan akan berhenti di tengah jalan, sedangkan usaha yang
-        menghasilkan tetapi tidak bermanfaat tidak akan bertahan lama.
-      </Para>
-      <div className="mt-8 grid max-w-4xl gap-6 sm:grid-cols-2">
+      <div className="grid max-w-4xl gap-6 sm:grid-cols-2">
         <Reveal className="rounded-[22px] bg-marker p-6">
           <p className="hand text-xl">menciptakan nilai</p>
-          <p className="mt-2 text-2xl font-bold">Dampak</p>
-          <p className="mt-2 text-lg">Kehidupan pengguna menjadi lebih mudah, lebih aman, atau lebih baik.</p>
+          <p className="mt-2 text-2xl font-bold">Peran teknologi</p>
+          <p className="mt-2 text-lg">Teknologi membuat masalah terselesaikan lebih cepat, lebih akurat, dan untuk lebih banyak orang.</p>
         </Reveal>
         <Reveal delay={0.1} className="rounded-[22px] bg-pine p-6 text-white">
           <p className="hand text-xl text-white/80">menangkap nilai</p>
-          <p className="mt-2 text-2xl font-bold">Nilai bisnis</p>
-          <p className="mt-2 text-lg text-white/85">Solusi menghasilkan pendapatan sehingga dapat terus berjalan dan berkembang.</p>
+          <p className="mt-2 text-2xl font-bold">Peran bisnis</p>
+          <p className="mt-2 text-lg text-white/85">Bisnis memastikan solusi memiliki sumber daya untuk terus berjalan dan berkembang.</p>
         </Reveal>
       </div>
 
-      <SubHead>1.2 Entrepreneur dan technopreneur</SubHead>
+      <SubHead>1.2 Empat lapisan produk teknologi</SubHead>
       <Para className="mb-8">
-        Keduanya sama-sama penting bagi perekonomian. Perbedaannya terletak pada cara nilai diciptakan dan
-        disebarluaskan.
+        Hampir setiap produk teknologi, sesederhana atau secanggih apa pun, tersusun dari empat lapisan berikut.
+        Contohnya diambil dari AIO PestGuard.
+      </Para>
+      <ol className="grid gap-4 md:grid-cols-4">
+        {LAYERS.map((l, k) => (
+          <motion.li
+            key={l.t}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: k * 0.12 }}
+            className="relative flex flex-col rounded-[22px] border-2 border-ink/10 bg-white p-6"
+          >
+            <span className="text-5xl font-extrabold text-cobalt/25">{k + 1}</span>
+            <p className="mt-2 text-xl font-bold">{l.t}</p>
+            <p className="mt-2 flex-1 text-ink/75">{l.d}</p>
+            <p className="mt-4 rounded-xl bg-paper px-3 py-2 text-sm font-medium">{l.ex}</p>
+          </motion.li>
+        ))}
+      </ol>
+      <Para className="mt-8">
+        Banyak pemula hanya berfokus pada lapisan kedua, yaitu model. Padahal nilai baru tercipta di lapisan keempat:
+        ketika pengguna benar-benar mengambil keputusan yang lebih baik.
+      </Para>
+
+      <SubHead>1.3 Mengapa teknologi mengubah skala</SubHead>
+      <Para className="mb-8">
+        Warung membutuhkan tambahan pegawai untuk melayani lebih banyak pembeli. Sebaliknya, satu model AI atau satu
+        aplikasi dapat melayani seribu maupun sejuta pengguna dengan tambahan biaya yang relatif kecil, karena perangkat
+        lunak dapat disalin hampir tanpa biaya. Inilah keunggulan utama technopreneur.
       </Para>
       <Table
-        head={['Aspek', 'Entrepreneur', 'Technopreneur']}
+        head={['Aspek', 'Usaha konvensional', 'Usaha berbasis teknologi']}
         rows={[
-          ['Fokus utama', 'Menyediakan produk atau jasa bagi pelanggan', 'Menyelesaikan masalah dengan memanfaatkan teknologi'],
-          ['Sumber keunggulan', 'Lokasi, harga, layanan, dan jaringan', 'Inovasi, data, dan kemampuan teknis'],
-          ['Cara bertumbuh', 'Seiring bertambahnya tenaga kerja dan cabang', 'Dapat menjangkau banyak orang tanpa kenaikan biaya yang sebanding'],
-          ['Contoh', 'Toko kelontong, katering, jasa laundry', 'Aplikasi antrean laundry, platform belajar daring'],
+          ['Sumber keunggulan', 'Lokasi, harga, dan layanan', 'Inovasi, data, dan kemampuan teknis'],
+          ['Cara bertumbuh', 'Menambah pegawai dan cabang', 'Menambah pengguna dengan biaya tambahan yang kecil'],
+          ['Aset utama', 'Barang dan tempat usaha', 'Perangkat lunak, data, dan model'],
+          ['Contoh', 'Jasa laundry', 'Aplikasi antrean laundry untuk banyak asrama'],
         ]}
       />
 
-      <SubHead>1.3 Tiga unsur utama</SubHead>
-      <Para className="mb-8">Sebuah solusi technopreneurship yang utuh memerlukan tiga unsur berikut.</Para>
-      <div className="grid gap-5 md:grid-cols-3">
-        {PARTS.map((p, k) => (
-          <Reveal key={p.label} delay={k * 0.1}>
-            <div className="flex h-full flex-col overflow-hidden rounded-[22px] border-2 border-ink/10 bg-white">
-              <p className={`px-6 py-5 text-xl font-bold ${p.color}`}>{p.label}</p>
-              <div className="flex flex-1 flex-col gap-4 p-6">
-                <p className="text-lg">{p.role}</p>
-                <p className="mt-auto border-t-2 border-dashed border-ink/10 pt-4 text-ink/70">
-                  <span className="font-semibold text-rose">Tanpa unsur ini: </span>
-                  {p.missing}
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      <SubHead>1.4 Karakteristik technopreneur</SubHead>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {TRAITS.map((t) => (
-          <div key={t.t} className="border-t-[5px] border-cobalt pt-4">
-            <p className="text-xl font-bold">{t.t}</p>
-            <p className="mt-2 text-ink/75">{t.d}</p>
-          </div>
-        ))}
-      </div>
-
-      <SubHead>1.5 Contoh dari Indonesia</SubHead>
-      <Para className="mb-8">Tiga perusahaan berikut tidak dimulai dari teknologi yang canggih, melainkan dari masalah yang jelas.</Para>
+      <SubHead>1.4 Contoh dari Indonesia</SubHead>
       <div className="grid gap-5 md:grid-cols-3">
         {EXAMPLES.map((e, k) => (
           <Reveal key={e.name} delay={k * 0.1}>
@@ -107,13 +87,13 @@ export default function Technopreneur() {
           </Reveal>
         ))}
       </div>
-      <Margin className="mt-12">None of them started with a fancy app. They started with a problem.</Margin>
+      <Margin className="mt-12">Technology is the how. The problem is the why.</Margin>
 
       <KeyPoints
         points={[
-          'Technopreneurship bertujuan menciptakan nilai (dampak) dan menangkap nilai (bisnis) secara bersamaan.',
-          'Unsur utamanya adalah masalah nyata, teknologi yang tepat, dan model bisnis.',
-          'Keunggulan technopreneur terletak pada kemampuan menjangkau banyak orang secara efisien.',
+          'Technopreneurship menggabungkan peran teknologi (menciptakan nilai) dan bisnis (menangkap nilai).',
+          'Produk teknologi tersusun dari data, model, aplikasi, dan keputusan pengguna.',
+          'Keunggulan teknologi terletak pada kemampuan menjangkau banyak orang dengan biaya tambahan yang kecil.',
         ]}
       />
     </Section>

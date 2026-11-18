@@ -3,14 +3,14 @@ import { Section, ChapterHead } from '../components/ui'
 import { OBJECTIVES, SECTIONS } from '../data'
 
 const MAP_DESC = {
-  konsep: 'Pengertian, unsur utama, dan karakteristik technopreneur.',
-  'sumber-ide': 'Cara menemukan ide dari lingkungan sekitar.',
-  masalah: 'Membedakan masalah bernilai dan menemukan akarnya.',
-  dampak: 'Mengukur manfaat sebuah solusi bagi penggunanya.',
-  bisnis: 'Pengguna, pembayar, model bisnis, dan Lean Canvas.',
-  validasi: 'Menguji ide sebelum membangun solusi.',
-  evaluasi: 'Rubrik penilaian dan matriks prioritas ide.',
-  etika: 'Prinsip teknologi yang amanah.',
+  konsep: 'Peran teknologi dan empat lapisan produk teknologi.',
+  teknologi: 'Tujuh teknologi masa kini dan masalah yang cocok untuknya.',
+  masalah: 'Menemukan, menilai, dan merumuskan masalah.',
+  produk: 'Alur pengembangan dan pelajaran teknis dari lapangan.',
+  bisnis: 'B2C, B2B, B2G, B2B2C, dan model pendapatan.',
+  validasi: 'Tangga bukti validasi serta TAM, SAM, dan SOM.',
+  'studi-kasus': 'Empat proyek pemateri lengkap dengan hitungan pasar.',
+  etika: 'Dampak, SDGs, dan lima prinsip etika teknologi.',
   pitching: 'Struktur menyampaikan ide dalam 90 detik.',
 }
 
