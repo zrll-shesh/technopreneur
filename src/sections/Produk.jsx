@@ -8,11 +8,11 @@ export default function Produk() {
       <ChapterHead
         dark
         no={4}
-        title="Dari masalah ke produk teknologi"
-        lead="Setelah masalah dirumuskan, langkah berikutnya adalah mengubahnya menjadi solusi yang bekerja. Bab ini membahas alur pengembangan produk berbasis data dan prinsip penting dalam membangunnya."
+        title="Dari masalah ke produk"
+        lead="Setelah masalah dirumuskan, langkah berikutnya adalah mengubahnya menjadi solusi yang bekerja. Bab ini membahas alur pengembangan produk yang mirip dengan pendekatan design thinking, serta prinsip penting dalam membangunnya."
       />
 
-      <SubHead>4.1 Alur pengembangan solusi berbasis data</SubHead>
+      <SubHead>4.1 Tujuh tahap pengembangan produk</SubHead>
       <Para dark className="mb-8">Setiap tahap memiliki satu pertanyaan kunci yang harus terjawab sebelum melangkah ke tahap berikutnya.</Para>
       <ol className="relative grid gap-3 border-l-[3px] border-white/15 pl-8">
         {PIPELINE.map((p, k) => (
@@ -33,7 +33,7 @@ export default function Produk() {
         ))}
       </ol>
 
-      <SubHead>4.2 Empat prinsip membangun produk teknologi</SubHead>
+      <SubHead>4.2 Empat prinsip membangun produk</SubHead>
       <div className="grid gap-5 md:grid-cols-2">
         {LESSONS.map((l, k) => (
           <motion.div
@@ -52,18 +52,18 @@ export default function Produk() {
 
       <SubHead>4.3 Mulai dari versi paling sederhana</SubHead>
       <Para dark className="mb-8">
-        Produk tidak harus langsung dibangun dengan kode penuh. Pilih tingkat yang sesuai dengan pertanyaan yang ingin
+        Produk tidak harus langsung dibangun secara lengkap. Pilih tingkat yang sesuai dengan pertanyaan yang ingin
         dijawab saat itu.
       </Para>
       <Table dark head={['Tingkat', 'Contoh alat', 'Tujuan']} rows={PROTO} />
-      <Margin dark className="mt-12">A model that no one can use is just an experiment.</Margin>
+      <Margin dark className="mt-12">A product that no one uses is just an experiment.</Margin>
 
       <KeyPoints
         dark
         points={[
-          'Ikuti alur: rumuskan, kumpulkan, siapkan, bangun, evaluasi, jadikan produk, lalu pantau.',
-          'Perhatikan kejujuran model, kualitas data, kemudahan pengguna, dan ukuran keberhasilan yang tepat.',
-          'Mulai dari prototipe tanpa kode, lalu tingkatkan sesuai kebutuhan.',
+          'Ikuti alur: pahami pengguna, rumuskan masalah, cari ide, buat prototipe, uji, luncurkan, lalu perbaiki.',
+          'Mulai sederhana, uji kepada pengguna nyata, pastikan mudah dijangkau, dan pilih ukuran keberhasilan yang tepat.',
+          'Mulai dari sketsa atau prototipe tanpa kode, lalu tingkatkan sesuai kebutuhan.',
         ]}
       />
     </Section>

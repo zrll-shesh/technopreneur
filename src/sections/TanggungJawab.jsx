@@ -48,7 +48,7 @@ export default function TanggungJawab() {
       <KeyPoints
         points={[
           'Nyatakan dampak dengan jelas dan kaitkan dengan SDGs bila relevan.',
-          'Lima prinsip etika: privasi, keadilan, keamanan, kejujuran AI, dan transparansi.',
+          'Lima prinsip etika: privasi, keadilan, keamanan, kejujuran, dan keberlanjutan.',
         ]}
       />
     </Section>

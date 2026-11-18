@@ -3,23 +3,24 @@ export const SECTIONS = [
   { id: 'kenalan', label: 'Profil pemateri' },
   { id: 'tujuan', label: 'Tujuan pembelajaran' },
   { id: 'konsep', label: 'Teknologi sebagai alat' },
-  { id: 'teknologi', label: 'Peta teknologi' },
+  { id: 'teknologi', label: 'Ragam teknologi' },
   { id: 'masalah', label: 'Menemukan masalah' },
   { id: 'produk', label: 'Dari masalah ke produk' },
   { id: 'bisnis', label: 'Model bisnis' },
   { id: 'validasi', label: 'Validasi pasar' },
   { id: 'etika', label: 'Dampak dan etika' },
   { id: 'pitching', label: 'Menyampaikan ide' },
+  { id: 'bidang', label: 'Bidang pemateri' },
   { id: 'studi-kasus', label: 'Studi kasus' },
   { id: 'cek-pemahaman', label: 'Cek pemahaman' },
   { id: 'penutup', label: 'Ringkasan dan penutup' },
 ]
 
 export const OBJECTIVES = [
-  'Menjelaskan peran teknologi dalam technopreneurship.',
-  'Mengenali jenis teknologi masa kini beserta masalah yang cocok diselesaikannya.',
+  'Menjelaskan pengertian technopreneurship dan peran teknologi di dalamnya.',
+  'Mengenali ragam teknologi beserta jenis masalah yang cocok diselesaikannya.',
   'Menemukan dan merumuskan masalah yang layak diselesaikan.',
-  'Memahami alur mengubah masalah menjadi produk teknologi.',
+  'Memahami alur mengubah masalah menjadi produk.',
   'Membedakan model bisnis B2C, B2B, B2G, dan B2B2C.',
   'Melakukan validasi pasar dan menghitung ukuran pasar sederhana.',
 ]
@@ -37,7 +38,7 @@ export const TECHS = [
     what: 'Teknologi yang membuat komputer mampu "melihat": mengenali, menghitung, dan menandai objek dalam gambar atau video.',
     analogy: 'Seperti mengajari mata baru dengan ribuan contoh foto berlabel, hingga ia bisa mengenali objek yang belum pernah dilihatnya.',
     fit: 'Pekerjaan yang biasanya dinilai dengan mata manusia dan dilakukan berulang kali.',
-    mine: 'Fitur buka kunci wajah di ponsel, pemeriksaan cacat produk di pabrik, dan aplikasi pengenal tanaman atau hama dari foto.',
+    mine: 'AIO PestGuard mengenali 24 jenis hama padi, jagung, dan bawang merah dari foto. Proyek UAV memetakan jalan, bangunan, dan vegetasi dari foto udara drone.',
     school: 'Mendeteksi sampah yang dibuang di tempat yang salah, atau memeriksa kerapian rak buku perpustakaan.',
     start: 'Teachable Machine dari Google (tanpa kode), lalu Ultralytics YOLO di Google Colab.',
   },
@@ -46,7 +47,7 @@ export const TECHS = [
     what: 'Natural Language Processing membuat komputer memahami bahasa manusia. Large Language Model (LLM) adalah model bahasa berukuran besar yang dapat menulis dan menjawab pertanyaan.',
     analogy: 'Seperti pembaca super cepat yang mampu membaca ribuan keluhan dalam semenit lalu merangkum polanya.',
     fit: 'Masalah yang melibatkan banyak teks: ulasan, keluhan, dokumen, atau percakapan.',
-    mine: 'Penerjemah otomatis, filter spam pada email, analisis ulasan pelanggan, dan asisten AI untuk menulis.',
+    mine: 'Analisis sentimen 1.883 unggahan di X dengan model berbahasa Indonesia (akurasi 88,2%). StockSense AI menyediakan chatbot berbahasa Indonesia untuk pemilik usaha.',
     school: 'Merangkum masukan santri dari kotak saran digital setiap bulan.',
     start: 'Hugging Face untuk model siap pakai, Ollama untuk menjalankan LLM di laptop.',
   },
@@ -55,7 +56,7 @@ export const TECHS = [
     what: 'Teknik menghubungkan LLM dengan kumpulan dokumen milik kita, sehingga jawabannya berdasarkan sumber yang jelas, bukan karangan.',
     analogy: 'Seperti ujian open book: sebelum menjawab, model mencari halaman yang relevan terlebih dahulu.',
     fit: 'Tanya jawab atas dokumen khusus yang tidak diketahui LLM umum, dan ketika jawaban harus dapat dipertanggungjawabkan.',
-    mine: 'Asisten layanan pelanggan yang menjawab berdasarkan kebijakan resmi perusahaan, atau asisten yang menjawab pertanyaan dari buku panduan.',
+    mine: 'AgriPest-RAG menggabungkan deteksi hama dengan basis pengetahuan pengendalian hama. Proyek UAV memungkinkan pengguna bertanya tentang hasil pemetaan dengan bahasa sehari-hari.',
     school: 'Asisten tanya jawab tentang tata tertib pondok dan jadwal kegiatan yang selalu merujuk dokumen resmi.',
     start: 'ChromaDB sebagai basis data vektor, ditambah API LLM seperti Gemini.',
   },
@@ -64,7 +65,7 @@ export const TECHS = [
     what: 'Model yang belajar dari data berbentuk tabel untuk memprediksi angka atau kategori, termasuk memperkirakan masa depan.',
     analogy: 'Seperti pedagang berpengalaman yang menebak penjualan minggu depan, tetapi dengan ingatan atas ribuan transaksi.',
     fit: 'Keputusan yang bergantung pada perkiraan: stok, permintaan, risiko, atau anggaran.',
-    mine: 'Prediksi stok di toko ritel, perkiraan cuaca, estimasi waktu tiba pada aplikasi ojek daring, dan penilaian risiko kredit.',
+    mine: 'StockSense AI memprediksi penjualan 7 hari ke depan. CIVIC-FOOD AI memproyeksikan indeks ketahanan pangan 38 provinsi hingga 2028.',
     school: 'Memperkirakan jumlah porsi kantin harian agar makanan tidak berlebih atau kurang.',
     start: 'Google Sheets untuk data awal, lalu scikit-learn atau XGBoost di Google Colab.',
   },
@@ -73,7 +74,7 @@ export const TECHS = [
     what: 'Perangkat fisik bersensor yang terhubung ke internet dan mengirim data secara terus-menerus.',
     analogy: 'Seperti memberi indra perasa pada benda: tanah bisa "melapor" ketika kering, keran bisa "melapor" ketika bocor.',
     fit: 'Masalah di dunia fisik yang perlu dipantau terus tanpa kehadiran manusia.',
-    mine: 'Meteran listrik pintar, irigasi otomatis berbasis sensor kelembapan tanah, dan pelacak lokasi armada pengiriman.',
+    mine: 'Di PT Aigra EON Indonesia, model prediksi dibangun untuk data sensor tanah, cuaca, dan kondisi lahan yang mengalir secara real-time.',
     school: 'Sensor pemantau pemakaian air di asrama untuk mendeteksi keran yang lupa ditutup.',
     start: 'Mikrokontroler ESP32 atau Arduino dengan sensor sederhana.',
   },
@@ -82,7 +83,7 @@ export const TECHS = [
     what: 'Teknik menemukan pola dalam data dan menjelaskan mengapa sebuah model mengambil keputusan tertentu.',
     analogy: 'Bukan hanya memberi nilai rapor, tetapi juga menjelaskan mata pelajaran mana yang paling memengaruhi nilai tersebut.',
     fit: 'Keputusan penting yang harus dapat dijelaskan kepada orang lain, terutama pengambil kebijakan.',
-    mine: 'Dashboard pemantauan program pemerintah, analisis perilaku pelanggan toko daring, dan sistem kredit yang dapat menjelaskan alasan penolakan.',
+    mine: 'EduGap-XAI dan SURE-MAP Indonesia memetakan kesenjangan antarprovinsi sekaligus menjelaskan faktor yang paling memengaruhinya.',
     school: 'Menganalisis faktor yang paling berkaitan dengan keterlambatan setoran hafalan.',
     start: 'Looker Studio atau Tableau untuk visualisasi, lalu pustaka SHAP di Python.',
   },
@@ -91,41 +92,41 @@ export const TECHS = [
     what: 'Lapisan yang mengantarkan teknologi kepada pengguna: aplikasi, server, dan infrastruktur daring.',
     analogy: 'Seperti etalase dan jalur distribusi. Produk sebagus apa pun tidak berguna jika tidak sampai ke tangan pembeli.',
     fit: 'Hampir semua solusi, karena model AI pun membutuhkan antarmuka agar dapat dipakai.',
-    mine: 'Hampir semua layanan digital: marketplace, aplikasi perbankan, platform belajar daring, dan layanan pemerintah daring.',
+    mine: 'AIO PestGuard berjalan langsung di browser ponsel tanpa perlu memasang aplikasi, dibangun dengan Next.js dan FastAPI.',
     school: 'Halaman web sederhana untuk pendaftaran ekstrakurikuler dan pengumuman.',
     start: 'Streamlit untuk prototipe cepat, Next.js dan Vercel untuk produk yang lebih lengkap.',
   },
 ]
 
 export const NO_AI = [
-  ['Aturannya jelas dan sederhana', 'Logika "jika... maka..." atau rumus spreadsheet'],
-  ['Belum ada data sama sekali', 'Kumpulkan data terlebih dahulu melalui formulir atau pencatatan'],
-  ['Kesalahan dapat berakibat fatal', 'Sistem pendukung keputusan, manusia tetap menjadi pengambil keputusan akhir'],
-  ['Masalah utamanya koordinasi', 'Jadwal bersama, grup pesan, atau papan pengumuman digital'],
+  ['Aturannya jelas dan sederhana', 'Spreadsheet atau aplikasi sederhana sudah cukup'],
+  ['Belum yakin masalahnya nyata', 'Uji dulu dengan cara manual sebelum membangun teknologi'],
+  ['Masalah utamanya kebiasaan atau koordinasi', 'Jadwal bersama, aturan yang jelas, atau grup pesan'],
+  ['Pengguna belum terbiasa dengan teknologi', 'Solusi yang berjalan di ponsel biasa, atau layanan langsung yang dibantu teknologi'],
 ]
 
 export const PIPELINE = [
-  { t: 'Rumuskan masalah', q: 'Keputusan apa yang ingin dibantu, dan oleh siapa?' },
-  { t: 'Kumpulkan data', q: 'Data apa yang tersedia, dan apakah cukup mewakili kenyataan?' },
-  { t: 'Siapkan data', q: 'Apakah ada data ganda, kosong, atau keliru?' },
-  { t: 'Bangun model', q: 'Pendekatan mana yang paling sederhana namun memadai? Bandingkan beberapa.' },
-  { t: 'Evaluasi', q: 'Metrik apa yang benar-benar mencerminkan keberhasilan bagi pengguna?' },
-  { t: 'Jadikan produk', q: 'Bagaimana pengguna awam dapat memakainya tanpa pelatihan?' },
-  { t: 'Pantau dan perbaiki', q: 'Apakah performa tetap baik ketika kondisi di lapangan berubah?' },
+  { t: 'Pahami pengguna', q: 'Siapa penggunanya, dan bagaimana mereka menjalani hari?' },
+  { t: 'Rumuskan masalah', q: 'Masalah apa yang paling menyulitkan mereka?' },
+  { t: 'Cari ide solusi', q: 'Apa saja cara yang mungkin, dimulai dari yang paling sederhana?' },
+  { t: 'Buat prototipe', q: 'Seperti apa wujud solusi paling sederhana yang bisa dicoba?' },
+  { t: 'Uji ke pengguna', q: 'Apakah mereka memahami dan mau memakainya?' },
+  { t: 'Bangun dan luncurkan', q: 'Fitur minimal apa yang wajib ada saat diluncurkan?' },
+  { t: 'Ukur dan perbaiki', q: 'Apakah pengguna terus kembali, dan apa yang perlu diperbaiki?' },
 ]
 
 export const LESSONS = [
   {
-    t: 'Akurasi bukan segalanya',
-    d: 'Model yang benar 95% terdengar hebat. Namun pada deteksi penyakit, 5% yang terlewat bisa berarti pasien tidak tertangani. Produk yang baik tahu kapan ia ragu dan menyerahkan keputusan penting kepada manusia.',
+    t: 'Mulai dari yang paling sederhana',
+    d: 'Satu fitur yang benar-benar menyelesaikan masalah lebih berharga daripada sepuluh fitur yang setengah jadi. Banyak produk besar diluncurkan dengan fitur yang sangat terbatas.',
   },
   {
-    t: 'Data bisa menipu',
-    d: 'Data ganda, kosong, atau salah catat menghasilkan kesimpulan yang keliru. Jika satu siswa tercatat dua kali, angka kehadiran tampak lebih tinggi daripada kenyataan. Periksa data sebelum memercayai hasilnya.',
+    t: 'Kamu bukan penggunamu',
+    d: 'Apa yang menurut pembuat mudah belum tentu mudah bagi pengguna. Selalu uji kepada pengguna nyata, bukan berdasarkan selera sendiri.',
   },
   {
     t: 'Teknologi harus sampai ke pengguna',
-    d: 'Model terbaik tidak berguna jika sulit dipakai. Petani, pedagang, atau orang tua membutuhkan tampilan sederhana, bahasa sehari-hari, dan aplikasi yang lancar di ponsel biasa.',
+    d: 'Produk terbaik tidak berguna jika sulit dijangkau. Petani, pedagang, atau orang tua membutuhkan tampilan sederhana, bahasa sehari-hari, dan produk yang lancar di ponsel biasa.',
   },
   {
     t: 'Pilih ukuran keberhasilan yang tepat',
@@ -134,9 +135,9 @@ export const LESSONS = [
 ]
 
 export const PROTO = [
-  ['Tanpa kode', 'Google Form, Google Sheets, Teachable Machine', 'Menguji apakah masalahnya nyata dan solusinya diminati'],
-  ['Sedikit kode', 'Google Colab, Streamlit, Looker Studio', 'Membuktikan model atau analisis dapat bekerja'],
-  ['Kode penuh', 'Next.js, FastAPI, ONNX, Vercel', 'Membangun produk yang siap dipakai banyak orang'],
+  ['Sketsa dan tanpa kode', 'Kertas, Canva, Figma, Google Form, Glide', 'Menguji apakah ide dipahami dan diminati'],
+  ['Prototipe sederhana', 'Google Sites, Arduino, model kardus atau cetak sederhana', 'Membuktikan cara kerja utama solusi'],
+  ['Produk siap pakai', 'Aplikasi web atau mobile, perangkat yang diproduksi', 'Melayani banyak pengguna secara konsisten'],
 ]
 
 export const PAYER_EXAMPLES = [
@@ -251,38 +252,38 @@ export const SDG_MAP = [
 
 export const ETHICS = [
   { title: 'Privasi', body: 'Data pribadi adalah amanah. Kumpulkan seperlunya, simpan dengan aman, dan minta izin sebelum digunakan.', color: 'bg-marker' },
-  { title: 'Keadilan', body: 'Model belajar dari data yang bisa berat sebelah. Audit keadilan memastikan hasilnya tidak merugikan kelompok tertentu.', color: 'bg-[#D4DBFF]' },
-  { title: 'Keamanan', body: 'Rekomendasi yang keliru dapat lebih berbahaya daripada tidak ada rekomendasi. Periksa keluaran terhadap aturan keselamatan.', color: 'bg-[#BFE8D6]' },
-  { title: 'Kejujuran AI', body: 'LLM dapat mengarang jawaban (halusinasi). RAG dan pencantuman sumber membantu jawaban tetap dapat dipertanggungjawabkan.', color: 'bg-[#FFD1D8]' },
-  { title: 'Transparansi', body: 'Keputusan penting harus dapat dijelaskan. Teknik seperti SHAP membantu menunjukkan alasan di balik prediksi.', color: 'bg-white' },
+  { title: 'Keadilan', body: 'Pastikan produk tidak merugikan atau mengecualikan kelompok tertentu, termasuk mereka yang tidak memiliki ponsel canggih.', color: 'bg-[#D4DBFF]' },
+  { title: 'Keamanan', body: 'Produk yang keliru dapat membahayakan pengguna. Uji dengan teliti, terutama untuk produk kesehatan, keuangan, dan pangan.', color: 'bg-[#BFE8D6]' },
+  { title: 'Kejujuran', body: 'Jangan membuat klaim berlebihan tentang kemampuan produk. Sampaikan keterbatasannya dengan terbuka kepada pengguna.', color: 'bg-[#FFD1D8]' },
+  { title: 'Keberlanjutan', body: 'Perhatikan dampak lingkungan, misalnya limbah elektronik, kemasan, dan pemakaian energi.', color: 'bg-white' },
 ]
 
 export const QUIZ = [
   { q: 'Menurut Bailetti (2012), technology entrepreneurship bertujuan untuk...', options: ['Menciptakan dan menangkap nilai', 'Membuat teknologi secanggih mungkin', 'Merekrut dan melatih karyawan', 'Meneliti dan mempublikasikan jurnal'], a: 0 },
-  { q: 'Kapan sebuah masalah sebaiknya tidak diselesaikan dengan AI?', options: ['Ketika datanya sangat banyak', 'Ketika aturannya jelas dan sederhana', 'Ketika polanya rumit', 'Ketika melibatkan gambar'], a: 1 },
+  { q: 'Langkah pertama dalam mengembangkan produk adalah...', options: ['Memilih bahasa pemrograman', 'Memahami pengguna dan masalahnya', 'Membuat logo', 'Mencari investor'], a: 1 },
   { q: 'Produk yang dibayar koperasi tetapi dipakai petani termasuk model...', options: ['B2C', 'B2G', 'B2B2C', 'C2C'], a: 2 },
   { q: 'SOM dalam perhitungan ukuran pasar berarti...', options: ['Seluruh pasar di dunia', 'Pasar yang dapat dilayani secara teori', 'Jumlah pesaing', 'Bagian pasar yang realistis direbut dalam waktu dekat'], a: 3 },
   { q: 'Bukti validasi pasar yang paling kuat adalah...', options: ['Pembayaran pertama dari pelanggan', 'Pujian dari teman', 'Banyaknya fitur', 'Logo yang menarik'], a: 0 },
 ]
 
 export const SUMMARY = [
-  'Teknologi adalah alat untuk menciptakan dan menangkap nilai, bukan tujuan akhir.',
-  'Setiap teknologi cocok untuk jenis masalah tertentu, dan tidak semua masalah membutuhkan AI.',
+  'Technopreneurship menggabungkan teknologi untuk menciptakan nilai dan bisnis untuk menangkap nilai.',
+  'Ragam teknologi sangat luas, dari aplikasi digital hingga bioteknologi. Pilih yang paling cocok dengan masalahnya.',
   'Ide yang kuat berangkat dari masalah nyata yang bersifat mendesak dan merugikan.',
-  'Produk teknologi yang baik memperhatikan kualitas data, kejujuran model, dan kemudahan pengguna.',
+  'Produk dibangun bertahap: pahami pengguna, buat prototipe, uji, luncurkan, lalu perbaiki.',
   'Pilih model bisnis (B2C, B2B, B2G, B2B2C) berdasarkan siapa yang memakai dan siapa yang membayar.',
-  'Validasi pasar bergerak dari data sekunder hingga pembayaran pertama, dan menang lomba belum termasuk validasi pasar.',
-  'Teknologi harus amanah: menjaga privasi, adil, aman, jujur, dan transparan.',
+  'Validasi pasar bergerak dari data sekunder hingga pembayaran pertama. Menang lomba belum termasuk validasi pasar.',
+  'Teknologi harus amanah: menjaga privasi, adil, aman, jujur, dan berkelanjutan.',
 ]
 
 export const GLOSSARY = [
   { t: 'Technopreneur', d: 'Wirausahawan yang menjadikan teknologi sebagai alat utama penciptaan nilai.' },
-  { t: 'Model AI', d: 'Program yang belajar pola dari data untuk membuat prediksi atau keputusan.' },
-  { t: 'RAG', d: 'Retrieval-Augmented Generation, teknik menghubungkan LLM dengan dokumen sumber.' },
+  { t: 'Startup', d: 'Usaha rintisan yang mencari model bisnis yang dapat tumbuh dengan cepat.' },
+  { t: 'Prototipe', d: 'Wujud awal sebuah solusi untuk diuji sebelum dibangun sepenuhnya.' },
+  { t: 'MVP', d: 'Minimum Viable Product, versi paling sederhana dari produk untuk menguji ide.' },
   { t: 'SaaS', d: 'Software as a Service, perangkat lunak yang dibayar secara berlangganan.' },
   { t: 'B2B, B2G, B2B2C', d: 'Penjualan kepada bisnis, kepada pemerintah, dan kepada lembaga yang melayani individu.' },
   { t: 'TAM, SAM, SOM', d: 'Total pasar, pasar yang dapat dilayani, dan pasar yang realistis direbut.' },
-  { t: 'MVP', d: 'Minimum Viable Product, versi paling sederhana untuk menguji ide.' },
   { t: 'NPV', d: 'Net Present Value, total keuntungan masa depan dikurangi biaya dalam nilai uang hari ini.' },
 ]
 
@@ -392,4 +393,89 @@ export const PITCH_STAGES = [
   { from: 35, to: 60, title: 'Solusi', body: 'Jelaskan cara kerja solusi dengan bahasa yang mudah dipahami.' },
   { from: 60, to: 75, title: 'Nilai bisnis', body: 'Sebutkan siapa pengguna, siapa pembayar, dan model pendapatannya.' },
   { from: 75, to: 90, title: 'Penutup', body: 'Jelaskan mengapa tim kalian tepat dan mengapa waktunya sekarang.' },
+]
+
+export const TECHS_GENERAL = [
+  {
+    name: 'Aplikasi dan platform digital',
+    what: 'Perangkat lunak di ponsel atau web yang membantu orang melakukan sesuatu dengan lebih mudah, cepat, dan tercatat.',
+    analogy: 'Seperti membuka loket pelayanan yang buka 24 jam dan dapat dikunjungi dari mana saja.',
+    fit: 'Proses yang berulang setiap hari, perlu dicatat, atau membutuhkan informasi yang cepat sampai.',
+    mine: 'Aplikasi ojek daring, platform belajar daring, dan layanan administrasi pemerintah secara daring.',
+    school: 'Aplikasi izin keluar pondok, pendaftaran ekstrakurikuler, atau papan pengumuman digital.',
+    start: 'Google Sites, Glide, atau AppSheet tanpa kode, lalu belajar HTML, CSS, dan JavaScript.',
+  },
+  {
+    name: 'Marketplace dan platform penghubung',
+    what: 'Platform yang mempertemukan dua pihak, misalnya penjual dan pembeli atau guru dan murid, lalu memperoleh pendapatan dari transaksi yang terjadi.',
+    analogy: 'Seperti pasar yang tidak memiliki barang sendiri, tetapi menyediakan tempat yang aman dan ramai.',
+    fit: 'Banyak penyedia dan pencari yang sebenarnya saling membutuhkan, tetapi sulit saling menemukan.',
+    mine: 'Marketplace daring, platform pencarian kerja, dan platform pencarian guru les.',
+    school: 'Tempat jual beli buku bekas antarsantri, atau jasa titip barang antarasrama.',
+    start: 'Grup pesan dan Google Sheets sebagai versi awal untuk menguji minat.',
+  },
+  {
+    name: 'Teknologi finansial (fintech)',
+    what: 'Teknologi yang memudahkan pembayaran, tabungan, pinjaman, dan pencatatan keuangan.',
+    analogy: 'Seperti dompet dan buku kas yang tidak pernah hilang dan selalu tercatat rapi.',
+    fit: 'Transaksi tunai yang merepotkan, pencatatan keuangan yang berantakan, atau akses layanan keuangan yang terbatas.',
+    mine: 'Dompet digital, pembayaran dengan QRIS, dan aplikasi pencatatan keuangan untuk UMKM.',
+    school: 'Kantin tanpa uang tunai, atau tabungan santri yang dapat dipantau orang tua.',
+    start: 'Pelajari cara kerja QRIS untuk usaha kecil dan pencatatan keuangan di spreadsheet.',
+  },
+  {
+    name: 'Perangkat keras dan Internet of Things',
+    what: 'Perangkat fisik bersensor yang terhubung ke internet dan mengirim data secara terus-menerus.',
+    analogy: 'Seperti memberi indra pada benda: tanah dapat "melapor" ketika kering, keran dapat "melapor" ketika bocor.',
+    fit: 'Masalah di dunia fisik yang perlu dipantau terus tanpa kehadiran manusia.',
+    mine: 'Meteran listrik pintar, irigasi otomatis berbasis sensor kelembapan tanah, dan pelacak lokasi armada pengiriman.',
+    school: 'Sensor pemantau pemakaian air di asrama untuk mendeteksi keran yang lupa ditutup.',
+    start: 'Mikrokontroler Arduino atau ESP32 dengan sensor sederhana.',
+  },
+  {
+    name: 'Kecerdasan buatan dan data',
+    what: 'Sistem yang belajar dari data untuk mengenali, memprediksi, atau menjawab pertanyaan.',
+    analogy: 'Seperti murid yang belajar dari ribuan contoh soal, sehingga mampu menjawab soal baru.',
+    fit: 'Pekerjaan yang polanya rumit, datanya banyak, dan sulit ditulis sebagai aturan sederhana.',
+    mine: 'Rekomendasi produk di toko daring, penerjemah otomatis, dan asisten AI untuk menulis.',
+    school: 'Asisten tanya jawab tentang tata tertib pondok yang merujuk dokumen resmi.',
+    start: 'Teachable Machine dari Google untuk mencoba tanpa kode. Bidang ini dibahas lebih dalam di bagian bidang pemateri.',
+  },
+  {
+    name: 'Teknologi hijau dan energi',
+    what: 'Teknologi yang mengurangi dampak lingkungan atau menghasilkan energi bersih.',
+    analogy: 'Seperti mengubah sesuatu yang dianggap sisa atau gratis, misalnya sampah dan sinar matahari, menjadi sesuatu yang bernilai.',
+    fit: 'Masalah sampah, pemborosan energi, dan biaya listrik yang tinggi.',
+    mine: 'Panel surya atap, bank sampah digital, dan kemasan ramah lingkungan.',
+    school: 'Bank sampah sekolah yang mencatat setoran secara digital, atau lampu otomatis untuk menghemat listrik.',
+    start: 'Proyek pemilahan sampah atau kit panel surya mini.',
+  },
+  {
+    name: 'Bioteknologi dan teknologi pangan',
+    what: 'Pemanfaatan proses biologis untuk menghasilkan produk yang bermanfaat, misalnya pupuk hayati atau pangan olahan.',
+    analogy: 'Seperti bekerja sama dengan makhluk hidup kecil, misalnya mikroba, agar melakukan pekerjaan untuk kita.',
+    fit: 'Masalah pertanian, ketahanan pangan, kesehatan, dan pengolahan limbah organik.',
+    mine: 'Pupuk organik cair dari limbah, budidaya maggot untuk pakan ternak, dan pengawetan pangan alami.',
+    school: 'Kompos dari sisa makanan kantin, atau budidaya sayur hidroponik di lahan sempit.',
+    start: 'Eksperimen kompos atau hidroponik skala kecil.',
+  },
+]
+
+export const LESSONS_FIELD = [
+  {
+    t: 'Model harus jujur tentang keraguannya',
+    d: 'Pada AIO PestGuard, selain ketepatan deteksi, diukur pula seberapa jujur tingkat keyakinan model. Pada sistem deteksi glaukoma, prediksi yang meragukan ditandai agar diperiksa dokter.',
+  },
+  {
+    t: 'Data bisa menipu',
+    d: 'Pada EduGap-XAI, data empat provinsi baru di Papua ternyata salinan dari provinsi induknya. Tanpa pemeriksaan, kesenjangan akan terlihat melebar padahal sebagian besar adalah kesenjangan lama.',
+  },
+  {
+    t: 'Model harus sampai ke pengguna',
+    d: 'AIO PestGuard berjalan langsung di browser ponsel dalam tiga bahasa. StockSense AI menyediakan chatbot yang memahami bahasa sehari-hari pemilik warung.',
+  },
+  {
+    t: 'Ukuran yang salah mendorong perilaku yang salah',
+    d: 'Pada bluRadar, ukuran "jumlah akun dibuka" diganti menjadi "nasabah yang benar-benar aktif", sehingga teknologi dan tim bergerak ke arah yang benar.',
+  },
 ]

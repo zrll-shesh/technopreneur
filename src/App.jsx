@@ -10,6 +10,7 @@ import Teknologi from './sections/Teknologi'
 import Produk from './sections/Produk'
 import Bisnis from './sections/Bisnis'
 import Validasi from './sections/Validasi'
+import Bidang from './sections/Bidang'
 import StudiKasus from './sections/StudiKasus'
 import TanggungJawab from './sections/TanggungJawab'
 import Pitching from './sections/Pitching'
@@ -31,6 +32,7 @@ export default function App() {
         <Validasi />
         <TanggungJawab />
         <Pitching />
+        <Bidang />
         <StudiKasus />
         <Kuis />
         <Penutup />

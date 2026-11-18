@@ -1,22 +1,22 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Section, ChapterHead, Cite, Margin, KeyPoints, SubHead, Para, Table } from '../components/ui'
-import { TECHS, NO_AI } from '../data'
+import { TECHS_GENERAL, NO_AI } from '../data'
 
-function TechExplorer() {
+export function TechExplorer({ items, exampleLabel = 'Contoh di dunia nyata', layoutKey = 'tech-bg' }) {
   const [k, setK] = useState(0)
-  const t = TECHS[k]
+  const t = items[k]
   const rows = [
     { l: 'Cara kerja sederhana', v: t.analogy },
     { l: 'Cocok untuk masalah', v: t.fit },
-    { l: 'Contoh di dunia nyata', v: t.mine, hl: true },
+    { l: exampleLabel, v: t.mine, hl: true },
     { l: 'Contoh di lingkungan sekolah', v: t.school },
     { l: 'Alat untuk mulai belajar', v: t.start },
   ]
   return (
     <div className="grid gap-6 lg:grid-cols-[0.8fr_1.6fr]">
       <div className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0" role="tablist">
-        {TECHS.map((x, j) => (
+        {items.map((x, j) => (
           <button
             key={x.name}
             role="tab"
@@ -25,7 +25,7 @@ function TechExplorer() {
             className={`relative min-h-[52px] shrink-0 rounded-2xl px-5 text-left font-bold transition-colors ${k === j ? 'text-white' : 'bg-white hover:bg-mist'}`}
           >
             {k === j && (
-              <motion.span layoutId="tech-bg" className="absolute inset-0 rounded-2xl bg-cobalt" transition={{ type: 'spring', stiffness: 300, damping: 30 }} />
+              <motion.span layoutId={layoutKey} className="absolute inset-0 rounded-2xl bg-cobalt" transition={{ type: 'spring', stiffness: 300, damping: 30 }} />
             )}
             <span className="relative">{x.name}</span>
           </button>
@@ -61,19 +61,19 @@ export default function Teknologi() {
     <Section id="teknologi">
       <ChapterHead
         no={2}
-        title="Peta teknologi masa kini"
-        lead="Mengenal teknologi bukan berarti harus menguasai semuanya. Yang penting adalah tahu teknologi apa yang cocok untuk jenis masalah tertentu, sehingga ketika menemukan masalah, kita tahu alat apa yang bisa dipakai."
+        title="Ragam teknologi untuk technopreneur"
+        lead="Technopreneurship tidak hanya tentang aplikasi atau AI. Teknologi yang dapat dipakai sangat beragam, dari perangkat lunak hingga bioteknologi. Yang penting adalah mengetahui teknologi apa yang cocok untuk jenis masalah tertentu."
       />
 
-      <SubHead>2.1 Tujuh teknologi dan kegunaannya</SubHead>
+      <SubHead>2.1 Tujuh ragam teknologi</SubHead>
       <Para className="mb-8">Pilih teknologi untuk melihat penjelasan, kecocokan masalah, dan contoh penerapannya.</Para>
-      <TechExplorer />
+      <TechExplorer items={TECHS_GENERAL} />
 
-      <SubHead>2.2 Tidak semua masalah membutuhkan AI</SubHead>
+      <SubHead>2.2 Tidak semua masalah membutuhkan teknologi canggih</SubHead>
       <Para className="mb-8">
-        Godaan terbesar saat ini adalah menempelkan AI pada setiap ide. Padahal solusi paling sederhana yang berhasil
-        adalah solusi terbaik. AI tepat dipakai ketika polanya terlalu rumit untuk ditulis sebagai aturan dan datanya
-        tersedia.
+        Godaan terbesar saat ini adalah memakai teknologi paling canggih untuk setiap ide. Padahal solusi paling
+        sederhana yang berhasil adalah solusi terbaik. Teknologi yang rumit membutuhkan biaya, waktu, dan perawatan
+        yang lebih besar.
       </Para>
       <Table head={['Situasi', 'Solusi yang lebih tepat']} rows={NO_AI} />
 
@@ -90,8 +90,9 @@ export default function Teknologi() {
         head={['Dahulu', 'Sekarang']}
         rows={[
           ['Mengenali hama memerlukan ahli yang datang ke sawah.', 'Model AI dapat berjalan langsung di browser ponsel.'],
-          ['Melatih model membutuhkan komputer mahal.', 'Google Colab menyediakan GPU yang dapat dipakai gratis untuk belajar.'],
-          ['Model bahasa hanya dimiliki perusahaan raksasa.', 'Model terbuka seperti Gemma dapat dijalankan di laptop.'],
+          ['Pembayaran nontunai membutuhkan mesin khusus.', 'Usaha kecil cukup menempelkan kode QRIS.'],
+          ['Membuat aplikasi membutuhkan tim pemrogram.', 'Alat tanpa kode memungkinkan pelajar membuat prototipe sendiri.'],
+          ['Perangkat elektronik eksperimen sangat mahal.', 'Mikrokontroler dan sensor dapat dibeli dengan harga terjangkau.'],
           ['Data hanya dimiliki lembaga besar.', 'BPS dan banyak lembaga membuka datanya untuk publik.'],
         ]}
       />
@@ -99,9 +100,9 @@ export default function Teknologi() {
 
       <KeyPoints
         points={[
-          'Setiap teknologi cocok untuk jenis masalah tertentu: melihat, membaca, menjawab, memprediksi, merasakan, menjelaskan, dan mengantarkan.',
-          'Gunakan AI hanya jika polanya rumit dan datanya tersedia.',
-          'Alat yang dahulu mahal kini dapat diakses pelajar secara gratis.',
+          'Ragam teknologi meliputi aplikasi digital, marketplace, fintech, IoT, AI, teknologi hijau, dan bioteknologi.',
+          'Pilih teknologi berdasarkan masalah, dan utamakan solusi paling sederhana yang berhasil.',
+          'Alat yang dahulu mahal kini dapat diakses pelajar dengan biaya terjangkau.',
         ]}
       />
     </Section>

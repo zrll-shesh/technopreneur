@@ -4,11 +4,12 @@ import { OBJECTIVES, SECTIONS } from '../data'
 
 const MAP_DESC = {
   konsep: 'Peran teknologi dan empat lapisan produk teknologi.',
-  teknologi: 'Tujuh teknologi masa kini dan masalah yang cocok untuknya.',
+  teknologi: 'Tujuh ragam teknologi dan masalah yang cocok untuknya.',
   masalah: 'Menemukan, menilai, dan merumuskan masalah.',
-  produk: 'Alur pengembangan dan pelajaran teknis dari lapangan.',
+  produk: 'Tujuh tahap pengembangan produk dan empat prinsipnya.',
   bisnis: 'B2C, B2B, B2G, B2B2C, dan model pendapatan.',
   validasi: 'Tangga bukti validasi serta TAM, SAM, dan SOM.',
+  bidang: 'Pengenalan data science dan AI, bidang pemateri.',
   'studi-kasus': 'Empat proyek pemateri lengkap dengan hitungan pasar.',
   etika: 'Dampak, SDGs, dan lima prinsip etika teknologi.',
   pitching: 'Struktur menyampaikan ide dalam 90 detik.',
@@ -44,7 +45,7 @@ export default function Tujuan() {
         {chapters.map((c, k) => (
           <li key={c.id}>
             <a href={`#${c.id}`} className="group grid gap-1 py-5 sm:grid-cols-[6rem_1fr_1.4fr] sm:items-baseline sm:gap-6">
-              <span className="hand text-xl text-cobalt">{c.id === 'studi-kasus' ? 'Penerapan' : `Bab ${k + 1}`}</span>
+              <span className="hand text-xl text-cobalt">{['bidang', 'studi-kasus'].includes(c.id) ? 'Penerapan' : `Bab ${k + 1}`}</span>
               <span className="text-xl font-bold transition-colors group-hover:text-cobalt">{c.label}</span>
               <span className="text-ink/65">{MAP_DESC[c.id]}</span>
             </a>
