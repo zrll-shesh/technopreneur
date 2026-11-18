@@ -93,6 +93,10 @@ export default function StudiKasus() {
               </motion.div>
             ))}
           </div>
+          <p className="mt-4 text-paper/75">
+            <span className="font-bold text-paper">Cara menghitung: </span>
+            {c.calc}
+          </p>
           <p className="mt-4 rounded-2xl border-2 border-white/10 p-5 text-lg">
             <span className="font-bold text-marker">Ilustrasi pendapatan: </span>
             {c.revenue}
@@ -107,6 +111,17 @@ export default function StudiKasus() {
               <p className="font-bold text-marker">Langkah validasi berikutnya</p>
               <p className="mt-2 leading-relaxed text-paper/85">{c.next}</p>
             </div>
+          </div>
+          <div className="mt-6 rounded-[20px] border-2 border-white/10 p-6">
+            <p className="font-bold text-marker">Istilah dalam proyek ini</p>
+            <dl className="mt-3 divide-y-2 divide-white/10">
+              {c.terms.map(([t, d]) => (
+                <div key={t} className="grid gap-1 py-3 sm:grid-cols-[11rem_1fr] sm:gap-6">
+                  <dt className="font-bold">{t}</dt>
+                  <dd className="text-paper/80">{d}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </motion.article>
       </AnimatePresence>

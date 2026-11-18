@@ -50,7 +50,29 @@ export default function Produk() {
         ))}
       </div>
 
-      <SubHead>4.3 Mulai dari versi paling sederhana</SubHead>
+      <SubHead>4.3 Kamus metrik</SubHead>
+      <Para dark className="mb-8">
+        Metrik adalah angka untuk menilai seberapa baik sebuah model bekerja. Berikut arti metrik yang muncul dalam
+        materi ini, dijelaskan dengan bahasa sederhana.
+      </Para>
+      <Table
+        dark
+        head={['Metrik', 'Arti sederhana', 'Cara membaca', 'Contoh dalam materi']}
+        rows={[
+          ['Akurasi', 'Persentase tebakan model yang benar.', 'Semakin tinggi semakin baik, tetapi bisa menipu jika data tidak seimbang.', 'IndoRoBERTa 88,2%'],
+          ['mAP50', 'Ketepatan model menemukan dan memberi kotak pada objek. Dianggap benar jika kotaknya menutupi objek minimal 50%.', '0 sampai 1, semakin tinggi semakin baik.', 'AIO PestGuard 0,794'],
+          ['Calibration error', 'Selisih antara keyakinan model dan kenyataan. Jika model berkata yakin 90%, idealnya benar pada 90% kasus.', 'Semakin mendekati 0 semakin jujur.', 'AIO PestGuard 0,036'],
+          ['AUC-ROC', 'Kemampuan model membedakan dua kelompok, misalnya sakit dan sehat.', '0,5 sama dengan menebak acak, 1 berarti sempurna.', 'Deteksi glaukoma 0,9812'],
+          ['MAPE', 'Rata-rata persentase meleset dari prediksi angka.', 'Semakin kecil semakin baik. 4% berarti rata-rata meleset sekitar 4%.', 'CIVIC-FOOD AI 4,02%'],
+          ['R2', 'Seberapa besar naik turunnya data yang dapat dijelaskan model.', '0 sampai 1. 0,91 berarti model menjelaskan sekitar 91% variasi.', 'CIVIC-FOOD AI 0,91'],
+        ]}
+      />
+      <Para dark className="mt-6">
+        Tidak ada satu metrik yang selalu terbaik. Pilih metrik yang paling mencerminkan kerugian di dunia nyata.
+        Pada deteksi penyakit, melewatkan pasien sakit jauh lebih berbahaya daripada salah menandai orang sehat.
+      </Para>
+
+      <SubHead>4.4 Mulai dari versi paling sederhana</SubHead>
       <Para dark className="mb-8">
         Produk tidak harus langsung dibangun dengan kode penuh. Pilih tingkat yang sesuai dengan pertanyaan yang ingin
         dijawab saat itu.

@@ -28,7 +28,7 @@ export default function TanggungJawab() {
       <Table head={['Proyek', 'Tujuan yang didukung']} rows={SDG_MAP} />
 
       <SubHead>8.2 Lima prinsip etika teknologi</SubHead>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {ETHICS.map((p, k) => (
           <motion.div
             key={p.title}

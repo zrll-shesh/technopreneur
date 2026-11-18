@@ -19,7 +19,9 @@ export default function Bisnis() {
 
       <SubHead>5.2 Empat jenis pasar: B2C, B2B, B2G, dan B2B2C</SubHead>
       <Para className="mb-8">
-        Istilah ini menunjukkan kepada siapa produk dijual. Setiap jenis memiliki karakter yang sangat berbeda,
+        Huruf B berarti business (bisnis), G berarti government (pemerintah), dan C berarti consumer (konsumen
+        perorangan). B2B2C berarti produk dijual kepada lembaga yang kemudian memberikannya kepada konsumen. Istilah
+        ini menunjukkan kepada siapa produk dijual. Setiap jenis memiliki karakter yang sangat berbeda,
         sehingga strategi pengembangan teknologinya pun berbeda.
       </Para>
       <Table head={['Jenis', 'Pembeli', 'Jumlah pembeli', 'Nilai transaksi', 'Proses penjualan', 'Contoh']} rows={MARKETS} />
@@ -49,6 +51,24 @@ export default function Bisnis() {
           Dalam istilah bisnis, perbandingan ini disebut CAC (customer acquisition cost) dan LTV (lifetime value). Jika
           biaya promosi untuk satu warung Rp300.000, sedangkan warung hanya berlangganan tiga bulan dengan biaya
           Rp49.000 per bulan, setiap pelanggan justru merugikan. Pengguna yang banyak tidak menjamin bisnis yang sehat.
+        </p>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="rounded-[20px] bg-rose/20 p-6">
+            <p className="font-bold text-rose">Skenario rugi</p>
+            <p className="mt-2 text-paper/85">Biaya mendapatkan pelanggan (CAC): Rp300.000</p>
+            <p className="text-paper/85">Pendapatan per pelanggan (LTV): 3 bulan x Rp49.000 = Rp147.000</p>
+            <p className="mt-3 text-xl font-bold">Rugi Rp153.000 per pelanggan</p>
+          </div>
+          <div className="rounded-[20px] bg-pine/40 p-6">
+            <p className="font-bold text-[#7FE0BA]">Skenario sehat</p>
+            <p className="mt-2 text-paper/85">CAC turun lewat rekomendasi antarwarung: Rp100.000</p>
+            <p className="text-paper/85">Pelanggan bertahan 12 bulan: 12 x Rp49.000 = Rp588.000</p>
+            <p className="mt-3 text-xl font-bold">Untung Rp488.000 per pelanggan</p>
+          </div>
+        </div>
+        <p className="mt-6 text-paper/70">
+          Di sinilah teknologi berperan: fitur yang benar-benar berguna membuat pelanggan bertahan lebih lama, sehingga
+          LTV meningkat.
         </p>
       </div>
       <Margin className="mt-12">Users tell you if it's useful. Payers tell you if it's a business.</Margin>

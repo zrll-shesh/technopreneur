@@ -17,7 +17,7 @@ function Counter({ value, decimals = 0, prefix = '', suffix = '' }) {
     })
     return () => c.stop()
   }, [inView, value])
-  const shown = decimals ? n.toFixed(decimals) : Math.round(n).toLocaleString('id-ID')
+  const shown = decimals ? n.toFixed(decimals).replace('.', ',') : Math.round(n).toLocaleString('id-ID')
   return (
     <span ref={ref} className="tabular-nums">
       {prefix}

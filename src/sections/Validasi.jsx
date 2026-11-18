@@ -24,43 +24,137 @@ function FailBar() {
   )
 }
 
+const LAYERS_MKT = [
+  {
+    k: 'TAM',
+    full: 'Total Addressable Market',
+    q: 'Seberapa besar masalah ini secara keseluruhan?',
+    d: 'Semua pihak yang memiliki masalah tersebut, tanpa memedulikan apakah kita mampu menjangkaunya atau tidak.',
+    ex: 'Semua santri di satu kota yang membutuhkan sarapan setiap pagi.',
+    n: '10.000 santri',
+    size: 100,
+    cls: 'bg-mist text-ink',
+  },
+  {
+    k: 'SAM',
+    full: 'Serviceable Available Market',
+    q: 'Berapa yang bisa dilayani dengan produk, wilayah, dan saluran yang kita miliki sekarang?',
+    d: 'Bagian dari TAM yang sesuai dengan produk kita dan dapat dijangkau secara nyata.',
+    ex: 'Santri di pondok yang dapat kita antar sebelum jam 6 pagi.',
+    n: '2.000 santri',
+    size: 64,
+    cls: 'bg-[#BCC6F5] text-ink',
+  },
+  {
+    k: 'SOM',
+    full: 'Serviceable Obtainable Market',
+    q: 'Berapa yang realistis menjadi pelanggan dalam 1 sampai 3 tahun?',
+    d: 'Bagian dari SAM yang dapat direbut dengan memperhitungkan pesaing, kapasitas produksi, dan kemampuan tim.',
+    ex: 'Santri yang benar-benar berlangganan pada tahun pertama.',
+    n: '200 santri',
+    size: 32,
+    cls: 'bg-cobalt text-white',
+  },
+]
+
 function Circles() {
-  const items = [
-    { k: 'TAM', d: 'Total Addressable Market: seluruh pihak yang memiliki masalah tersebut.', size: '100%', cls: 'bg-mist' },
-    { k: 'SAM', d: 'Serviceable Available Market: bagian yang dapat dijangkau produk dengan kemampuan saat ini.', size: '68%', cls: 'bg-[#BCC6F5]' },
-    { k: 'SOM', d: 'Serviceable Obtainable Market: bagian yang realistis direbut dalam beberapa tahun.', size: '36%', cls: 'bg-cobalt text-white' },
-  ]
   return (
-    <div className="grid items-center gap-10 lg:grid-cols-2">
-      <div className="relative mx-auto aspect-square w-full max-w-[360px]">
-        {items.map((it, k) => (
+    <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <div className="relative mx-auto aspect-square w-full max-w-[340px]" aria-hidden="true">
+        {LAYERS_MKT.map((it, k) => (
           <motion.div
             key={it.k}
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 120, damping: 14, delay: k * 0.2 }}
-            className={`absolute bottom-0 left-1/2 flex -translate-x-1/2 items-start justify-center rounded-full pt-5 text-xl font-extrabold ${it.cls}`}
-            style={{ width: it.size, height: it.size }}
+            className={`absolute flex items-start justify-center rounded-full pt-[6%] text-xl font-extrabold ${it.cls}`}
+            style={{
+              width: `${it.size}%`,
+              height: `${it.size}%`,
+              left: `${(100 - it.size) / 2}%`,
+              bottom: 0,
+              originY: 1,
+            }}
           >
             {it.k}
           </motion.div>
         ))}
       </div>
-      <dl className="space-y-5">
-        {items.map((it) => (
-          <div key={it.k}>
-            <dt className="text-2xl font-extrabold">{it.k}</dt>
-            <dd className="mt-1 text-lg text-ink/75">{it.d}</dd>
-          </div>
+      <ol className="space-y-4">
+        {LAYERS_MKT.map((it) => (
+          <li key={it.k} className="rounded-[20px] border-2 border-ink/10 bg-white p-5">
+            <div className="flex flex-wrap items-baseline gap-x-3">
+              <span className="text-2xl font-extrabold">{it.k}</span>
+              <span className="text-ink/55">{it.full}</span>
+            </div>
+            <p className="mt-2 font-semibold text-cobalt">{it.q}</p>
+            <p className="mt-1 text-ink/80">{it.d}</p>
+          </li>
         ))}
-        <p className="rounded-2xl bg-marker p-4 font-medium">
-          Rumus pendapatan sederhana: jumlah pelanggan SOM x harga x frekuensi pembayaran.
-        </p>
-      </dl>
+      </ol>
     </div>
   )
 }
+
+function WorkedExample() {
+  return (
+    <div className="mt-12 rounded-[26px] bg-ink p-6 text-paper sm:p-10">
+      <p className="hand text-2xl text-marker">contoh sederhana</p>
+      <p className="mt-2 max-w-3xl text-2xl font-bold leading-snug">
+        Bayangkan kamu ingin membuat layanan pesan antar sarapan untuk santri, dipesan melalui aplikasi.
+      </p>
+      <p className="mt-2 text-paper/60">Angka berikut hanya ilustrasi untuk memahami cara berpikirnya.</p>
+      <div className="mt-8 grid gap-4 md:grid-cols-3">
+        {LAYERS_MKT.map((it, k) => (
+          <motion.div
+            key={it.k}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: k * 0.15 }}
+            className={`rounded-[20px] p-6 ${k === 2 ? 'bg-marker text-ink' : 'bg-white/[0.07]'}`}
+          >
+            <p className={`text-sm font-bold ${k === 2 ? 'text-ink/60' : 'text-paper/55'}`}>{it.k}</p>
+            <p className="mt-1 text-3xl font-extrabold">{it.n}</p>
+            <p className={`mt-2 ${k === 2 ? 'text-ink/80' : 'text-paper/75'}`}>{it.ex}</p>
+          </motion.div>
+        ))}
+      </div>
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <div className="rounded-[20px] border-2 border-white/10 p-6">
+          <p className="font-bold text-marker">Dari mana angka 200?</p>
+          <p className="mt-2 leading-relaxed text-paper/80">
+            Dapur kita hanya mampu menyiapkan sekitar 200 porsi per pagi, dan sudah ada dua penjual lain. Jadi SOM
+            ditentukan oleh kapasitas dan persaingan, bukan oleh harapan.
+          </p>
+        </div>
+        <div className="rounded-[20px] border-2 border-white/10 p-6">
+          <p className="font-bold text-marker">Perkiraan pendapatan</p>
+          <p className="mt-2 leading-relaxed text-paper/80">
+            200 pelanggan x Rp5.000 x 25 hari = <span className="font-bold text-paper">Rp25 juta per bulan</span>.
+            Rumus umumnya: jumlah pelanggan SOM x harga x frekuensi pembayaran.
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const MISTAKES = [
+  {
+    t: 'Jebakan "cukup 1% saja"',
+    d: 'Kalimat "jika 1% penduduk Indonesia memakai aplikasi ini..." terdengar meyakinkan, tetapi tidak menjelaskan bagaimana 1% itu didapat. Juri dan investor biasanya langsung meragukannya.',
+  },
+  {
+    t: 'TAM terlalu luas',
+    d: 'Menulis "semua orang Indonesia" sebagai TAM menunjukkan masalahnya belum dirumuskan dengan tajam. TAM harus berisi pihak yang benar-benar memiliki masalah tersebut.',
+  },
+  {
+    t: 'Menghitung pengguna, bukan pembayar',
+    d: 'Pada model B2B2C, pasar dihitung dari pihak yang membayar. Jika koperasi yang membayar, hitung jumlah koperasi dan nilai kontraknya.',
+  },
+]
 
 export default function Validasi() {
   return (
@@ -108,7 +202,36 @@ export default function Validasi() {
       </div>
 
       <SubHead>6.3 Mengukur besar pasar: TAM, SAM, SOM</SubHead>
+      <Para className="mb-10">
+        Sebelum membangun produk, kita perlu tahu seberapa besar peluangnya. TAM, SAM, dan SOM adalah tiga lapisan
+        yang semakin menyempit: dari "semua yang mungkin" menuju "yang realistis dapat diraih". Ketiganya berbentuk
+        lingkaran bertingkat karena setiap lapisan adalah bagian dari lapisan di atasnya.
+      </Para>
       <Circles />
+      <WorkedExample />
+
+      <h4 className="mb-4 mt-14 text-2xl font-bold">Dua cara menghitung</h4>
+      <Table
+        head={['Cara', 'Langkah', 'Contoh', 'Kelebihan']}
+        rows={[
+          ['Top-down (dari atas)', 'Mulai dari angka besar data resmi, lalu dipersempit dengan persentase', '29,34 juta usaha tani, 30% relevan, 0,5% direbut', 'Cepat dan memakai data resmi'],
+          ['Bottom-up (dari bawah)', 'Mulai dari kemampuan nyata menjangkau pelanggan, lalu dikalikan', 'Tim mengunjungi 20 koperasi per bulan, 25% setuju uji coba, masing-masing 100 petani', 'Lebih dipercaya karena berdasar kemampuan nyata'],
+        ]}
+      />
+      <Para className="mt-6">
+        Praktik terbaik adalah memakai keduanya. Jika hasil top-down jauh lebih besar daripada bottom-up, berarti
+        asumsi persentasenya terlalu optimistis.
+      </Para>
+
+      <h4 className="mb-4 mt-14 text-2xl font-bold">Kesalahan yang sering terjadi</h4>
+      <div className="grid gap-5 md:grid-cols-3">
+        {MISTAKES.map((m) => (
+          <div key={m.t} className="rounded-[20px] border-l-[6px] border-rose bg-white p-6">
+            <p className="text-xl font-bold">{m.t}</p>
+            <p className="mt-2 leading-relaxed text-ink/75">{m.d}</p>
+          </div>
+        ))}
+      </div>
 
       <SubHead>6.4 Wawancara yang jujur</SubHead>
       <Para className="mb-8">
@@ -122,7 +245,8 @@ export default function Validasi() {
         points={[
           'Alasan paling umum kegagalan startup adalah tidak adanya kebutuhan pasar.',
           'Bukti validasi bertingkat dari data sekunder hingga pembayaran pertama.',
-          'TAM, SAM, dan SOM membantu memperkirakan besar pasar secara realistis.',
+          'TAM adalah seluruh pasar, SAM adalah yang dapat dilayani, dan SOM adalah yang realistis direbut.',
+          'Hitung dengan cara top-down dan bottom-up, lalu bandingkan hasilnya.',
         ]}
       />
     </Section>
